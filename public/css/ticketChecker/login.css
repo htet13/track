@@ -1,0 +1,710 @@
+body{
+    background-color: white;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+.main-container{
+    overflow: hidden;
+    height: 100vh;
+}
+
+.row{
+    margin: 0;
+}
+
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+.wrapper .banner{
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.wrapper .logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    transform: translate(-50%, -50%);
+}
+
+.logo img{
+    margin: 0;
+    max-height: 70px;
+}
+
+.login-form-wrapper{
+    position: absolute;
+}
+
+.login-form{
+    min-width: 500px;
+    min-height: 500px;
+    margin-top: 700px;
+    background-color: black;
+    position: relative;
+    z-index: 999;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+}
+
+.login-banner{
+    position: absolute;
+    bottom: 0%;
+    transform: translate(2%, 88%);
+    min-width: 500px;
+}
+
+.login-banner img{
+    width: 100% !important;
+}
+
+.base {
+    background: white;
+    display: inline-block;
+    height: 462.5px;
+    position: relative;
+    width: 418px;
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+}
+.base:before {
+    border-bottom: 42.5px solid white;
+    border-left: 177px solid transparent;
+    border-right: 187px solid transparent;
+    content: "";
+    height: 0;
+    left: 28px;
+    position: absolute;
+    top: -40.5px;
+    width: 0;
+}
+
+.base h5{
+    text-align: center;
+    font-weight: bold;
+    color: #124C58;
+}
+
+.custom-border{
+    border-top-left-radius: 0% !important;
+    border-bottom-left-radius: 0% !important;
+    background-color: white;
+    border-left: none !important;
+}
+
+#password{
+    border-right: none;
+}
+
+.forgot-pwd{
+    padding-top: 8px;;
+    float: right;
+    font-size: 13px;
+}
+
+.footer-base {
+    background: #60A3F3;
+    display: inline-block;
+    height: 75px;
+    position: relative;
+    width: 418px;
+}
+.footer-base:before {
+    border-bottom: 42.5px solid #60A3F3;
+    border-left: 219px solid transparent;
+    border-right: 219px solid transparent;
+    content: "";
+    height: 0;
+    left: -10px;
+    position: absolute;
+    top: -40.5px;
+    width: 0;
+}
+
+.footer-base-wrapper{
+    margin-top: 78px;
+}
+
+@media screen and (min-width: 474px) {
+    .wrapper .banner{
+        min-width: 92%;
+        min-height: 100%;
+    }
+
+    .wrapper .logo{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        align-items: center;
+        transform: translate(-83%, -50%);
+    }
+
+    .footer-base-wrapper{
+        margin-top: 142px;
+    }
+}
+
+@media screen and (min-width: 320px) {
+    .base{
+        margin-top: 46px;
+        width: 320px;
+    }
+
+    .base:before{
+        border-bottom: 42.5px solid white;
+        border-left: 138px solid transparent;
+        border-right: 138px solid transparent;
+        left: 22px;
+    }
+    .wrapper .banner{
+        min-width: 105%;
+        min-height: 99%;
+    }
+
+    .wrapper .logo {
+        transform: translate(-52%, -73%);
+    }
+
+    .footer-base-wrapper{
+        margin-top: 155px;
+    }
+
+    .custom-margin{
+        margin-top: 30px;
+    }
+
+    .footer-base{
+        height: 80px;
+    }
+
+    .login-banner{
+        min-width: 390px;
+        transform: translate(0%, 76%);
+    }
+
+    footer{
+        left: -44px;
+    }
+}
+
+@media screen and (min-width: 331px) {
+    .base:before{
+        border-bottom: 42.5px solid white;
+    }
+
+    .wrapper .banner{
+        min-width: 104%;
+    }
+
+    .wrapper .logo{
+        transform: translate(-17%, -50%);
+    }
+}
+
+@media screen and (min-width: 340px) {
+    .wrapper .logo {
+        transform: translate(-25%, -50%);
+    }
+}
+
+@media screen and (min-width: 347px) {
+    .base:before{
+        border-bottom: 41.5px solid white;
+    }
+
+    .wrapper .logo{
+        transform: translate(-22%, -50%);
+    }
+}
+
+@media screen and (min-width: 372px) {
+    .wrapper .logo {
+        transform: translate(-41%, -50%);
+    }
+
+    footer {
+        left: -1px !important;
+    }
+
+    .wrapper .banner {
+        min-width: 108%;
+    }
+
+    .base {
+        width: 375px !important;
+    }
+
+    .base:before{
+        border-left: 160px solid transparent !important;
+        border-right: 160px solid transparent !important;
+        border-bottom: 42.5px solid white !important;
+    }
+
+    .footer-base {
+        width: 376px !important;
+    }
+
+    .footer-base:before {
+        border-left: 197px solid transparent !important;
+        border-right: 197px solid transparent !important;
+        left: -9px !important;
+    }
+}
+
+@media screen and (min-width: 384px) {
+    .base{
+        width: 406px;
+    }
+
+    .footer-base:before{
+        left: -5px;
+    }
+}
+
+@media screen and (min-width: 387px) {
+    footer {
+        left: -11px;
+    }
+
+    .wrapper .banner {
+        min-width: 105%;
+    }
+
+    .base{
+        width: 403px;
+    }
+}
+
+@media screen and (min-width: 390px) {
+    footer {
+        left: 0px !important;
+    }
+
+    .wrapper .banner {
+        min-width: 113.5%;
+    }
+
+    .base{
+        width: 392px !important;
+    }
+
+    .wrapper .logo {
+        transform: translate(-53%, -50%) !important;
+    }
+
+    .base:before {
+        left: 23px !important;
+        border-left: 173px solid transparent !important;
+        border-right: 173px solid transparent !important;
+        border-bottom: 42.5px solid white !important;
+    }
+
+    .custom-margin {
+        margin-top: 54px;
+    }
+
+    .login-banner{
+        transform: translate(-2%, 88%);
+    }
+
+    .footer-base {
+        width: 392px !important;
+    }
+
+    .footer-base:before {
+        border-left: 205px solid transparent !important;
+        border-right: 205px solid transparent !important;
+        left: -6px !important;
+    }
+}
+
+@media screen and (min-width: 401px) {
+    .wrapper .banner {
+        min-width: 107.5%;
+    }
+
+    .base{
+        width: 414px;
+    }
+
+    .base:before{
+        left: 28px;
+    }
+}
+
+@media screen and (min-width: 410px) {
+    .wrapper .banner {
+        min-width: 119.5%;
+    }
+
+    .wrapper .logo{
+        transform: translate(-53%, -39%) !important;
+    }
+
+    .base{
+        width: 414px !important;
+    }
+
+    .base:before{
+        left: 21px !important;
+        border-left: 185px solid transparent !important;
+        border-right: 185px solid transparent !important;
+    }
+
+    footer {
+        left: -2px !important;
+    }
+
+    .footer-base{
+        width: 416px !important;
+    }
+
+    .footer-base:before{
+        left: -8px !important;
+        border-left: 215px solid transparent !important;
+        border-right: 215px solid transparent !important;
+    }
+}
+
+@media screen and (min-width: 420px) {
+    .wrapper .banner{
+        min-width: 111.5%;
+    }
+
+    .login-banner{
+        transform: translate(2%, 84%);
+    }
+
+    .wrapper .logo{
+        transform: translate(-54%, -50%);
+    }
+
+    footer {
+        left: -8px;
+    }
+}
+
+@media screen and (min-width: 425px) {
+    .login-banner {
+        transform: translate(3%, 84%);
+    }
+
+    .base {
+        width: 423px;
+    }
+
+    .base:before {
+        left: 25px;
+        border-left: 187px solid transparent;
+        border-right: 187px solid transparent;
+    }
+
+    .footer-base{
+        width: 423px;
+    }
+
+    .footer-base:before{
+        left: -7px;
+    }
+}
+
+@media screen and (min-width: 430px) {
+    .base {
+        width: 440px;
+    }
+
+    .login-banner {
+        transform: translate(-1%, 84%);
+    }
+
+    .base:before {
+        left: 25px;
+        border-left: 196px solid transparent;
+        border-right: 196px solid transparent;
+        border-bottom: 43.5px solid white;
+    }
+
+    .wrapper .logo {
+        transform: translate(-51%, -50%);
+    }
+
+    .footer-base {
+        width: 443px;
+    }
+
+    .footer-base:before {
+        left: 1px;
+        border-left: 229px solid transparent;
+        border-right: 229px solid transparent;
+    }
+}
+
+@media screen and (min-width: 440px) {
+    .wrapper .banner {
+        min-width: 112.5%;
+    }
+
+    .login-banner {
+        transform: translate(0%, 84%);
+    }
+
+    .footer-base {
+        width: 450px;
+    }
+
+    .base:before{
+        left: 24px;
+    }
+}
+
+@media screen and (min-width: 445px) {
+    .wrapper .banner {
+        min-width: 112.5%;
+    }
+
+    .login-banner {
+        transform: translate(0%, 84%);
+    }
+
+    .footer-base {
+        width: 457px;
+    }
+}
+
+@media screen and (min-width: 452px) {
+    .wrapper .banner {
+        min-width: 114.5%;
+    }
+
+    .login-banner {
+        transform: translate(0%, 84%);
+    }
+
+    .footer-base {
+        width: 457px;
+    }
+
+    .base {
+        width: 444px;
+    }
+
+    .base:before {
+        left: 22px;
+        border-left: 200px solid transparent;
+        border-right: 200px solid transparent;
+        border-bottom: 43.5px solid white;
+    }
+
+    .footer-base:before {
+        left: -2px;
+        border-left: 235px solid transparent;
+        border-right: 235px solid transparent;
+    }
+
+    .footer-base {
+        width: 462px;
+    }
+}
+
+@media screen and (min-width: 460px) {
+    .wrapper .banner {
+        min-width: 116.5%;
+    }
+
+    .login-banner {
+        transform: translate(0%, 84%);
+    }
+
+    .footer-base {
+        width: 457px;
+    }
+
+    .base {
+        width: 451px;
+    }
+
+    .base:before {
+        left: 22px;
+        border-left: 203px solid transparent;
+        border-right: 203px solid transparent;
+    }
+
+    .footer-base:before {
+        border-left: 240px solid transparent;
+        border-right: 240px solid transparent;
+    }
+
+    .footer-base {
+        width: 470px;
+    }
+}
+
+@media screen and (min-width: 465px) {
+    .base {
+        width: 465px;
+    }
+
+    .base:before {
+        left: 22px;
+        border-left: 210px solid transparent;
+        border-right: 210px solid transparent;
+    }
+
+    .wrapper .logo {
+        transform: translate(-54%, -50%);
+    }
+
+    .footer-base {
+        width: 477px;
+    }
+}
+
+/* Galaxy Note 3 */
+@media screen and (min-width: 360px){
+    .img img{
+        width: 347px;
+    }
+
+    .base{
+        width: 362px;
+    }
+
+    .base:before{
+        border-left: 155px solid transparent;
+        border-right: 155px solid transparent;
+        left: 27px;
+    }
+
+    .wrapper .logo {
+        transform: translate(-49%, -73%);
+    }
+
+    footer{
+        left: -11px;
+    }
+
+    .footer-base:before{
+        border-left: 190px solid transparent;
+        border-right: 190px solid transparent;
+        left: 3px;
+    }
+
+    .footer-base{
+        width: 372px;
+    }
+
+    .login-banner {
+        transform: translate(0%, 80%);
+    }
+}
+
+@media screen and (min-height: 667px){
+    .login-banner{
+        transform: translateY(80%);
+    }
+}
+
+@media screen and (min-height: 740px){
+    .login-banner {
+        transform: translateY(85%);
+    }
+
+    .custom-margin {
+        margin-top: 50px;
+    }
+
+    .base h5 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .input-group {
+        margin-top: 21px;
+    }
+
+    .footer-base {
+        height: 102px;
+    }
+}
+
+@media screen and (min-height: 740px){
+    .login-banner {
+        transform: translateY(85%);
+    }
+
+    .custom-margin {
+        margin-top: 50px;
+    }
+
+    .base h5 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .input-group {
+        margin-top: 30px;
+    }
+
+    .footer-base {
+        height: 102px;
+    }
+}
+
+@media screen and (min-height: 896px){
+    .login-banner {
+        transform: translateY(85%);
+    }
+
+    .custom-margin {
+        margin-top: 61px;
+    }
+
+    .base h5 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .input-group {
+        margin-top: 31px;
+    }
+
+    .footer-base {
+        height: 102px;
+    }
+
+    .wrapper .banner {
+        min-width: 136.5%;
+    }
+}
+
+/* sweeet alert size */
+.swal2-popup{
+    width: 211px !important;
+    height: 164px !important;
+    font-size: 9px !important;
+}
+

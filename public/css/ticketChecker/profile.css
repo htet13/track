@@ -1,0 +1,515 @@
+.main-content {
+    width: 100vw;
+    height: 100vh;
+    background-color: #e4dcdc;
+    overflow: hidden;
+}
+
+.banner {
+    width: auto;
+    height: 70px;
+    background-image: url("../../../imgs/ticket_checker_login_banner.svg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    margin: auto;
+    max-height: 43px;
+}
+
+/* for min height 640px */
+.content-section .content {
+    min-width: auto;
+    min-height: 494px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.banner-section .banner .logo {
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.banner-section .banner .banner-text {
+    text-align: center;
+}
+
+.banner-section .banner h6 {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.content-section .content {
+    position: relative;
+}
+
+.content-section .content .list {
+    height: 360px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 107px;
+}
+
+.content-section .content .list .items {
+    width: 100%;
+    height: 115%;
+    background-color: #e4dcdc;
+    border-radius: 10px;
+    padding-top: 20px;
+    border: 1px solid #e4dcdc;
+    position: relative;
+}
+
+.content .list .items .profile-photo {
+    position: absolute;
+    top: -60px;
+    left: 100px;
+}
+
+.edit {
+    font-size: 1.4rem;
+    position: absolute;
+    top: 15px;
+    left: 206px;
+}
+
+.name {
+    width: 100%;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.operations {
+    position: absolute;
+    top: 102px;
+    left: 0;
+    width: 100%;
+    height: 70%;
+}
+
+.operations .setting,
+.information,
+.activity,
+.privacy,
+.logout {
+    margin-left: 50px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.operations i,
+.operations a {
+    font-size: 1.4rem;
+    margin-right: 10px;
+    color: black;
+}
+
+.icon {
+    width: 40px;
+}
+
+footer {
+    background-color: #60a3f3;
+    width: 100%;
+}
+
+.footer .content {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 22px;
+}
+
+.footer .content .item {
+    width: 55px;
+    height: 100px;
+    text-align: center;
+    padding-top: 8px;
+}
+.footer .content .item i {
+    font-size: 35px;
+    color: black;
+}
+
+.footer {
+    padding: 0;
+    margin: 0;
+}
+
+.log-wrapper {
+    width: 100%;
+    height: 86%;
+    margin-top: 12px;
+    padding: 5px;
+}
+
+.log-wrapper .logs {
+    width: 100%;
+    height: 85%;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 12px;
+    overflow-y: scroll;
+}
+
+.log {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.user-info {
+    margin-top: 40px;
+    padding: 22px;
+}
+
+@media screen and (min-height: 667px) {
+    .content {
+        min-height: 400px;
+    }
+
+    .footer .content .item {
+        padding-top: 12px;
+    }
+}
+@media screen and (min-height: 740px) {
+    .banner {
+        height: 90px;
+    }
+
+    .content-section .content {
+        min-height: 566px !important;
+    }
+
+    .content-section .content .list {
+        height: 431px !important;
+    }
+
+    .content-section .content .list .items {
+        height: 112% !important;
+    }
+
+    .operations {
+        top: 135px;
+    }
+
+    .log-wrapper .logs {
+        height: 90%;
+    }
+
+    .user-info {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (min-height: 760px) {
+    .content-section .content {
+        min-height: 660px !important;
+    }
+
+    .content-section .content .list {
+        height: 510px !important;
+    }
+}
+
+@media screen and (min-height: 786px) {
+    .content-section .content {
+        min-height: 620px !important;
+    }
+
+    .banner-section .banner .banner-text {
+        top: 200px;
+    }
+
+    .footer .content .item {
+        padding-top: 7px;
+    }
+
+    .content-section .content .list {
+        height: 486px !important;
+    }
+
+    .content-section .content .list .items {
+        height: 109% !important;
+    }
+
+    .log-wrapper .logs {
+        height: 92% !important;
+    }
+}
+
+@media screen and (min-height: 844px) {
+    .banner {
+        height: 105px;
+    }
+
+    .content {
+        min-height: 465px;
+    }
+
+    .banner-section .banner .banner-text {
+        top: 200px;
+    }
+
+    .content-section .content {
+        min-height: 669px !important;
+    }
+
+    .content-section .content .list {
+        height: 515px !important;
+    }
+
+    .content-section .content .list .items {
+        height: 118% !important;
+    }
+
+    .operations .setting,
+    .information,
+    .activity,
+    .privacy,
+    .logout {
+        margin-left: 38px;
+        margin-bottom: 35px !important;
+    }
+
+    .operations {
+        top: 145px !important;
+    }
+
+    .log-wrapper .logs {
+        height: 95% !important;
+    }
+
+    .user-info {
+        margin-top: 81px;
+    }
+}
+
+@media screen and (min-height: 851px) {
+    .content {
+        min-height: 486px;
+    }
+}
+
+@media screen and (min-height: 896px) {
+    .content-section .content {
+        min-height: 700px !important;
+    }
+
+    .banner-section .banner .banner-text {
+        top: 200px;
+    }
+
+    .footer .content .item {
+        padding-top: 17px;
+    }
+
+    .content-section .content .list {
+        height: 546px !important;
+    }
+
+    .content-section .content .list .items {
+        height: 116% !important;
+    }
+
+    .log-wrapper .logs {
+        height: 97% !important;
+    }
+
+    .user-info {
+        margin-top: 81px;
+    }
+}
+
+@media screen and (min-height: 914px) {
+    .content-section .content {
+        min-height: 723px !important;
+    }
+
+    .footer .content .item {
+        padding-top: 13px;
+    }
+
+    .content-section .content .list {
+        height: 566px !important;
+    }
+
+    .content-section .content .list .items {
+        height: 116% !important;
+    }
+
+    .operations {
+        top: 170px !important;
+    }
+}
+
+@media screen and (min-width: 320px) {
+    .footer .content {
+        column-gap: 12px;
+    }
+
+    .banner-section .banner h6 {
+        font-size: 13px;
+        margin-left: 6px;
+    }
+
+    .content-section .content .list {
+        height: 360px;
+    }
+
+    .content .list .items .profile-photo {
+        left: 85px;
+    }
+
+    .edit {
+        left: 192px;
+    }
+
+    .name {
+        left: 102px;
+    }
+
+    .operations .setting,
+    .information,
+    .activity,
+    .privacy,
+    .logout {
+        margin-left: 38px;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .footer .content {
+        column-gap: 21px;
+    }
+
+    .content .list .items .profile-photo {
+        left: 100px;
+    }
+
+    .edit {
+        left: 202px;
+    }
+
+    .name {
+        left: 117px;
+    }
+}
+
+@media screen and (min-width: 370px) {
+    .footer .content {
+        column-gap: 25px;
+    }
+
+    .content .list .items .profile-photo {
+        left: 115px;
+    }
+
+    .edit {
+        left: 217px;
+    }
+
+    .name {
+        left: 133px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .log {
+        font-size: 17px !important;
+    }
+}
+
+@media screen and (min-width: 389px) {
+    .footer .content {
+        column-gap: 28px;
+    }
+
+    .banner-section .banner .logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .banner img {
+        max-height: 47px;
+    }
+
+    .banner-section .banner h6 {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 412px) {
+    .footer .content {
+        column-gap: 33px;
+    }
+
+    .content .list .items .profile-photo {
+        left: 135px;
+    }
+
+    .edit {
+        left: 237px;
+    }
+
+    .name {
+        left: 153px;
+    }
+
+    .operations .setting,
+    .information,
+    .activity,
+    .privacy,
+    .logout {
+        margin-left: 55px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .footer .content {
+        column-gap: 33px;
+    }
+
+    .log {
+        font-size: 19px !important;
+    }
+}
+
+@media screen and (min-height: 658px) {
+    .content-section .content {
+        min-height: 511px;
+    }
+
+    .content-section .content .list .items {
+        height: 124%;
+    }
+
+    .log-wrapper .logs {
+        height: 87%;
+    }
+
+    .log {
+        font-size: 14px;
+    }
+}

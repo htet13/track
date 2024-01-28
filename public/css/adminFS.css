@@ -1,0 +1,48 @@
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+    font-size: 14px;
+}
+
+a.btn {
+    font-size: 14px;
+}
+
+table td {
+    font-size: 14px;
+}
+
+table th {
+    font-size: 15px;
+}
+
+label {
+    font-size: 14px;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__display {
+    font-size: 14px;
+}
+
+input::placeholder {
+    font-size: 14px;
+}
+
+.select2-results__option--selectable {
+    font-size: 14px;
+}
+
+select option {
+    font-size: 14px;
+}
+
+.alert-warning {
+    font-size: 14px;
+}
+
+.form-select {
+    font-size: 14px;
+}

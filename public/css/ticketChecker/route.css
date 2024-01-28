@@ -1,0 +1,441 @@
+.main-content {
+    width: 100vw;
+    height: 100vh;
+    background-color: #e4dcdc;
+    overflow: hidden;
+}
+
+.banner {
+    width: auto;
+    height: 70px;
+    background-image: url("../../../imgs/ticket_checker_login_banner.svg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    margin: auto;
+    max-height: 43px;
+}
+
+/* for min height 640px */
+.content-section .content {
+    min-width: auto;
+    min-height: 494px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.banner-section .banner .logo {
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.banner-section .banner .banner-text {
+    text-align: center;
+}
+
+.banner-section .banner h6 {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.content-section .content {
+    position: relative;
+}
+
+.content-section .content .list {
+    height: 360px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.content-section .content .list .items,
+.seat-plan {
+    width: 100%;
+    height: 100%;
+    background-color: #e4dcdc;
+    border-radius: 10px;
+    overflow-y: scroll;
+    padding-top: 20px;
+    border: 1px solid #e4dcdc;
+}
+
+.content .list .items .item {
+    border-bottom: 1px solid black;
+    height: 90px;
+    padding: 5px;
+}
+
+.content .list .items .item table,
+.seat-plan table {
+    width: 100%;
+}
+
+table td,
+table th {
+    padding: 8px;
+}
+
+.bxs-info-circle {
+    font-size: 2rem;
+    color: #54b4d3;
+}
+
+.bx-time-five,
+.bx-calendar {
+    font-size: 1.5rem;
+}
+
+.train-search-wrapper,
+.schedule-details {
+    min-height: 100px;
+    width: 100%;
+}
+
+.schedule-details {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100px;
+}
+
+footer {
+    background-color: #54b4d3;
+    width: 100%;
+}
+
+.footer .content {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 22px;
+}
+
+.footer .content .item {
+    width: 55px;
+    height: 100px;
+    text-align: center;
+    padding-top: 8px;
+}
+.footer .content .item i {
+    font-size: 35px;
+    color: black;
+}
+
+.footer {
+    padding: 0;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #54b4d3;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.schedule-details {
+    padding: 15px;
+}
+
+.list .seat-plan .reverse-td {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.list .seat-plan tbody > tr {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.list .seat-plan table > tbody > tr > td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.list .items .carriages,
+.seat-plan {
+    cursor: pointer;
+}
+
+.back {
+    color: white;
+    margin-right: 5px;
+}
+
+.swal2-popup {
+    width: 235px !important;
+    height: 235px !important;
+    font-size: 10px !important;
+}
+
+.swal2-title {
+    padding: 0 !important;
+}
+@media screen and (min-height: 667px) {
+    .content {
+        min-height: 400px;
+    }
+
+    .footer .content .item {
+        padding-top: 12px;
+    }
+}
+@media screen and (min-height: 740px) {
+    .banner {
+        height: 90px;
+    }
+
+    .content-section .content {
+        min-height: 576px !important;
+    }
+
+    .content-section .content .list {
+        height: 431px !important;
+    }
+
+    .content-section .content .list .items,
+    .seat-plan {
+        height: 101% !important;
+    }
+}
+
+@media screen and (min-height: 760px) {
+    .content-section .content {
+        min-height: 660px !important;
+    }
+
+    .content-section .content .list {
+        height: 520px !important;
+    }
+}
+
+@media screen and (min-height: 786px) {
+    .content-section .content {
+        min-height: 620px !important;
+    }
+
+    .banner-section .banner .banner-text {
+        top: 200px;
+    }
+
+    .train-search-wrapper span {
+        font-size: 19px;
+    }
+
+    .train-search-wrapper,
+    .schedule-details {
+        padding-top: 15px;
+    }
+
+    .footer .content .item {
+        padding-top: 7px;
+    }
+
+    .content-section .content .list {
+        height: 465px !important;
+    }
+
+    .content-section .content .list .items,
+    .seat-plan {
+        height: 109% !important;
+    }
+}
+
+@media screen and (min-height: 844px) {
+    .banner {
+        height: 105px;
+    }
+
+    .content {
+        min-height: 465px;
+    }
+
+    .banner-section .banner .banner-text {
+        top: 200px;
+    }
+
+    .content-section .content {
+        min-height: 658px !important;
+    }
+
+    .content-section .content .list {
+        height: 503px !important;
+    }
+
+    .content-section .content .list .items,
+    .seat-plan {
+        height: 108% !important;
+    }
+}
+
+@media screen and (min-height: 851px) {
+    .content {
+        min-height: 486px;
+    }
+}
+
+@media screen and (min-height: 896px) {
+    .content-section .content {
+        min-height: 700px !important;
+    }
+
+    .banner-section .banner .banner-text {
+        top: 200px;
+    }
+
+    .train-search-wrapper span {
+        font-size: 19px;
+    }
+
+    .train-search-wrapper,
+    .schedule-details {
+        padding-top: 15px;
+    }
+
+    .footer .content .item {
+        padding-top: 17px;
+    }
+
+    .content-section .content .list {
+        height: 546px !important;
+    }
+
+    .content-section .content .list .items,
+    .seat-plan {
+        height: 108% !important;
+    }
+}
+
+@media screen and (min-height: 914px) {
+    .content-section .content {
+        min-height: 723px !important;
+    }
+
+    .footer .content .item {
+        padding-top: 13px;
+    }
+
+    .content-section .content .list {
+        height: 566px !important;
+    }
+
+    .content-section .content .list .items,
+    .seat-plan {
+        height: 100% !important;
+    }
+
+    .schedule-details {
+        margin-bottom: 27px;
+    }
+}
+
+@media screen and (min-width: 320px) {
+    .footer .content {
+        column-gap: 12px;
+    }
+
+    table td,
+    table th {
+        padding: 5px;
+    }
+
+    .banner-section .banner h6 {
+        font-size: 13px;
+        margin-left: 6px;
+    }
+
+    .content-section .content .list {
+        height: 360px;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .footer .content {
+        column-gap: 21px;
+    }
+}
+
+@media screen and (min-width: 370px) {
+    .footer .content {
+        column-gap: 25px;
+    }
+}
+
+@media screen and (min-width: 389px) {
+    .footer .content {
+        column-gap: 28px;
+    }
+
+    .banner-section .banner .logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .banner img {
+        max-height: 47px;
+    }
+
+    .banner-section .banner h6 {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 412px) {
+    .footer .content {
+        column-gap: 33px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .footer .content {
+        column-gap: 33px;
+    }
+}
+
+@media screen and (min-height: 658px) {
+    .content-section .content {
+        min-height: 511px;
+    }
+
+    .content-section .content .list .items,
+    .seat-plan {
+        height: 109%;
+    }
+}
