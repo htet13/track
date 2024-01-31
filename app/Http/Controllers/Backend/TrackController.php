@@ -9,17 +9,28 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TrackStoreRequest;
 use App\Models\Track;
 use App\Repositories\Interfaces\CityRepositoryInterface;
+use App\Repositories\Interfaces\CarNoRepositoryInterface;
+use App\Repositories\Interfaces\DriverRepositoryInterface;
+use App\Repositories\Interfaces\SpareRepositoryInterface;
 use App\Repositories\TrackRepository;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TrackController extends Controller
 {
-    protected $trackRepository,$cityRepository;
+    protected $trackRepository, $cityRepository, $carNoRepository, $driverRepository, $spareRepository;
 
-    public function __construct(TrackRepository $trackRepository, CityRepositoryInterface $cityRepository)
-    {
+    public function __construct(
+        TrackRepository $trackRepository, 
+        CityRepositoryInterface $cityRepository, 
+        CarNoRepositoryInterface $carNoRepository,
+        DriverRepositoryInterface $driverRepository,
+        SpareRepositoryInterface $spareRepository,
+    ){
         $this->cityRepository = $cityRepository;
+        $this->carNoRepository = $carNoRepository;
+        $this->driverRepository = $driverRepository;
+        $this->spareRepository = $spareRepository;
         $this->trackRepository = $trackRepository;
     }
     /**
@@ -30,15 +41,14 @@ class TrackController extends Controller
      */
     public function index(TrackFilter $filter, Request $request)
     {
-        $tracks = $this->trackRepository->allWithPaginate($filter,30);
+        $tracks = $this->trackRepository->allWithPaginate($filter, 30);
         $cities = $this->cityRepository->all();
 
-        if($request->btn == "Export")
-        {
-            return Excel::download(new TrackExport($tracks).'-track'.now().'.xlsx');
+        if ($request->btn == "Export") {
+            return Excel::download(new TrackExport($tracks) . '-track' . now() . '.xlsx');
         }
 
-        return view('admin.tracks.index', compact('tracks','cities'));
+        return view('admin.tracks.index', compact('tracks', 'cities'));
     }
 
     /**
@@ -49,7 +59,10 @@ class TrackController extends Controller
     public function create()
     {
         $cities = $this->cityRepository->all();
-        return view('admin.tracks.create',compact('cities'));
+        $car_nos = $this->carNoRepository->all();
+        $drivers = $this->driverRepository->all();
+        $spares = $this->spareRepository->all();
+        return view('admin.tracks.create', compact('cities','car_nos','drivers','spares'));
     }
 
     /**
@@ -59,21 +72,20 @@ class TrackController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(TrackStoreRequest $request)
-    {        
+    {
         $exist = Track::whereFrom($request->from)
-        ->whereTo($request->to)
-        ->whereStatus('active')
-        ->first();
-        if ($exist)
-        {
-            toast('တူညီသောလမ်းကြောင်း ရှိပြီးဖြစ်နေပါသည်။','error');
+            ->whereTo($request->to)
+            ->whereStatus('active')
+            ->first();
+        if ($exist) {
+            toast('တူညီသောလမ်းကြောင်း ရှိပြီးဖြစ်နေပါသည်။', 'error');
             return redirect()->route('admin.track.index');
         }
         $status = $this->trackRepository->create($request->all());
 
         ($status) ? $message = trans('cruds.track.title_singular') . ' ' . trans('global.create_success') : $message = trans('cruds.track.title_singular') . trans('global.create_fail');
 
-        toast($message,$status ? 'success' : 'error');
+        toast($message, $status ? 'success' : 'error');
 
         return redirect()->route('admin.track.index');
     }
@@ -98,7 +110,7 @@ class TrackController extends Controller
     public function edit(Track $track)
     {
         $cities = $this->cityRepository->all();
-        return view('admin.tracks.edit', compact('track','cities'));
+        return view('admin.tracks.edit', compact('track', 'cities'));
     }
 
     /**
@@ -114,7 +126,7 @@ class TrackController extends Controller
 
         ($status) ? $message = trans('cruds.track.title_singular') . ' ' . trans('global.update_success') : $message = trans('cruds.track.title_singular') . trans('global.update_fail');
 
-        toast($message,$status ? 'success' : 'error');
+        toast($message, $status ? 'success' : 'error');
 
         return redirect()->route('admin.track.index');
     }
@@ -127,13 +139,13 @@ class TrackController extends Controller
      */
     public function destroy(Track $track)
     {
-        if($track->action_mode == TrackActionModeEnum::ON){
+        if ($track->action_mode == TrackActionModeEnum::ON) {
             $track->delete();
             $track->cities()->delete();
-        }else{
-            $track->update(['status'=> 'inactive']);
+        } else {
+            $track->update(['status' => 'inactive']);
         }
-        
+
         return redirect()->route('admin.track.index');
     }
 
@@ -143,8 +155,9 @@ class TrackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getInfo(Track $track){
-        $track['cities']=$track->cities;
+    public function getInfo(Track $track)
+    {
+        $track['cities'] = $track->cities;
         return response()->json($track);
     }
 }
