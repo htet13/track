@@ -6,6 +6,9 @@ use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\CarNoController;
+use App\Http\Controllers\Backend\DriverController;
+use App\Http\Controllers\Backend\SpareController;
 use App\Http\Controllers\Backend\TrackController;
 use App\Http\Controllers\Backend\ReportController;
 
@@ -33,7 +36,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     //City
     Route::resource('city',CityController::class);
 
-    //Route
+    //Car No
+    Route::resource('car-no',CarNoController::class);
+
+    //Driver
+    Route::resource('driver',DriverController::class);
+
+    //Spare
+    Route::resource('spare',SpareController::class);
+
+    //Track
     Route::resource('track',TrackController::class);
 
     // Logout

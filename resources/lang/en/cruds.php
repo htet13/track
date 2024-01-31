@@ -16,6 +16,18 @@ return [
         'title' => 'မြို့အမည်များ',
         'title_singular' => 'မြို့အမည်',
     ],
+    'car_no' => [
+        'title' => 'ကားနံပါတ်များ',
+        'title_singular' => 'ကားနံပါတ်',
+    ],
+    'driver' => [
+        'title' => 'ယာဉ်မောင်းများ',
+        'title_singular' => 'ယာဉ်မောင်းအမည်',
+    ],
+    'spare' => [
+        'title' => 'ယာဉ်အကူများ',
+        'title_singular' => 'ယာဉ်အကူအမည်',
+    ],
     'track' => [
         'title' => 'လမ်းကြောင်းများ',
         'title_singular' => 'လမ်းကြောင်း',

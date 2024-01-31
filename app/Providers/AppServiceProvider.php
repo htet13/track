@@ -8,14 +8,20 @@ use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\PermissionRepository;
 use App\Repositories\CityRepository;
+use App\Repositories\CarNoRepository;
+use App\Repositories\DriverRepository;
+use App\Repositories\SpareRepository;
 use App\Repositories\ReportRepository;
-use App\Repositories\RouteRepository;
+use App\Repositories\TrackRepository;
 use App\Repositories\Interfaces\RoleRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\Interfaces\PermissionRepositoryInterface;
+use App\Repositories\Interfaces\SpareRepositoryInterface;
 use App\Repositories\Interfaces\CityRepositoryInterface;
+use App\Repositories\Interfaces\CarNoRepositoryInterface;
+use App\Repositories\Interfaces\DriverRepositoryInterface;
 use App\Repositories\Interfaces\ReportRepositoryInterface;
-use App\Repositories\Interfaces\RouteRepositoryInterface;
+use App\Repositories\Interfaces\TrackRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,8 +46,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RoleRepositoryInterface::class, RoleRepository::class);
         $this->app->bind(PermissionRepositoryInterface::class, PermissionRepository::class);
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
+        $this->app->bind(CarNoRepositoryInterface::class, CarNoRepository::class);
+        $this->app->bind(DriverRepositoryInterface::class, DriverRepository::class);
+        $this->app->bind(SpareRepositoryInterface::class, SpareRepository::class);
         $this->app->bind(ReportRepositoryInterface::class, ReportRepository::class);
-        $this->app->bind(RouteRepositoryInterface::class, RouteRepository::class);
+        $this->app->bind(TrackRepositoryInterface::class, TrackRepository::class);
         Paginator::useBootstrap();
     }
 }

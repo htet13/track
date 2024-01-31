@@ -22,7 +22,34 @@
                 </div>
                 <div class="card-body p-2">
                     <div class="row">
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-12 col-sm-12 mb-2">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">ရက်စွဲ</label>
+                                <input type="date" name="date" id="date" value="{{old('date')}}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('date') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">ကားနံပါတ်</label>
+                                <input type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('car_no'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('car_no') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="border: 5px solid #0d6efd">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-4 col-sm-4 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="from">{{ trans('global.from') }}</label>
                                 <select name="from" id="from" class="form-control {{ $errors->has('from') ? 'is-invalid' : '' }}">
@@ -38,12 +65,12 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-1 col-lg-1 col-md-1" style="margin-top: 2rem;">
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-2 col-sm-2 pt-2 mt-4">
                             <button type="button" class="btn btn-sm btn-primary from-plus">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-12 col-sm-12 mb-2">
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-4 col-sm-4 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="to">{{ trans('global.to') }}</label>
                                 <select name="to" id="to" class="form-control {{ $errors->has('to') ? 'is-invalid' : '' }}">
@@ -59,7 +86,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-1 col-lg-1 col-md-1" style="margin-top: 2rem;">
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-1 pt-2 mt-4">
                             <button type="button" class="btn btn-sm btn-primary to-plus">
                                 <i class="fas fa-plus"></i>
                             </button>
@@ -69,30 +96,163 @@
                         <div class="col-6 from-append"></div>
                         <div class="col-6 to-append"></div>
                     </div>
+                    <hr style="border: 5px solid #0d6efd">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="amount">{{ trans('global.total') }}</label>
-                                <input type="number" name="amount" id="amount" value="{{old('amount')}}"  class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}"/>
-                                @if($errors->has('amount'))
+                                <label class="required mb-2" for="amount">စရိတ်</label>
+                                <input type="text" name="date" id="date" value="{{old('date')}}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('date'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('amount') }}
+                                        {{ $errors->first('date') }}
                                     </div>
                                 @endif
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="others">{{ trans('global.others') }}</label>
-                                <select name="others[]" id="others" class="form-control {{ $errors->has('others') ? 'is-invalid' : '' }}" multiple>
-                                    <option value="" disabled>{{ trans('global.please_select') }}</option>
-                                    @foreach ($cities as $id => $name)
-                                        <option value="{{ $id }}"{{ in_array($id, old('others', [])) ? 'selected' : '' }}>{{ $name }}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('others'))
+                                <label class="required mb-2" for="amount">ထုတ်ပေးသူ</label>
+                                <input type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('car_no'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('others') }}
+                                        {{ $errors->first('car_no') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">ယာဉ်မောင်း</label>
+                                <input type="text" name="date" id="date" value="{{old('date')}}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('date') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">ယာဉ်နောက်လိုက်</label>
+                                <input type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('car_no'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('car_no') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">လီတာ</label>
+                                <input type="text" name="date" id="date" value="{{old('date')}}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('date') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">ဈေးနှုန်း</label>
+                                <input type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('car_no'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('car_no') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">ရဲ/စစ်</label>
+                                <input type="text" name="date" id="date" value="{{old('date')}}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('date') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">တိုးဂိတ်</label>
+                                <input type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('car_no'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('car_no') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">စားစရိတ်</label>
+                                <input type="text" name="date" id="date" value="{{old('date')}}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('date') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <label>အခြားစရိတ်</label>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">အမျိုးအမည်</label>
+                                <input type="text" name="date" id="date" value="{{old('date')}}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('date') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">ကုန်ကျစရိတ်</label>
+                                <input type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('car_no'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('car_no') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">စုစုပေါင်း</label>
+                                <input type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('car_no'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('car_no') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="amount">မှတ်ချက်</label>
+                                <textarea type="text" name="car_no" id="car_no" value="{{old('car_no')}}"  class="form-control {{ $errors->has('car_no') ? 'is-invalid' : '' }}">
+                                </textarea>
+                                @if($errors->has('car_no'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('car_no') }}
                                     </div>
                                 @endif
                             </div>
@@ -122,9 +282,9 @@
         });
     });
     var fromText = `<div class="row">
-                        <div class="col-xl-10 col-lg-10 col-md-10 col-10 col-sm-10 mb-2">
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-4 col-sm-4 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="from">{{ trans('global.from') }}</label>
+                                <label class="required mb-2" for="from"></label>
                                 <select name="from" id="from" class="form-control {{ $errors->has('from') ? 'is-invalid' : '' }}">
                                     <option value="" disabled selected>{{ trans('global.please_select') }}</option>
                                     @foreach ($cities as $id => $name)
@@ -138,7 +298,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-2" style="margin-top: 2rem;">
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-1 pt-2 mt-4">
                             <button type="button" class="btn btn-sm btn-danger from-minus">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -146,9 +306,9 @@
                     </div>`;
 
     var toText = `<div class="row">
-                    <div class="col-xl-10 col-lg-10 col-md-10 col-10 col-sm-10 mb-2">
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-4 col-sm-4 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="to">{{ trans('global.to') }}</label>
+                                <label class="required mb-2" for="to"></label>
                                 <select name="to" id="to" class="form-control {{ $errors->has('to') ? 'is-invalid' : '' }}">
                                     <option value="" disabled selected>{{ trans('global.please_select') }}</option>
                                     @foreach ($cities as $id => $name)
@@ -162,7 +322,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-2" style="margin-top: 2rem;">
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-1 pt-2 mt-4">
                             <button type="button" class="btn btn-sm btn-danger to-minus">
                                 <i class="fas fa-minus"></i>
                             </button>

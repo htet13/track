@@ -18,7 +18,7 @@
                           {{ $errors->first('email') }}
                       </div>
                     @endif
-                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">စနစ်သို့ ဝင်ရောက်ခြင်း</h5>
                   </div>
                   
                   <form class="row g-3 needs-validation" action="{{ route('login') }}" method="POST" novalidate>
@@ -44,7 +44,7 @@
                     <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                        <label class="form-check-label" for="rememberMe">အကောင့် မှတ်သားမည်။</label>
                       </div>
                     </div>
                     <div class="col-12">

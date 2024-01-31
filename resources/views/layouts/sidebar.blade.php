@@ -26,6 +26,45 @@
         </li>
         @endcan
 
+        @can('Car No Access')
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('admin/car-no*') ? 'collapsed' : '' }}" href="{{ route('admin.car-no.index') }}">
+                <div class="me-2">
+                    <i class="fa-solid fa-ticket"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('cruds.car_no.title') }}</span>
+                </div>
+            </a>
+        </li>
+        @endcan
+
+        @can('Driver Access')
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('admin/driver*') ? 'collapsed' : '' }}" href="{{ route('admin.driver.index') }}">
+                <div class="me-2">
+                <i class='fa fa-drivers-license'></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('cruds.driver.title') }}</span>
+                </div>
+            </a>
+        </li>
+        @endcan
+
+        @can('Spare Access')
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('admin/spare*') ? 'collapsed' : '' }}" href="{{ route('admin.spare.index') }}">
+                <div class="me-2">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('cruds.spare.title') }}</span>
+                </div>
+            </a>
+        </li>
+        @endcan
+
         @can('Track Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/track*') ? 'collapsed' : '' }}" href="{{ route('admin.track.index') }}">
