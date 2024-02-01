@@ -16,6 +16,7 @@ class PermissionsTableSeeder extends Seeder
     {
         $permissions = [
             ['name'  =>  'Excel Export'],
+            ['name'  =>  'Issuer Access'],
             ['name'  =>  'City Access'],
             ['name'  =>  'Car No Access'],
             ['name'  =>  'Driver Access'],

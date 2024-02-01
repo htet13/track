@@ -12,6 +12,10 @@ return [
             'confirm_password' => 'Confirm Password',
         ]
     ],
+    'issuer' => [
+        'title' => 'ထုတ််ပေးသူများ',
+        'title_singular' => 'ထုတ်ပေးသူ',
+    ],
     'city' => [
         'title' => 'မြို့အမည်များ',
         'title_singular' => 'မြို့အမည်',

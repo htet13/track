@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\IssuerController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CarNoController;
 use App\Http\Controllers\Backend\DriverController;
@@ -32,6 +33,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     // Role
     Route::resource('role', RoleController::class);
+
+    //Issuer
+    Route::resource('issuer',IssuerController::class);
 
     //City
     Route::resource('city',CityController::class);

@@ -11,13 +11,12 @@ class TrackRepository implements TrackRepositoryInterface
 {
     public function all()
     {
-        return Track::whereStatus('active')->get();
+        return Track::get();
     }
 
     public function allWithPaginate($filter, $paginate)
     {
         return Track::filter($filter)
-        ->whereStatus('active')
         ->paginate($paginate);
     }
 

@@ -13,6 +13,19 @@
             </a>
         </li><!-- End Dashboard Nav -->
 
+        @can('Issuer Access')
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('admin/issuer*') ? 'collapsed' : '' }}" href="{{ route('admin.issuer.index') }}">
+                <div class="me-2">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('cruds.issuer.title') }}</span>
+                </div>
+            </a>
+        </li>
+        @endcan
+
         @can('City Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/city*') ? 'collapsed' : '' }}" href="{{ route('admin.city.index') }}">

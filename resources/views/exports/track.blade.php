@@ -19,18 +19,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($routes as $index => $route)
+            @foreach($tracks as $index => $track)
             <tr>
                 <td>{{ $index+1 }}</td>
-                <td>{{ $route->fromCity->name }}</td>
-                <td>{{ $route->toCity->name }}</td>
-                <td>{{ $route->amount }}</td>
+                <td>{{ $track->fromCity->name }}</td>
+                <td>{{ $track->toCity->name }}</td>
+                <td>{{ $track->amount }}</td>
                 <td>
-                    @foreach ($route->cities as $city)
+                    @foreach ($track->cities as $city)
                     <span>{{ $city->name }}</span>,
                     @endforeach
                 </td>
-                <td>{{ $route->created_at->format('Y-m-d') }}</td>
+                <td>{{ $track->created_at->format('Y-m-d') }}</td>
             </tr>
             @endforeach
         </tbody>
