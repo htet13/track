@@ -44,8 +44,33 @@ class Track extends Model
         return $this->belongsTo(City::class, 'to');
     }
 
-    public function cities()
+    public function fromcities()
     {
-        return $this->belongsToMany(City::class,'cities_tracks');
+        return $this->belongsToMany(City::class,'fromcities_tracks');
+    }
+
+    public function tocities()
+    {
+        return $this->belongsToMany(City::class,'tocities_tracks');
+    }
+
+    public function carNo()
+    {
+        return $this->belongsTo(CarNo::class);
+    }
+
+    public function issuer()
+    {
+        return $this->belongsTo(Issuer::class);
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
+
+    public function spare()
+    {
+        return $this->belongsTo(Spare::class);
     }
 }

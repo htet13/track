@@ -10,6 +10,7 @@ use App\Http\Requests\TrackStoreRequest;
 use App\Models\Track;
 use App\Repositories\Interfaces\CityRepositoryInterface;
 use App\Repositories\Interfaces\CarNoRepositoryInterface;
+use App\Repositories\Interfaces\IssuerRepositoryInterface;
 use App\Repositories\Interfaces\DriverRepositoryInterface;
 use App\Repositories\Interfaces\SpareRepositoryInterface;
 use App\Repositories\TrackRepository;
@@ -18,17 +19,19 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class TrackController extends Controller
 {
-    protected $trackRepository, $cityRepository, $carNoRepository, $driverRepository, $spareRepository;
+    protected $trackRepository, $cityRepository, $carNoRepository, $driverRepository, $spareRepository, $issuerRepository;
 
     public function __construct(
         TrackRepository $trackRepository, 
         CityRepositoryInterface $cityRepository, 
         CarNoRepositoryInterface $carNoRepository,
+        IssuerRepositoryInterface $issuerRepository,
         DriverRepositoryInterface $driverRepository,
         SpareRepositoryInterface $spareRepository,
     ){
         $this->cityRepository = $cityRepository;
         $this->carNoRepository = $carNoRepository;
+        $this->issuerRepository = $issuerRepository;
         $this->driverRepository = $driverRepository;
         $this->spareRepository = $spareRepository;
         $this->trackRepository = $trackRepository;
@@ -60,9 +63,10 @@ class TrackController extends Controller
     {
         $cities = $this->cityRepository->all();
         $car_nos = $this->carNoRepository->all();
+        $issuers = $this->issuerRepository->all();
         $drivers = $this->driverRepository->all();
         $spares = $this->spareRepository->all();
-        return view('admin.tracks.create', compact('cities','car_nos','drivers','spares'));
+        return view('admin.tracks.create', compact('cities','car_nos','issuers','drivers','spares'));
     }
 
     /**
@@ -73,14 +77,6 @@ class TrackController extends Controller
      */
     public function store(TrackStoreRequest $request)
     {
-        $exist = Track::whereFrom($request->from)
-            ->whereTo($request->to)
-            ->whereStatus('active')
-            ->first();
-        if ($exist) {
-            toast('တူညီသောလမ်းကြောင်း ရှိပြီးဖြစ်နေပါသည်။', 'error');
-            return redirect()->route('admin.track.index');
-        }
         $status = $this->trackRepository->create($request->all());
 
         ($status) ? $message = trans('cruds.track.title_singular') . ' ' . trans('global.create_success') : $message = trans('cruds.track.title_singular') . trans('global.create_fail');

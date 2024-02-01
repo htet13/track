@@ -17,6 +17,7 @@ class TrackRepository implements TrackRepositoryInterface
     public function allWithPaginate($filter, $paginate)
     {
         return Track::filter($filter)
+        ->orderBy('created_at','DESC')
         ->paginate($paginate);
     }
 
@@ -25,7 +26,8 @@ class TrackRepository implements TrackRepositoryInterface
         DB::beginTransaction();
         try{
             $track = Track::create($data);
-            $track->cities()->sync($data['others']);
+            $track->fromcities()->sync($data['fromcities']);
+            $track->tocities()->sync($data['tocities']);
             DB::commit();
             return $track;
         }catch (Exception $e){

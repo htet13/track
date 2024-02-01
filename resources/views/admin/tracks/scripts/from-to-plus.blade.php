@@ -2,16 +2,16 @@
     var fromText = `<div class="row">
                         <div class="col-xl-10 col-lg-10 col-md-10 col-8 col-sm-8 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="from"></label>
-                                <select name="from" id="from" class="form-control {{ $errors->has('from') ? 'is-invalid' : '' }}">
+                                <label class="required mb-2" for="fromcities"></label>
+                                <select name="fromcities[]" id="fromcities" class="form-control {{ $errors->has('fromcities') ? 'is-invalid' : '' }}">
                                     <option value="" disabled selected>{{ trans('global.please_select') }}</option>
                                     @foreach ($cities as $id => $name)
-                                        <option value="{{ $id }}"{{ old('from') ? 'selected' : '' }}>{{ $name }}</option>
+                                        <option value="{{ $id }}"{{ in_array($id, old('fromcities', [])) ? 'selected' : '' }}>{{ $name }}</option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('from'))
+                                @if($errors->has('fromcities'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('from') }}
+                                        {{ $errors->first('fromcities') }}
                                     </div>
                                 @endif
                             </div>
@@ -26,16 +26,16 @@
     var toText = `<div class="row">
                     <div class="col-xl-10 col-lg-10 col-md-10 col-8 col-sm-8 mb-2">
                         <div class="form-group">
-                            <label class="required mb-2" for="to"></label>
-                            <select name="to" id="to" class="form-control {{ $errors->has('to') ? 'is-invalid' : '' }}">
+                            <label class="required mb-2" for="tocities"></label>
+                            <select name="tocities[]" id="tocities" class="form-control {{ $errors->has('tocities') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
                                 @foreach ($cities as $id => $name)
-                                    <option value="{{ $id }}"{{ old('to') ? 'selected' : '' }}>{{ $name }}</option>
+                                    <option value="{{ $id }}"{{ in_array($id, old('tocities', [])) ? 'selected' : '' }}>{{ $name }}</option>
                                 @endforeach
                             </select>
-                            @if($errors->has('to'))
+                            @if($errors->has('tocities'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('to') }}
+                                    {{ $errors->first('tocities') }}
                                 </div>
                             @endif
                         </div>

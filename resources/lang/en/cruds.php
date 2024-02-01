@@ -26,15 +26,15 @@ return [
     ],
     'driver' => [
         'title' => 'ယာဉ်မောင်းများ',
-        'title_singular' => 'ယာဉ်မောင်းအမည်',
+        'title_singular' => 'ယာဉ်မောင်း',
     ],
     'spare' => [
-        'title' => 'ယာဉ်အကူများ',
-        'title_singular' => 'ယာဉ်အကူအမည်',
+        'title' => 'ယာဉ်နောက်လိုက်များ',
+        'title_singular' => 'ယာဉ်နောက်လိုက်',
     ],
     'track' => [
-        'title' => 'လမ်းကြောင်းများ',
-        'title_singular' => 'လမ်းကြောင်း',
+        'title' => 'ခရီးစဉ်များ',
+        'title_singular' => 'ခရီးစဉ်',
     ],
     'report' => [
         'title' => 'မှတ်တမ်းများ',

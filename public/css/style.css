@@ -1373,3 +1373,7 @@ body::-webkit-scrollbar {
 hr {
     border: 5px solid #0d6efd !important;
 }
+
+.w-40 {
+    width: 40px;
+}

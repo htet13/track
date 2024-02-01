@@ -57,33 +57,65 @@
             </form>
 
             <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <th>{{ trans('global.no') }}</th>
-                    <th>{{ trans('global.from') }}</th>
-                    <th>{{ trans('global.to') }}</th>
-                    <th>{{ trans('global.total') }}</th>
-                    <th>{{ trans('global.created_at') }}</th>
-                    <th>{{ trans('global.actions') }}</th>
+                <table class="table table-bordered table-striped" style="border: 1px solid #959598">
+                    <thead class="text-center align-middle">
+                        <tr>
+                            <th rowspan="2" class="w-40">{{ trans('global.no') }}</th>
+                            <th rowspan="2">{{ trans('global.date') }}</th>
+                            <th rowspan="2">{{ trans('cruds.car_no.title_singular') }}</th>
+                            <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
+                            <th colspan="2">{{ trans('global.expense') }}</th>
+                            <th colspan="2">{{ trans('global.person') }}</th>
+                            <th colspan="2">{{ trans('global.oil') }}</th>
+                            <th colspan="2">{{ trans('global.road_cost') }}</th>
+                            <th rowspan="2">{{ trans('global.food_cost') }}</th>
+                            <th colspan="2">{{ trans('global.other_cost') }}</th>
+                            <th rowspan="2">{{ trans('global.total') }}</th>
+                            <th rowspan="2">{{ trans('global.actions') }}</th>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('global.from') }}</th>
+                            <th>{{ trans('global.to') }}</th>
+                            <th>{{ trans('global.amount') }}</th>
+                            <th>{{ trans('cruds.issuer.title_singular') }}</th>
+                            <th>{{ trans('cruds.driver.title_singular') }}</th>
+                            <th>{{ trans('cruds.spare.title_singular') }}</th>
+                            <th>{{ trans('global.liter') }}</th>
+                            <th>{{ trans('global.price') }}</th>
+                            <th>{{ trans('global.check') }}</th>
+                            <th>{{ trans('global.gate') }}</th>
+                            <th>{{ trans('global.category') }}</th>
+                            <th>{{ trans('global.cost') }}</th>
+                        </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center align-middle">
                         @forelse ($tracks as $index => $track)
                             <tr id="row{{ $track->id }}">
-                                <td>{{ $index+1 }}</td>
-                                <td>{{ $track->fromCity->name }}</td>
-                                <td>{{ $track->toCity->name }}</td>
-                                <td>{{ number_format($track->amount) }}</td>
-                                <td>{{ $track->created_at->format('d-m-Y | h:i:s') }}</td>
+                                <td class="text-center">{{ $index+1 }}</td>
+                                <td>{{ $track->date }}</td>
+                                <td>{{ $track->carNo->name }}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ number_format($track->expense) }}</td>
+                                <td>{{ $track->issuer->name }}</td>
+                                <td>{{ $track->driver->name }}</td>
+                                <td>{{ $track->spare->name }}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ number_format($track->check_cost) }}</td>
+                                <td>{{ number_format($track->gate_cost) }}</td>
+                                <td>{{ number_format($track->food_cost) }}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ number_format($track->total) }}</td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="{{ route('admin.track.show', $track) }}" class="pe-3" title="route Details">
                                             <i class="fa-regular fa-eye"></i>
                                         </a>
-                                        @if($track->action_mode == 'on')
                                         <a href="{{ route('admin.track.edit', $track) }}" class="pe-3" title="Edit route Details">
                                             <i class="fa-regular fa-pen-to-square text-success"></i>
                                         </a>
-                                        @endif
                                         <form action="{{ route('admin.track.destroy', $track) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
