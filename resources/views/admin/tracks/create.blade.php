@@ -54,11 +54,11 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-4 col-sm-4 mb-2">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="fromcities">{{ trans('global.from') }}</label>
-                                <select name="fromcities[]" id="fromcities" class="form-control {{ $errors->has('fromcities') ? 'is-invalid' : '' }}">
-                                    <option value="" disabled selected>{{ trans('global.please_select') }}</option>
+                                <select name="fromcities[]" id="fromcities" class="form-control {{ $errors->has('fromcities') ? 'is-invalid' : '' }}" multiple>
+                                    <option value="" disabled>{{ trans('global.please_select') }}</option>
                                     @foreach ($cities as $id => $name)
                                         <option value="{{ $id }}"{{ in_array($id, old('fromcities', [])) ? 'selected' : '' }}>{{ $name }}</option>
                                     @endforeach
@@ -70,16 +70,11 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-1 col-lg-1 col-md-1 col-2 col-sm-2 pt-2 mt-4">
-                            <button type="button" class="btn btn-sm btn-primary from-plus">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-4 col-sm-4 mb-2">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="tocities">{{ trans('global.to') }}</label>
-                                <select name="tocities[]" id="tocities" class="form-control {{ $errors->has('tocities') ? 'is-invalid' : '' }}">
-                                    <option value="" disabled selected>{{ trans('global.please_select') }}</option>
+                                <select name="tocities[]" id="tocities" class="form-control {{ $errors->has('tocities') ? 'is-invalid' : '' }}" multiple>
+                                    <option value="" disabled>{{ trans('global.please_select') }}</option>
                                     @foreach ($cities as $id => $name)
                                         <option value="{{ $id }}"{{ in_array($id, old('tocities', [])) ? 'selected' : '' }}>{{ $name }}</option>
                                     @endforeach
@@ -91,15 +86,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-1 col-lg-1 col-md-1 col-1 pt-2 mt-4">
-                            <button type="button" class="btn btn-sm btn-primary to-plus">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 from-append"></div>
-                        <div class="col-6 to-append"></div>
                     </div>
                     <hr>
                     <div class="row">
@@ -170,22 +156,36 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-5 col-sm-5 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="amount">@lang('global.liter')</label>
-                                <input type="number" name="liter" id="liter" value="{{old('liter')}}"  class="form-control {{ $errors->has('liter') ? 'is-invalid' : '' }}"/>
-                                @if($errors->has('liter'))
+                                @if(old("oil.liter"))
+                                    @for( $i =0; $i < count(old("oil.liter")); $i++) 
+                                        <label class="required mb-2" for="liter">@if($i == 0) @lang('global.liter') @endif</label>                           
+                                        <input type="number" value="{{ old("oil.liter.$i")}}"  name="oil[liter][]" class="form-control" />                                       
+                                    @endfor
+                                @else
+                                    <label class="required mb-2" for="liter">@lang('global.liter')</label>
+                                    <input type="number" name="oil[liter][]" id="liter" class="form-control {{ $errors->has('oil.liter') ? 'is-invalid' : '' }}" />
+                                @endif
+                                @if($errors->has('oil.liter'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('liter') }}
+                                        {{ $errors->first('oil.liter') }}
                                     </div>
                                 @endif
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 col-md-5 col-5 col-sm-5 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="price">@lang('global.price')</label>
-                                <input type="text" name="price" id="price" value="{{old('price')}}"  class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}"/>
-                                @if($errors->has('price'))
+                                @if(old("oil.price"))
+                                    @for( $i =0; $i < count(old("oil.price")); $i++) 
+                                        <label class="required mb-2" for="price">@if($i == 0) @lang('global.price') @endif</label>                           
+                                        <input type="number" value="{{ old("oil.price.$i")}}"  name="oil[price][]" class="form-control" />                                       
+                                    @endfor
+                                @else
+                                    <label class="required mb-2" for="price">@lang('global.price')</label>
+                                    <input type="number" name="oil[price][]" id="price" class="form-control {{ $errors->has('oil.price') ? 'is-invalid' : '' }}" />
+                                @endif
+                                @if($errors->has('oil.price'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('price') }}
+                                        {{ $errors->first('oil.price') }}
                                     </div>
                                 @endif
                             </div>
@@ -243,22 +243,36 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-5 col-sm-5 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="others[][]">@lang('global.category')</label>
-                                <input type="text" name="others[][]" id="others[][]" value="{{old('others[][]')}}"  class="form-control {{ $errors->has('others[][]') ? 'is-invalid' : '' }}"/>
-                                @if($errors->has('others[][]'))
+                                @if(old("others.category"))
+                                    @for( $i =0; $i < count(old("others.category")); $i++) 
+                                        <label class="required mb-2" for="category">@if($i == 0) @lang('global.category') @endif</label>                           
+                                        <input type="text" value="{{ old("others.category.$i")}}"  name="others[category][]" class="form-control" />
+                                    @endfor
+                                @else
+                                    <label class="required mb-2" for="category">@lang('global.category')</label>
+                                    <input type="text" name="others[category][]" id="category" class="form-control {{ $errors->has('others.category') ? 'is-invalid' : '' }}" />
+                                @endif
+                                @if($errors->has('others.category'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('others[][]') }}
+                                        {{ $errors->first('others.category') }}
                                     </div>
                                 @endif
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 col-md-5 col-5 col-sm-5 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="others[][]">@lang('global.cost')</label>
-                                <input type="number" name="others[][]" id="others[][]" value="{{old('others[][]')}}"  class="form-control {{ $errors->has('others[][]') ? 'is-invalid' : '' }}"/>
-                                @if($errors->has('others[][]'))
+                                @if(old("others.cost"))
+                                @for( $i =0; $i < count(old("others.cost")); $i++)   
+                                    <label class="required mb-2" for="cost">@if($i == 0) @lang('global.cost') @endif</label>
+                                    <input type="number" value="{{ old("others.cost.$i")}}"  name="others[cost][]" class="form-control" />                                       
+                                @endfor
+                                @else
+                                    <label class="required mb-2" for="cost">@lang('global.cost')</label>
+                                    <input type="number" name="others[cost][]" id="cost" class="form-control {{ $errors->has('others.cost') ? 'is-invalid' : '' }}" />
+                                @endif
+                                @if($errors->has('others.cost'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('others[][]') }}
+                                        {{ $errors->first('others.cost') }}
                                     </div>
                                 @endif
                             </div>
@@ -317,7 +331,6 @@
 
 @endsection
 @section('scripts')
-@include('admin.tracks.scripts.from-to-plus')
 @include('admin.tracks.scripts.liter-price-plus')
 @include('admin.tracks.scripts.other-plus')
 @include('admin.tracks.scripts.date')

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCitiesTracksTable extends Migration
+class CreateOtherCostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,17 @@ class CreateCitiesTracksTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities_tracks', function (Blueprint $table) {
+        Schema::create('other_costs', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->uuid('track_id');
-            $table->uuid('city_id');
+            $table->string('category')->nullable();
+            $table->integer('cost')->default(0);
+            $table->timestamps();
 
             $table->foreign('track_id')
                 ->references('id')
                 ->on('tracks')
                 ->onDelete('cascade');
-
-            $table->foreign('city_id')
-                ->references('id')
-                ->on('cities')
-                ->onDelete('cascade');
-            
-            $table->primary(['track_id', 'city_id']);
         });
     }
 
@@ -38,6 +34,6 @@ class CreateCitiesTracksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities_tracks');
+        Schema::dropIfExists('other_costs');
     }
 }

@@ -1375,5 +1375,23 @@ hr {
 }
 
 .w-40 {
-    width: 40px;
+    width: 40px !important;
+}
+
+.w-90 {
+    width: 90px !important;
+}
+
+.select2-search__field {
+    height: 25px !important;
+}
+
+.select2-selection--single {
+    height: 35px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.select2-selection__arrow {
+    margin-top: 3px !important;
 }

@@ -3,7 +3,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-5 col-sm-5 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="others[][]"></label>
-                                <input type="text" name="others[][]" id="others[][]" value="{{old('others[][]')}}"  class="form-control {{ $errors->has('others[][]') ? 'is-invalid' : '' }}"/>
+                                <input type="text" name="others[category][]" id="category" class="form-control {{ $errors->has('others.category') ? 'is-invalid' : '' }}" />
                                 @if($errors->has('others[][]'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('others[][]') }}
@@ -14,7 +14,7 @@
                         <div class="col-xl-5 col-lg-5 col-md-5 col-5 col-sm-5 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="others[][]"></label>
-                                <input type="number" name="others[][]" id="others[][]" value="{{old('others[][]')}}"  class="form-control {{ $errors->has('others[][]') ? 'is-invalid' : '' }}"/>
+                                <input type="number" name="others[cost][]" id="cost" class="form-control {{ $errors->has('others.cost') ? 'is-invalid' : '' }}" />
                                 @if($errors->has('others[][]'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('others[][]') }}

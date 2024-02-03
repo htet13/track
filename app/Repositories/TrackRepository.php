@@ -28,9 +28,31 @@ class TrackRepository implements TrackRepositoryInterface
             $track = Track::create($data);
             $track->fromcities()->sync($data['fromcities']);
             $track->tocities()->sync($data['tocities']);
+
+            // Create and attach other_costs
+            if (isset($data['others']) && is_array($data['others'])) {
+                $otherCostsData = [];
+                for($i=0; $i<count($data['others']['category']); $i++){
+                    $otherCostsData[$i]['category'] = $data['others']['category'][$i];
+                    $otherCostsData[$i]['cost'] = $data['others']['cost'][$i];
+                }
+                $track->otherCosts()->createMany($otherCostsData);
+            }
+
+            // Create and attach oil costs
+            if (isset($data['oil']) && is_array($data['oil'])) {
+                $oilCostsData = [];
+                for($i=0; $i<count($data['oil']['liter']); $i++){
+                    $oilCostsData[$i]['liter'] = $data['oil']['liter'][$i];
+                    $oilCostsData[$i]['price'] = $data['oil']['price'][$i];
+                }
+                $track->oilCosts()->createMany($oilCostsData);
+            }
+
             DB::commit();
             return $track;
         }catch (Exception $e){
+            dd($e);
             DB::rollback();
             return false;
         }

@@ -28,20 +28,11 @@ class Track extends Model
         'id' => 'string',
     ];
 
+    protected $dates = ['date'];
+
     public function scopeFilter($query,$filter)
     {
         $filter->apply($query);
-    }
-
-    public function fromCity()
-    {
-        return $this->belongsTo(City::class, 'from');
-    }
-
-    // Define the relationship to the cities table for the 'to' city
-    public function toCity()
-    {
-        return $this->belongsTo(City::class, 'to');
     }
 
     public function fromcities()
@@ -52,6 +43,16 @@ class Track extends Model
     public function tocities()
     {
         return $this->belongsToMany(City::class,'tocities_tracks');
+    }
+
+    public function oilCosts()
+    {
+        return $this->hasMany(OilCost::class);
+    }
+
+    public function otherCosts()
+    {
+        return $this->hasMany(OtherCost::class);
     }
 
     public function carNo()

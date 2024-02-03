@@ -60,9 +60,9 @@
                 <table class="table table-bordered table-striped" style="border: 1px solid #959598">
                     <thead class="text-center align-middle">
                         <tr>
-                            <th rowspan="2" class="w-40">{{ trans('global.no') }}</th>
-                            <th rowspan="2">{{ trans('global.date') }}</th>
-                            <th rowspan="2">{{ trans('cruds.car_no.title_singular') }}</th>
+                            <th rowspan="2">{{ trans('global.no') }}</th>
+                            <th rowspan="2" class="w-90">{{ trans('global.date') }}</th>
+                            <th rowspan="2" class="w-90">{{ trans('cruds.car_no.title_singular') }}</th>
                             <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
                             <th colspan="2">{{ trans('global.expense') }}</th>
                             <th colspan="2">{{ trans('global.person') }}</th>
@@ -92,21 +92,45 @@
                         @forelse ($tracks as $index => $track)
                             <tr id="row{{ $track->id }}">
                                 <td class="text-center">{{ $index+1 }}</td>
-                                <td>{{ $track->date }}</td>
-                                <td>{{ $track->carNo->name }}</td>
-                                <td></td>
-                                <td></td>
+                                <td class="w-90">{{ $track->date->format('d-m-Y') }}</td>
+                                <td class="w-90">{{ $track->carNo->name }}</td>
+                                <td>
+                                    @foreach ($track->fromcities as $city)
+                                        <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($track->tocities as $city)
+                                        <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
+                                    @endforeach
+                                </td>
                                 <td>{{ number_format($track->expense) }}</td>
                                 <td>{{ $track->issuer->name }}</td>
                                 <td>{{ $track->driver->name }}</td>
                                 <td>{{ $track->spare->name }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    @foreach ($track->oilCosts as $oil)
+                                        <div>{{ $oil->liter }}</div>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($track->oilCosts as $oil)
+                                        <div>{{ $oil->price }}</div>
+                                    @endforeach
+                                </td>
                                 <td>{{ number_format($track->check_cost) }}</td>
                                 <td>{{ number_format($track->gate_cost) }}</td>
                                 <td>{{ number_format($track->food_cost) }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    @foreach ($track->otherCosts as $other)
+                                        <div style="border-bottom: 3px solid blue;">{{ $other->category }}</div>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($track->otherCosts as $other)
+                                        <div>{{ $other->cost }}</div>
+                                    @endforeach
+                                </td>
                                 <td>{{ number_format($track->total) }}</td>
                                 <td>
                                     <div class="d-flex">
@@ -128,7 +152,7 @@
                             </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center">
+                            <td colspan="18" class="text-center">
                                 {{ trans('global.no_data_found') }}
                             </td>
                         </tr>
