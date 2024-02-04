@@ -106,7 +106,11 @@ class TrackController extends Controller
     public function edit(Track $track)
     {
         $cities = $this->cityRepository->all();
-        return view('admin.tracks.edit', compact('track', 'cities'));
+        $car_nos = $this->carNoRepository->all();
+        $issuers = $this->issuerRepository->all();
+        $drivers = $this->driverRepository->all();
+        $spares = $this->spareRepository->all();
+        return view('admin.tracks.edit', compact('track', 'cities', 'car_nos','issuers','drivers','spares'));
     }
 
     /**
@@ -135,12 +139,11 @@ class TrackController extends Controller
      */
     public function destroy(Track $track)
     {
-        if ($track->action_mode == TrackActionModeEnum::ON) {
             $track->delete();
-            $track->cities()->delete();
-        } else {
-            $track->update(['status' => 'inactive']);
-        }
+            $track->fromcities()->delete();
+            $track->tocities()->delete();
+            $track->otherCosts()->delete();
+            $track->oilCosts()->delete();
 
         return redirect()->route('admin.track.index');
     }

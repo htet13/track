@@ -19,7 +19,7 @@ body {
 }
 
 a {
-    color: #012970;
+    color: #031F63;
     text-decoration: none;
 }
 
@@ -63,7 +63,7 @@ h6 {
     font-size: 16px;
     margin-bottom: 0;
     font-weight: 600;
-    color: #012970;
+    color: #031F63;
 }
 
 /*--------------------------------------------------------------
@@ -76,7 +76,7 @@ h6 {
     right: 15px;
     bottom: 15px;
     z-index: 99999;
-    background: #4154f1;
+    background: #031F63;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -242,9 +242,9 @@ h6 {
 
 .card-header,
 .card-footer {
-    border-color: #012970 !important;
-    background-color: #a4c3ef !important;
-    color: #012970;
+    border-color: #031F63 !important;
+    background-color: #031F63 !important;
+    color: #E8E189;
     padding: 15px;
 }
 
@@ -252,7 +252,7 @@ h6 {
     padding: 20px 0 15px 0;
     font-size: 16px;
     font-weight: 500;
-    color: #012970;
+    color: #031F63;
     font-family: "Poppins", sans-serif;
 }
 
@@ -298,7 +298,7 @@ h6 {
 }
 
 .accordion-button:not(.collapsed) {
-    color: #012970;
+    color: #031F63;
     background-color: #f6f9ff;
 }
 
@@ -390,7 +390,7 @@ h6 {
 .logo span {
     font-size: 18px;
     font-weight: 700;
-    color: #012970;
+    color: hsl(55.58deg 67.38% 72.35%);
     font-family: "Nunito", sans-serif;
 }
 
@@ -409,7 +409,7 @@ h6 {
     font-size: 30px;
     padding-left: 10px;
     cursor: pointer;
-    color: #012970;
+    color: hsl(55.58deg 67.38% 72.35%);
 }
 
 .header .search-bar {
@@ -446,7 +446,7 @@ h6 {
 .header .search-form input {
     border: 0;
     font-size: 14px;
-    color: #012970;
+    color: #031F63;
     border: 1px solid rgba(1, 41, 112, 0.2);
     padding: 7px 38px 7px 8px;
     border-radius: 3px;
@@ -469,7 +469,7 @@ h6 {
 }
 
 .header .search-form button i {
-    color: #012970;
+    color: #031F63;
 }
 
 /*--------------------------------------------------------------
@@ -486,13 +486,13 @@ h6 {
 
 .header-nav .nav-icon {
     font-size: 22px;
-    color: #012970;
+    color: #031F63;
     /* margin-right: 25px; */
     position: relative;
 }
 
 .header-nav .nav-profile {
-    color: #012970;
+    color: #031F63;
 }
 
 .header-nav .nav-profile img {
@@ -722,7 +722,7 @@ body::-webkit-scrollbar {
 }
 
 .sidebar-nav .nav-link.collapsed {
-    color: #012970;
+    color: #031F63;
     background: #fff;
 }
 
@@ -759,7 +759,7 @@ body::-webkit-scrollbar {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #012970;
+    color: #031F63;
     transition: 0.3;
     padding: 10px 0 10px 40px;
     transition: 0.3s;
@@ -829,7 +829,7 @@ body::-webkit-scrollbar {
 
 .dashboard .info-card h6 {
     font-size: 28px;
-    color: #012970;
+    color: #031F63;
     font-weight: 700;
     margin: 0;
     padding: 0;
@@ -925,7 +925,7 @@ body::-webkit-scrollbar {
 }
 
 .dashboard .news h4 a {
-    color: #012970;
+    color: #031F63;
     transition: 0.3s;
 }
 
@@ -997,7 +997,7 @@ body::-webkit-scrollbar {
     background-color: #fff;
     border-radius: 0.25rem;
     text-align: center;
-    color: #012970;
+    color: #031F63;
     padding: 15px 0;
 }
 
@@ -1046,7 +1046,7 @@ body::-webkit-scrollbar {
 }
 
 .profile .profile-card .social-links a:hover {
-    color: #012970;
+    color: #031F63;
 }
 
 .profile .profile-overview .row {
@@ -1055,7 +1055,7 @@ body::-webkit-scrollbar {
 }
 
 .profile .profile-overview .card-title {
-    color: #012970;
+    color: #031F63;
 }
 
 .profile .profile-overview .label {
@@ -1100,7 +1100,7 @@ body::-webkit-scrollbar {
 
 .contact .info-box h3 {
     font-size: 20px;
-    color: #012970;
+    color: #031F63;
     font-weight: 700;
     margin: 20px 0 10px 0;
 }
@@ -1225,7 +1225,7 @@ body::-webkit-scrollbar {
 .error-404 h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #012970;
+    color: #031F63;
     margin-bottom: 30px;
 }
 
@@ -1257,14 +1257,14 @@ body::-webkit-scrollbar {
 
 .footer .copyright {
     text-align: center;
-    color: #012970;
+    color: #031F63;
 }
 
 .footer .credits {
     padding-top: 5px;
     text-align: center;
     font-size: 13px;
-    color: #012970;
+    color: #031F63;
 }
 
 /* preloader */
@@ -1361,13 +1361,13 @@ body::-webkit-scrollbar {
 }
 
 .header-current {
-    color: #012970;
+    color: #031F63;
     font-size: medium;
     font-weight: bold;
 }
 
 .text-main {
-    color: #012970 !important;
+    color: #031F63 !important;
 }
 
 hr {
@@ -1394,4 +1394,21 @@ hr {
 
 .select2-selection__arrow {
     margin-top: 3px !important;
+}
+
+.bg-main {
+    background-color: #031F63 !important;
+}
+
+.btn-outline-main {
+    color: #031F63 !important;
+    border-color: #031F63 !important;
+}
+
+body {
+    color: #031F63 !important;
+}
+
+.text-main {
+    color: #E8E189 !important;
 }

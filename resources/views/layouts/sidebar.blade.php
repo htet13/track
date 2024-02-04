@@ -13,14 +13,14 @@
             </a>
         </li><!-- End Dashboard Nav -->
 
-        @can('Issuer Access')
+        @can('Car No Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('admin/issuer*') ? 'collapsed' : '' }}" href="{{ route('admin.issuer.index') }}">
+            <a class="nav-link {{ !request()->is('admin/car-no*') ? 'collapsed' : '' }}" href="{{ route('admin.car-no.index') }}">
                 <div class="me-2">
-                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <i class="fa-solid fa-ticket"></i>
                 </div>
                 <div class="">
-                    <span>{{ trans('cruds.issuer.title') }}</span>
+                    <span>{{ trans('cruds.car_no.title') }}</span>
                 </div>
             </a>
         </li>
@@ -39,14 +39,14 @@
         </li>
         @endcan
 
-        @can('Car No Access')
+        @can('Issuer Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('admin/car-no*') ? 'collapsed' : '' }}" href="{{ route('admin.car-no.index') }}">
+            <a class="nav-link {{ !request()->is('admin/issuer*') ? 'collapsed' : '' }}" href="{{ route('admin.issuer.index') }}">
                 <div class="me-2">
-                    <i class="fa-solid fa-ticket"></i>
+                    <i class="fa-solid fa-hand-holding-heart"></i>
                 </div>
                 <div class="">
-                    <span>{{ trans('cruds.car_no.title') }}</span>
+                    <span>{{ trans('cruds.issuer.title') }}</span>
                 </div>
             </a>
         </li>

@@ -37,7 +37,7 @@
                             </select>
                             <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
                             <input type="text" id="to_date" name="to_date" class="form-control" placeholder="To Date" value="{{ request('to_date') }}" />
-                            <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -48,7 +48,7 @@
                             </button>
                             @endcan
                         
-                            <a class="btn btn-primary text-white" href="{{ route('admin.track.create') }}">
+                            <a class="btn bg-main text-main" href="{{ route('admin.track.create') }}">
                                 <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }} 
                             </a>
                         </div>
@@ -123,7 +123,7 @@
                                 <td>{{ number_format($track->food_cost) }}</td>
                                 <td>
                                     @foreach ($track->otherCosts as $other)
-                                        <div style="border-bottom: 3px solid blue;">{{ $other->category }}</div>
+                                        <div style=" @if(!$loop->last) border-bottom: 1px solid #A4C3EF; @endif padding-top: 5px; padding-bottom: 5px;">{{ $other->category }}</div>
                                     @endforeach
                                 </td>
                                 <td>
@@ -181,8 +181,8 @@
 <script>
 $('.delete').on('click', function(){
     Swal.fire({
-        title: 'Warning!',
-        text: 'Do you really want to delete?',
+        title: '<span class="text-warning">သတိ!</span>',
+        text: "စာရင်းဖျက်သိမ်းခြင်း ပြုလုပ်ရန် သေချာပါသလား။",
         icon: 'warning',
         confirmButtonText: 'Yes',
         showCancelButton: true,

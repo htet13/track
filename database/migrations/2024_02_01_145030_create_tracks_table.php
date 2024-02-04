@@ -22,6 +22,7 @@ class CreateTracksTable extends Migration
             $table->uuid('issuer_id');
             $table->uuid('driver_id');
             $table->uuid('spare_id');
+            $table->enum('drive_fee', ['paid', 'unpaid'])->default('unpaid');
             $table->integer('check_cost')->default(0);
             $table->integer('gate_cost')->default(0);
             $table->integer('food_cost')->default(0);

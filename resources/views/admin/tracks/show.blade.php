@@ -20,21 +20,11 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>{{ trans('global.from') }}</th>
-                        <th>{{ trans('global.to') }}</th>
-                        <th>{{ trans('global.total') }}</th>
-                        <th>{{ trans('global.others') }}</th>
-                        <th>{{ trans('global.created_at') }}</th>
+                        <th>{{ trans('global.remarks') }}</th>
+                        <td>{{ $track->remark }}</td>
                     </tr>
                     <tr>
-                        <td>{{ $track->fromCity->name }}</td>
-                        <td>{{ $track->toCity->name }}</td>
-                        <td>{{ $track->amount }}</td>
-                        <td>
-                            @foreach ($track->cities as $city)
-                            <span class="badge bg-info rounded-pill">{{ $city->name }}</span>
-                            @endforeach
-                        </td>
+                        <th>{{ trans('global.created_at') }}</th>
                         <td>{{ $track->created_at->format('Y-m-d | H:i:s') }}</td>
                     </tr>
                 </tbody>

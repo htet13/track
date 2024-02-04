@@ -28,4 +28,8 @@
         width: '100%',
         placeholder: "‌ရွေးချယ်ပါ"
     });
+    $('#drive_fee').select2({
+        width: '100%',
+        placeholder: "‌ရွေးချယ်ပါ"
+    });
 </script>

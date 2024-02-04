@@ -1,7 +1,7 @@
-<header id="header" class="header fixed-top d-flex align-items-center">
+<header id="header" class="header fixed-top d-flex align-items-center bg-main">
 
   <div class="d-flex align-items-center justify-content-between">
-    <a href="{{ route('admin.home') }}" class="logo d-flex align-items-center">
+    <a href="{{ route('admin.home') }}" class="logo d-flex align-items-center text-decoration-none">
       <img src="{{ asset('images/header-logo.png') }}" alt="">
       <span class="d-none d-lg-block">{{ trans('global.web_title') }}</span>
     </a>
@@ -10,7 +10,7 @@
 
   <nav class="header-nav ms-auto">
 
-      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+      <a class="nav-link nav-profile d-flex align-items-center pe-0 text-main" href="#" data-bs-toggle="dropdown">
         {{-- <img src="{{ asset('img/profile-img.jpg') }}" alt="Profile" class="rounded-circle"> --}}
         <span class="d-md-block dropdown-toggle px-2">{{ Auth::user()->name }}</span>
       </a><!-- End Profile Iamge Icon -->
