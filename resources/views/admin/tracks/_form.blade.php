@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <div class="line-break"></div>
                     @include('admin.tracks.layouts.from-to')
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <div class="line-break"></div>
                     <div class="row">
                         <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
                             <div class="form-group">
@@ -134,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <div class="line-break"></div>
                     @include('admin.tracks.layouts.oil')
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-6 col-sm-6 mb-2">
@@ -160,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <div class="line-break"></div>
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
@@ -174,7 +174,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <div class="line-break"></div>
                     @include('admin.tracks.layouts.other', ['track' => $track ? $track->otherCosts : []])
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <div class="line-break"></div>
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">

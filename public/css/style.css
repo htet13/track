@@ -1370,8 +1370,10 @@ body::-webkit-scrollbar {
     color: #031F63 !important;
 }
 
-hr {
-    border: 5px solid #0d6efd !important;
+.line-break {
+    border: 5px solid #031F63 !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .w-40 {
@@ -1411,4 +1413,27 @@ body {
 
 .text-main {
     color: #E8E189 !important;
+}
+
+.dataTables_paginate {
+    /* margin-top: 25px;
+    margin-bottom: 20px; */
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+}
+
+.paginate_button {
+    text-decoration: none;
+    border: 1px solid #031F63;
+    border-radius: 5px;
+    background: #031F63;
+    color: #E8E189;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.current {
+    background-color: #E8E189;
+    color: #031F63;
 }

@@ -18,46 +18,31 @@
 
     <section class="route-table">
         <div class="card p-2">
-
-            <form action="{{ route('admin.track.index') }}" method="GET">
-                <div class="row mb-2">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <select name="from" id="from" class="form-control {{ $errors->has('from') ? 'is-invalid' : '' }}">
-                                <option value="" disabled selected>{{ trans('global.from') }}</option>
-                                @foreach ($cities as $id => $name)
-                                    <option value="{{ $id }}"{{ old('from') || request('from') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
-                            </select>
-                            <select name="to" id="to" class="form-control {{ $errors->has('to') ? 'is-invalid' : '' }}">
-                                <option value="" disabled selected>{{ trans('global.to') }}</option>
-                                @foreach ($cities as $id => $name)
-                                    <option value="{{ $id }}"{{ old('to') || request('to') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
-                            </select>
-                            <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
-                            <input type="text" id="to_date" name="to_date" class="form-control" placeholder="To Date" value="{{ request('to_date') }}" />
-                            <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex" style="float:right">
-                            @can('Excel Export')
-                            <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
-                                {{ trans('global.excel') }} {{ trans('global.export') }}
-                            </button>
-                            @endcan
-                        
-                            <a class="btn bg-main text-main" href="{{ route('admin.track.create') }}">
-                                <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }} 
-                            </a>
-                        </div>
+            <div class="row mb-2">
+                <div class="col-md-4 my-3">
+                    <div class="input-group">
+                    <input type="search" class="form-control" id="search" placeholder="@lang('global.search')">
+                    <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
-            </form>
+                <div class="col-4"></div>
+                <div class="col-md-4 col-12 my-3">
+                    <form action="{{ route('admin.track.index') }}" method="GET">
+                        @can('Excel Export')
+                        <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
+                            {{ trans('global.excel') }} {{ trans('global.export') }}
+                        </button>
+                        @endcan
+                    
+                        <a class="btn bg-main text-main" href="{{ route('admin.track.create') }}">
+                            <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }} 
+                        </a>
+                    </form>
+                </div>
+            </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" style="border: 1px solid #959598">
+                <table class="table table-bordered table-striped" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <tr>
                             <th rowspan="2">{{ trans('global.no') }}</th>
@@ -123,7 +108,7 @@
                                 <td>{{ number_format($track->food_cost) }}</td>
                                 <td>
                                     @foreach ($track->otherCosts as $other)
-                                        <div style=" @if(!$loop->last) border-bottom: 1px solid #A4C3EF; @endif padding-top: 5px; padding-bottom: 5px;">{{ $other->category }}</div>
+                                        <div style=" @if(!$loop->last) border-bottom: 1px solid #031F63; @endif padding-top: 5px; padding-bottom: 5px;">{{ $other->category }}</div>
                                     @endforeach
                                 </td>
                                 <td>
@@ -179,6 +164,15 @@
 {{-- sweet alert --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 <script>
+var table = $('.table').DataTable({
+    sPaginationType: "first_last_numbers",
+    autoWidth: false,
+    dom: "tp",
+    pageLength: 30,
+});
+$('#search').on( 'keyup', function () {
+    table.search( this.value ).draw();
+} );
 $('.delete').on('click', function(){
     Swal.fire({
         title: '<span class="text-warning">သတိ!</span>',
