@@ -23,8 +23,8 @@
                     <div class="col-md-4">
                         <form action="{{ route('admin.user.index') }}" method="GET">
                             <div class="input-group">
-                               <input type="text" id="name" name="name" class="form-control" placeholder="Search User" value="{{ request('name') }}" />
-                                <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                               <input type="text" id="name" name="name" class="form-control" placeholder="@lang('global.search')" value="{{ request('name') }}" />
+                                <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </form>
                     </div>
@@ -38,7 +38,7 @@
                                 </button>
                             </form>
                             @endcan
-                            <a class="btn btn-primary text-white" href="{{ route('admin.user.create') }}">
+                            <a class="btn bg-main text-main" href="{{ route('admin.user.create') }}">
                                 <i class="fa-solid fa-plus"></i> {{ trans('global.new') }}{{ trans('global.add') }} 
                             </a>
                         </div>
@@ -63,7 +63,7 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @foreach ($user->roles as $role)
-                                    <span class="badge bg-info rounded-pill">{{ $role->name }}</span>
+                                    <span class="badge bg-success rounded-pill">{{ $role->name }}</span>
                                 @endforeach
                             </td>
                             <td>{{ $user->created_at->format('d-m-Y | h:i:s') }}</td>

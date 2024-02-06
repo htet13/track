@@ -32,4 +32,4 @@
         </div>
     </div>
 </div>
-<hr>
+<div class="line-break"></div>

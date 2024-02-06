@@ -153,19 +153,17 @@ h6 {
     background-color: #f6f9ff;
 }
 
-@media (min-width: 768px) {
-    .dropdown-menu-arrow::before {
-        content: "";
-        width: 13px;
-        height: 13px;
-        background: #fff;
-        position: absolute;
-        top: -7px;
-        right: 20px;
-        transform: rotate(45deg);
-        border-top: 1px solid #eaedf1;
-        border-left: 1px solid #eaedf1;
-    }
+.dropdown-menu-arrow::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    background: #fff;
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    transform: rotate(45deg);
+    border-top: 1px solid #eaedf1;
+    border-left: 1px solid #eaedf1;
 }
 
 @-webkit-keyframes dropdown-animate {

@@ -48,7 +48,7 @@ class TrackController extends Controller
         $cities = $this->cityRepository->all();
 
         if ($request->btn == "Export") {
-            return Excel::download(new TrackExport($tracks) . '-track' . now() . '.xlsx');
+            return Excel::download(new TrackExport($tracks), 'track' . now() . '.xlsx');
         }
 
         return view('admin.tracks.index', compact('tracks', 'cities'));

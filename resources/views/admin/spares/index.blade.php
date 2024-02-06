@@ -23,10 +23,10 @@
                 <div class="row mb-2">
                     <div class="col-md-6">
                         <div class="input-group">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Search spare" value="{{ request('name') }}" />
+                            <input type="text" id="name" name="name" class="form-control" placeholder="@lang('global.search')" value="{{ request('name') }}" />
                             <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
                             <input type="text" id="to_date" name="to_date" class="form-control" placeholder="To Date" value="{{ request('to_date') }}" />
-                            <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -37,7 +37,7 @@
                             </button>
                             @endcan
                         
-                            <a class="btn btn-primary text-white" href="{{ route('admin.spare.create') }}">
+                            <a class="btn bg-main text-main" href="{{ route('admin.spare.create') }}">
                                 <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }} 
                             </a>
                         </div>

@@ -28,4 +28,4 @@
 <div class="row">
     <div class="col-12 other-append"></div>
 </div>
-<hr>
+<div class="line-break"></div>

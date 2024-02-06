@@ -40,15 +40,26 @@ class TrackExport implements FromView, WithColumnFormatting, WithEvents
                 $event->sheet->getColumnDimension('A')->setWidth(5); 
                 $event->sheet->getColumnDimension('B')->setWidth(20); 
                 $event->sheet->getColumnDimension('C')->setWidth(20); 
-                $event->sheet->getColumnDimension('D')->setWidth(10); 
+                $event->sheet->getColumnDimension('D')->setWidth(20); 
                 $event->sheet->getColumnDimension('E')->setWidth(20); 
-                $event->sheet->getColumnDimension('F')->setWidth(20); 
+                $event->sheet->getColumnDimension('F')->setWidth(15); 
+                $event->sheet->getColumnDimension('G')->setWidth(15); 
+                $event->sheet->getColumnDimension('H')->setWidth(15); 
+                $event->sheet->getColumnDimension('I')->setWidth(15); 
+                $event->sheet->getColumnDimension('J')->setWidth(15); 
+                $event->sheet->getColumnDimension('K')->setWidth(15); 
+                $event->sheet->getColumnDimension('L')->setWidth(15); 
+                $event->sheet->getColumnDimension('M')->setWidth(15); 
+                $event->sheet->getColumnDimension('N')->setWidth(15); 
+                $event->sheet->getColumnDimension('O')->setWidth(15); 
+                $event->sheet->getColumnDimension('P')->setWidth(15); 
+                $event->sheet->getColumnDimension('Q')->setWidth(15); 
 
                 // Set static row height for all rows
-                $event->sheet->getDefaultRowDimension()->setRowHeight(25);
+                $event->sheet->getDefaultRowDimension()->setRowHeight(50);
 
                 // Center data horizontally and vertically in cells
-                $event->sheet->getStyle('A:F')->applyFromArray([
+                $event->sheet->getStyle('A:Q')->applyFromArray([
                     'alignment' => [
                         'horizontal' => Alignment::HORIZONTAL_CENTER,
                         'vertical'   => Alignment::VERTICAL_CENTER,

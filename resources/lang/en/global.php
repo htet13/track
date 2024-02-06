@@ -44,7 +44,7 @@ return [
     'login'     =>  'ဝင်ရန်',
     'filter'    =>  'Filter By',
     'no_data_found' => 'အချက်အလက်များ မရှိပါ။',
-    'excel'     =>  'Excel',
+    'excel'     =>  '',
     'export'    =>  'Export',
     'from' => 'ဖမ်းမည့်မြို့',
     'to' => 'ပို့မည့်မြို့',

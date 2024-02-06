@@ -38,7 +38,7 @@
                         <div class="col-md-12">
                             <div style="float: right">
                                 <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.car-no.index') }}">{{ trans('global.cancel') }}</a>
-                                <button type="submit" class="btn btn-success btn-sm float-right">{{ trans('global.save') }}</button>
+                                <button type="submit" class="btn bg-main text-main btn-sm float-right">{{ trans('global.save') }}</button>
                             </div>
                         </div>
                     </div>

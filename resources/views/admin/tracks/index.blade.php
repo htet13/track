@@ -18,15 +18,15 @@
 
     <section class="route-table">
         <div class="card p-2">
-            <div class="row mb-2">
-                <div class="col-md-4 my-3">
+            <div class="row my-2">
+                <div class="col-md-4 mb-3">
                     <div class="input-group">
                     <input type="search" class="form-control" id="search" placeholder="@lang('global.search')">
                     <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
                 <div class="col-4"></div>
-                <div class="col-md-4 col-12 my-3">
+                <div class="col-md-4 col-12 mb-3">
                     <form action="{{ route('admin.track.index') }}" method="GET">
                         @can('Excel Export')
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">

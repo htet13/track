@@ -15,4 +15,4 @@
 <div class="row">
     <div class="col-12 liter-price-append"></div>
 </div>
-<hr>
+<div class="line-break"></div>

@@ -26,7 +26,7 @@
         <div class="card p-2">
             <div class="row mb-2">
                 <div class="col-md-12">
-                    <a class="btn btn-primary text-white" style="float:right" href="{{ route('admin.role.create') }}">
+                    <a class="btn bg-main text-main" style="float:right" href="{{ route('admin.role.create') }}">
                         <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
                     </a>
                 </div>
