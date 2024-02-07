@@ -20,8 +20,8 @@
         <div class="card p-2">
 
             <form action="{{ route('admin.car-no.index') }}" method="GET">
-                <div class="row mb-2">
-                    <div class="col-md-6">
+                <div class="row my-2">
+                    <div class="col-md-6 mb-3">
                         <div class="input-group">
                             <input type="text" id="name" name="name" class="form-control" placeholder="@lang('global.search')" value="{{ request('name') }}" />
                             <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
