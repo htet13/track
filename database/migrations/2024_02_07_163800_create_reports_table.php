@@ -23,6 +23,7 @@ class CreateReportsTable extends Migration
             $table->integer('food_cost')->default(0);
             $table->integer('other_cost')->default(0);
             $table->integer('total')->default(0);
+            $table->timestamps();
         });
     }
 

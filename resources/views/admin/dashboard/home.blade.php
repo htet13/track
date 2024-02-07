@@ -44,7 +44,7 @@
                                 <div class="col-md-6 col-12" style="background-color: antiquewhite;">
                                     <div id="pieChart"></div>
                                 </div>
-                                <div class="col-md-6 col-12" style="background-color: #8db5d8;">
+                                <div class="col-md-6 col-12" style="background-color: #b8c2ca;">
                                     <div id="barChart"></div>
                                 </div>
                             </div>
