@@ -54,4 +54,18 @@ class Report extends Model
     {
         return $this->hasMany(OtherCost::class);
     }
+
+    public function scopeWithNonZeroValues($query)
+    {
+        return $query->where(function ($query) {
+            $query->where('expense', '>', 0)
+                  ->orWhere('total_oil', '>', 0)
+                  ->orWhere('total_price', '>', 0)
+                  ->orWhere('check_cost', '>', 0)
+                  ->orWhere('gate_cost', '>', 0)
+                  ->orWhere('food_cost', '>', 0)
+                  ->orWhere('other_cost', '>', 0)
+                  ->orWhere('total', '>', 0);
+        });
+    }
 }

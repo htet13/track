@@ -13,7 +13,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="input-group">
                     <input type="search" class="form-control" id="search" placeholder="@lang('global.search')">
-                    <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn btn-outline-main" onclick="location.reload()" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
                 <div class="col-4"></div>
