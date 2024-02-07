@@ -1,7 +1,7 @@
-{{-- <footer id="footer" class="footer" style="position: absolute; bottom:0; width: 100%">
+ <footer id="footer" class="footer">
     <div class="copyright" >
       <p>
-        &copy; Copyright <strong><span>Solutions Hub</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Key Tech Co., Ltd</span></strong>. {{ date('Y') }}. All Rights Reserved
       </p>
     </div>
-  </footer> --}}
+</footer>

@@ -6,9 +6,8 @@ use App\Enums\IntervalEnum;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Summary;
-use App\Models\Purchase;
-use App\Models\Sale;
+use App\Filters\ReportFilter;
+use App\Models\Track;
 class HomeController extends Controller
 {
     /**
@@ -26,13 +25,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index(ReportFilter $filter, Request $request)
     {
-        $profits = [];
-        $track1 = [];
-        $track2 = [];
-    
-        return view('admin.dashboard.home', compact('track1','track2','profits')); // Pass $interval to the view.
+        $tracks = Track::filter($filter)
+        ->leftJoin('issuers', function ($join) {
+            $join->on('tracks.issuer_id', '=', 'issuers.id');
+        })
+        ->selectRaw('
+            tracks.issuer_id,
+            SUM(tracks.expense) as total_expense
+        ')
+        ->groupBy('tracks.issuer_id')
+        ->get();
+
+        return view('admin.dashboard.home', compact('tracks')); 
     }
 
 }

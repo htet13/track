@@ -32,4 +32,9 @@
         width: '100%',
         placeholder: "‌ရွေးချယ်ပါ"
     });
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 200
+        });
+    });
 </script>

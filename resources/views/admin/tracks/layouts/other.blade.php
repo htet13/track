@@ -1,6 +1,6 @@
 <label class="border-bottom border-primary mb-2">@lang('global.other_cost')</label>
 @php $loopCount = old("other") ? count(old("other.category")) : 1 @endphp
-@if(count($track) > 1 && !old("other"))
+@if(count($track) > 0 && !old("other"))
     @foreach ($track as $index => $other)
         @include('admin.tracks.layouts._other_fields', [
             'loop' => $loop, 

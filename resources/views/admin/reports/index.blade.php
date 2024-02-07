@@ -9,61 +9,72 @@
 
     <section class="report-table">
         <div class="card p-2">
-
-            <form action="{{ route('admin.report') }}" method="GET">
-                <div class="row mb-2">
-                    <div class="col-md-4">
-                        <div class="input-group">
-                        <select name="from" id="from" class="form-control {{ $errors->has('from') ? 'is-invalid' : '' }}">
-                                <option value="" disabled selected>{{ trans('global.from') }}</option>
-                                @foreach ($cities as $id => $name)
-                                    <option value="{{ $id }}"{{ old('from') || request('from') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
-                            </select>
-                            <select name="to" id="to" class="form-control {{ $errors->has('to') ? 'is-invalid' : '' }}">
-                                <option value="" disabled selected>{{ trans('global.to') }}</option>
-                                @foreach ($cities as $id => $name)
-                                    <option value="{{ $id }}"{{ old('to') || request('to') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
-                            </select>
-                            <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
+            <div class="row my-2">
+                <div class="col-md-4 mb-3">
+                    <div class="input-group">
+                    <input type="search" class="form-control" id="search" placeholder="@lang('global.search')">
+                    <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-                    <div class="col-md-2"></div>
-                    @can('Excel Export')
-                    <div class="col-md-6">
-                        <div class="d-flex" style="float:right">
-                            <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
-                                {{ trans('global.excel') }} {{ trans('global.export') }}
-                            </button>
-                        </div>
-                    </div>
-                    @endcan
                 </div>
-            </form>
+                <div class="col-4"></div>
+                <div class="col-md-4 col-12 mb-3 d-flex justify-content-end">
+                    <form action="{{ route('admin.report') }}" method="GET">
+                        @can('Excel Export')
+                        <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
+                            {{ trans('global.excel') }} {{ trans('global.export') }}
+                        </button>
+                        @endcan
+                    </form>
+                </div>
+            </div>
             <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <th>@lang('global.no')</th>
-                    <th>@lang('cruds.track.title_singular')</th>
-                    <th>@lang('global.quantity')</th>
-                    <th>@lang('global.total')</th>
-                    <th>@lang('global.transportation_cost') </th>
-                    <th>@lang('global.average_date') </th>
+            <table class="table table-bordered table-striped data-table" style="border: 1px solid #959598; margin-bottom: 50px;">
+                    <thead class="text-center align-middle">
+                        <tr>
+                            <th rowspan="2">{{ trans('global.no') }}</th>
+                            <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
+                            <th rowspan="2">{{ trans('global.expense') }}</th>
+                            <th colspan="2">{{ trans('global.oil') }}</th>
+                            <th colspan="2">{{ trans('global.road_cost') }}</th>
+                            <th rowspan="2">{{ trans('global.food_cost') }}</th>
+                            <th rowspan="2">{{ trans('global.other_cost') }}</th>
+                            <th rowspan="2">{{ trans('global.total') }}</th>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('global.from') }}</th>
+                            <th>{{ trans('global.to') }}</th>
+                            <th>{{ trans('global.liter') }}</th>
+                            <th>{{ trans('global.price') }}</th>
+                            <th>{{ trans('global.check') }}</th>
+                            <th>{{ trans('global.gate') }}</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                        @forelse ($reports as $index => $report)
-                            <tr id="row{{ $report->id }}">
-                                <td>{{ $index+1 }}</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
+                    <tbody class="text-center align-middle">
+                        @forelse ($reports as $index => $track)
+                            <tr id="row{{ $track->id }}">
+                                <td class="text-center">{{ $index + 1 }}</td>
+                                <td>
+                                    @foreach ($track->fromcities as $city)
+                                        <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($track->tocities as $city)
+                                        <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
+                                    @endforeach
+                                </td>
+                                <td>{{ number_format($track->expense) }}</td>
+                                <td>{{ number_format($track->total_oil) }}</td>
+                                <td>{{ number_format($track->total_price) }}</td>
+                                <td>{{ number_format($track->check_cost) }}</td>
+                                <td>{{ number_format($track->gate_cost) }}</td>
+                                <td>{{ number_format($track->food_cost) }}</td>
+                                <td>{{ number_format($track->other_cost) }}</td>
+                                <td>{{ number_format($track->total) }}</td>
                             </tr>
                         @empty
                         <tr>
-                            <td colspan="7" class="text-center">
+                            <td colspan="18" class="text-center">
                                 {{ trans('global.no_data_found') }}
                             </td>
                         </tr>
@@ -87,6 +98,15 @@
 @endsection
 @section('scripts')
 <script>
+    var table = $('.data-table').DataTable({
+        sPaginationType: "first_last_numbers",
+        autoWidth: false,
+        dom: "tp",
+        pageLength: 30,
+    });
+    $('#search').on( 'keyup', function () {
+        table.search( this.value ).draw();
+    } );
     flatpickr('#from_date', {
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format

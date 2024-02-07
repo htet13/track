@@ -21,7 +21,7 @@
                 <tbody>
                     <tr>
                         <th>{{ trans('global.remarks') }}</th>
-                        <td>{{ $track->remark }}</td>
+                        <td>{!! $track->remark !!}</td>
                     </tr>
                     <tr>
                         <th>{{ trans('global.created_at') }}</th>

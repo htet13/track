@@ -32,7 +32,7 @@ class ReportController extends Controller
 
         if($request->btn == "Export")
         {
-            return Excel::download(new ReportExport($reports),'report-sale'.now().'.xlsx');
+            return Excel::download(new ReportExport($reports),'report-'.now().'.xlsx');
         }
 
         return view('admin.reports.index', compact('reports','cities'));

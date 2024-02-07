@@ -16,46 +16,62 @@
 
     <section class="section dashboard">
         <div class="row">
-
-            <!-- Left side columns -->
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-12 col-xl-12">
                 <div class="row">
-                    <!-- Reports -->
                     <div class="col-12">
-                      @include('admin.dashboard.purchase')
+                        <form action="{{ route('admin.home') }}" method="GET" class="mb-4">
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
+                                        <input type="text" id="to_date" name="to_date" class="form-control" placeholder="To Date" value="{{ request('to_date') }}" />
+                                        <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        @include('admin.dashboard.issuer')
+                        @if(!$tracks->isEmpty())
                         <div class="card">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <li><a class="dropdown-item" href="{{ route('admin.home', ['interval' => 'weekly']) }}">Weekly Chart</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('admin.home', ['interval' => 'monthly']) }}">Monthly Chart</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('admin.home', ['interval' => 'yearly']) }}">Yearly Chart</a></li>
-                                </ul>
+                            <div class="row m-3">
+                                <div class="col-12">
+                                    <div id="lineChart"></div>
+                                </div>
                             </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">မှတ်တမ်းများ</h5>
-
-                                <!-- Line Chart -->
-                                <div id="reportsChart"></div>
-                                
-                            </div>
-
                         </div>
-                    </div><!-- End Reports -->
-
+                        <div class="card">
+                            <div class="row m-1 border rounded">
+                                <div class="col-md-6 col-12" style="background-color: antiquewhite;">
+                                    <div id="pieChart"></div>
+                                </div>
+                                <div class="col-md-6 col-12" style="background-color: #8db5d8;">
+                                    <div id="barChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
                 </div>
-            </div><!-- End Left side columns -->
+            </div>
         </div>
     </section>
-</main><!-- End #main -->
+</main>
 
 @endsection
 @section('scripts')
 @include('admin.dashboard.chart')
+<script>
+    flatpickr('#from_date', {
+        enableTime: false, // If you want to enable time as well
+        dateFormat: "Y-m-d", // Specify your desired date format
+        placeholder: "From Date"
+    });
+
+    flatpickr('#to_date', {
+        enableTime: false, // If you want to enable time as well
+        dateFormat: "Y-m-d", // Specify your desired date format
+        placeholder: "To Date"
+    });
+</script>
 @endsection
 

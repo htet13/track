@@ -194,7 +194,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="mb-2" for="remark">@lang('global.remarks')</label>
-                                <textarea type="text" name="remark" id="remark"  class="form-control {{ $errors->has('remark') ? 'is-invalid' : '' }}">
+                                <textarea name="remark" id="remark" rows="4" cols="50" class="form-control summernote {{ $errors->has('remark') ? 'is-invalid' : '' }}">
                                     {{ $track ? $track->remark : old('remark') }}
                                 </textarea>
                                 @if($errors->has('remark'))

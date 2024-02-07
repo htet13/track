@@ -42,13 +42,19 @@ class ReportExport implements FromView, WithColumnFormatting, WithEvents
                 $event->sheet->getColumnDimension('A')->setWidth(5); // Assuming 'A' is the first column
                 $event->sheet->getColumnDimension('B')->setWidth(20); // Assuming 'B' is the second column
                 $event->sheet->getColumnDimension('C')->setWidth(20); 
-                $event->sheet->getColumnDimension('D')->setWidth(15); 
+                $event->sheet->getColumnDimension('D')->setWidth(20); 
                 $event->sheet->getColumnDimension('E')->setWidth(20); 
+                $event->sheet->getColumnDimension('F')->setWidth(15); 
+                $event->sheet->getColumnDimension('G')->setWidth(15); 
+                $event->sheet->getColumnDimension('H')->setWidth(15); 
+                $event->sheet->getColumnDimension('I')->setWidth(15); 
+                $event->sheet->getColumnDimension('J')->setWidth(15); 
+                $event->sheet->getColumnDimension('K')->setWidth(15); 
 
                 // Set static row height for all rows
-                $event->sheet->getDefaultRowDimension()->setRowHeight(25);
+                $event->sheet->getDefaultRowDimension()->setRowHeight(50);
 
-                $event->sheet->getStyle('A:E')->applyFromArray([
+                $event->sheet->getStyle('A:K')->applyFromArray([
                     'alignment' => [
                         'horizontal' => Alignment::HORIZONTAL_CENTER,
                         'vertical'   => Alignment::VERTICAL_CENTER,
