@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'web_title' => 'အရောင်း/ အဝယ်',
+    'web_title' => 'KeyTech',
     'dashboard' => 'ပင်မစာမျက်နှာ',
     'no'        =>  'စဉ်',
     'name'      => 'အမည်',

@@ -1403,6 +1403,24 @@ body::-webkit-scrollbar {
     border-color: #031F63 !important;
 }
 
+.btn-outline-gold {
+    border-bottom: 5px solid #031F63 !important;
+}
+
+@media (min-width: 768px) {
+    .barchart-border-right {
+        border-right: 5px solid #DEE2E6
+    }    
+}
+
+@media (max-width: 1024px) {
+    .custom-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }    
+}
+
 body {
     color: #031F63 !important;
 }

@@ -32,7 +32,7 @@
                     <thead class="text-center align-middle">
                         <tr>
                             <th rowspan="2">{{ trans('global.no') }}</th>
-                            <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
+                            <th colspan="3">{{ trans('cruds.track.title_singular') }}</th>
                             <th rowspan="2">{{ trans('global.expense') }}</th>
                             <th colspan="2">{{ trans('global.oil') }}</th>
                             <th colspan="2">{{ trans('global.road_cost') }}</th>
@@ -43,6 +43,7 @@
                         <tr>
                             <th>{{ trans('global.from') }}</th>
                             <th>{{ trans('global.to') }}</th>
+                            <th>အကြိမ်ရေ</th>
                             <th>{{ trans('global.liter') }}</th>
                             <th>{{ trans('global.price') }}</th>
                             <th>{{ trans('global.check') }}</th>
@@ -63,6 +64,7 @@
                                         <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
                                     @endforeach
                                 </td>
+                                <td>{{ $track->times }}</td>
                                 <td>{{ number_format($track->expense) }}</td>
                                 <td>{{ number_format($track->total_oil) }}</td>
                                 <td>{{ number_format($track->total_price) }}</td>

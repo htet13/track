@@ -32,23 +32,21 @@
                         </form>
                         @include('admin.dashboard.issuer')
                         @if(!$tracks->isEmpty())
-                        <div class="card">
+                        <!-- <div class="card">
                             <div class="row m-3">
                                 <div class="col-12">
                                     <div id="lineChart"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
+                        </div> -->
                             <div class="row m-1 border rounded">
-                                <div class="col-md-6 col-12" style="background-color: antiquewhite;">
-                                    <div id="pieChart"></div>
-                                </div>
-                                <div class="col-md-6 col-12" style="background-color: #b8c2ca;">
+                                <div class="col-md-6 col-12 barchart-border-right">
                                     <div id="barChart"></div>
                                 </div>
+                                <div class="col-md-6 col-12 custom-center" >
+                                    <div id="pieChart"></div>
+                                </div>
                             </div>
-                        </div>
                         @endif
                     </div>
                 </div>

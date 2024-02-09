@@ -60,7 +60,6 @@ class TrackStoreRequest extends FormRequest
             'check_cost' => 'required',
             'gate_cost' => 'required',
             'food_cost' =>  'required',
-            'total'     =>  'required',
             'remark'    =>  'nullable'
         ];
     }

@@ -1,6 +1,9 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
-
+<div class="btn-outline-gold p-2 d-flex flex-column justify-content-center align-items-center">
+    <strong class="text-center">Logistics System</strong>
+    <span style="font-size: 12px;">( Partial Version )</span>
+</div>
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/home*') ? 'collapsed' : '' }}" href="{{ route('admin.home', ['interval' => 'weekly']) }}">

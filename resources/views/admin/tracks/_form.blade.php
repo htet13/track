@@ -179,20 +179,6 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
-                                <label class="required mb-2" for="total">@lang('global.total')</label>
-                                <input type="number" name="total" placeholder="@lang('global.number_placeholder')" id="total" value="{{ $track ? $track->total : old('total') }}"  class="form-control {{ $errors->has('total') ? 'is-invalid' : '' }}"/>
-                                @if($errors->has('total'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('total') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line-break"></div>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
-                            <div class="form-group">
                                 <label class="mb-2" for="remark">@lang('global.remarks')</label>
                                 <textarea name="remark" id="remark" rows="4" cols="50" class="form-control summernote {{ $errors->has('remark') ? 'is-invalid' : '' }}">
                                     {{ $track ? $track->remark : old('remark') }}
