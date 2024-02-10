@@ -106,13 +106,27 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @yield('scripts')
 <script type="text/javascript">
-    $('input[type="number"]').on('input', function() {
-            // Remove non-numeric characters using a regular expression
-            $(this).val($(this).val().replace(/[^0-9]/g));
-        });
+    $('body').on('input', 'input[type="number"]', function() {
+        // Remove non-numeric characters using a regular expression
+        $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    });
     $(window).on('load', function() {
         $('#preloader').hide();
     });
+    var table = $('.table').DataTable({
+        sPaginationType: "first_last_numbers",
+        autoWidth: false,
+        dom: "tp",
+        pageLength: 30,
+        language: {
+            "lengthMenu": "Display -- records per page",
+            "zeroRecords": "အချက်အလက်များ မရှိပါ။",
+            "infoEmpty": "အချက်အလက်များ မရှိပါ။"
+        }
+    });
+    $('#search').on( 'keyup', function () {
+        table.search( this.value ).draw();
+    } );
 </script>
 
 </html>

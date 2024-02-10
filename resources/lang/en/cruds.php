@@ -35,6 +35,7 @@ return [
     'track' => [
         'title' => 'ခရီးစဉ်များ',
         'title_singular' => 'ခရီးစဉ်',
+        'action' => 'မှတ်ချက်များ'
     ],
     'report' => [
         'title' => 'မှတ်တမ်းများ',

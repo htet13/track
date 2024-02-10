@@ -37,12 +37,12 @@ class Track extends Model
 
     public function fromcities()
     {
-        return $this->belongsToMany(City::class,'fromcities_tracks');
+        return $this->belongsToMany(City::class,'fromcities_tracks')->withTrashed();
     }
 
     public function tocities()
     {
-        return $this->belongsToMany(City::class,'tocities_tracks');
+        return $this->belongsToMany(City::class,'tocities_tracks')->withTrashed();
     }
 
     public function oilCosts()
@@ -57,21 +57,21 @@ class Track extends Model
 
     public function carNo()
     {
-        return $this->belongsTo(CarNo::class);
+        return $this->belongsTo(CarNo::class)->withTrashed();
     }
 
     public function issuer()
     {
-        return $this->belongsTo(Issuer::class);
+        return $this->belongsTo(Issuer::class)->withTrashed();
     }
 
     public function driver()
     {
-        return $this->belongsTo(Driver::class);
+        return $this->belongsTo(Driver::class)->withTrashed();
     }
 
     public function spare()
     {
-        return $this->belongsTo(Spare::class);
+        return $this->belongsTo(Spare::class)->withTrashed();
     }
 }

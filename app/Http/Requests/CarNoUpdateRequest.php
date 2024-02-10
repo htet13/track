@@ -25,6 +25,7 @@ class CarNoUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:car_nos,name,'.$this->car_no->id,
+            'category' => 'nullable'
         ];
     }
 }

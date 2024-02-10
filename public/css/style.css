@@ -345,7 +345,7 @@ h6 {
 
 /* Bordered Tabs */
 .nav-tabs-bordered {
-    border-bottom: 2px solid #ebeef4;
+    border-bottom: 2px solid #031F63;
 }
 
 .nav-tabs-bordered .nav-link {
@@ -1450,4 +1450,8 @@ body {
 .current {
     background-color: #E8E189;
     color: #031F63;
+}
+
+.other-border-bottom {
+    border-bottom: 1px solid #031F63;
 }

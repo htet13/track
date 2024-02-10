@@ -4,20 +4,20 @@
 {{-- sweet alert --}}
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 <style>
-.delete{
-    cursor: pointer;
-}
+    .delete {
+        cursor: pointer;
+    }
 </style>
 @endsection
 @section('content')
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>{{ trans('cruds.role.title') }}</h1>
+        <h1>{{ trans('cruds.role.title') }}</h1>
     </div><!-- End Page Title -->
 
     @if (Session::has('msg'))
-    <div class="alert @if(Session::get("status") == 'true') alert-success @else alert-danger @endif alert-dismissible fade show" role="alert">
+    <div class="alert @if(Session::get(" status")=='true' ) alert-success @else alert-danger @endif alert-dismissible fade show" role="alert">
         {{ Session::get("msg") }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -33,26 +33,26 @@
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
-                    <thead>
-                    <th>{{ trans('global.no') }}</th>
-                    <th>{{ trans('global.name') }}</th>
-                    <th>{{ trans('global.created_at') }}</th>
-                    <th>{{ trans('global.actions') }}</th>
+                    <thead class="text-center align-middle">
+                        <th>{{ trans('global.no') }}</th>
+                        <th>{{ trans('global.name') }}</th>
+                        <th>{{ trans('global.created_at') }}</th>
+                        <th>{{ trans('global.actions') }}</th>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center align-middle">
                         @forelse ($roles as $role)
-                            <tr id="row{{ $role->id }}">
-                                <td>{{ $loop->iteration + $roles->firstItem() - 1 }}</td>
+                        <tr id="row{{ $role->id }}">
+                            <td>{{ $loop->iteration + $roles->firstItem() - 1 }}</td>
                             <td>{{ $role->name }}</td>
                             <td>{{ $role->created_at->format('d-m-Y | h:i:s') }}</td>
                             <td>
                                 <div class="d-flex">
-                                        <a href="{{ route('admin.role.show', $role) }}" class="pe-3" title="Role Details">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </a>
-                                        <a href="{{ route('admin.role.edit', $role) }}" class="pe-3" title="Edit Role Details">
-                                            <i class="fa-regular fa-pen-to-square text-success"></i>
-                                        </a>
+                                    <a href="{{ route('admin.role.show', $role) }}" class="pe-3" title="Role Details">
+                                        <i class="fa-regular fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('admin.role.edit', $role) }}" class="pe-3" title="Edit Role Details">
+                                        <i class="fa-regular fa-pen-to-square text-success"></i>
+                                    </a>
                                     <form action="{{ route('admin.role.destroy', $role) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
@@ -62,7 +62,7 @@
                                     </form>
                                 </div>
                             </td>
-                            </tr>
+                        </tr>
                         @empty
                         <tr>
                             <td colspan="3" class="text-center">
@@ -84,7 +84,7 @@
         </div>
     </section>
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
 @endsection
 
@@ -92,18 +92,18 @@
 {{-- sweet alert --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 <script>
-$('.delete').on('click', function(){
-    Swal.fire({
-        title: 'Warning!',
-        text: 'Do you really want to delete?',
-        icon: 'warning',
-        confirmButtonText: 'Yes',
-        showCancelButton: true,
-    }).then((result) => {
-        if(result.isConfirmed){
-            $(this).parent().submit()
-        }
+    $('.delete').on('click', function() {
+        Swal.fire({
+            title: '<span class="text-warning">သတိ!</span>',
+            text: "စာရင်းဖျက်သိမ်းခြင်း ပြုလုပ်ရန် သေချာပါသလား။",
+            icon: 'warning',
+            confirmButtonText: 'Yes',
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).parent().submit()
+            }
+        })
     })
-})
 </script>
 @endsection

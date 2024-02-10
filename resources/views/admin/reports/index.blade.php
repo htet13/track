@@ -4,7 +4,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>{{ trans('cruds.report.title') }}</h1>
+        <h1>{{ trans('cruds.report.title') }}</h1>
     </div><!-- End Page Title -->
 
     <section class="report-table">
@@ -12,8 +12,8 @@
             <div class="row my-2">
                 <div class="col-md-4 mb-3">
                     <div class="input-group">
-                    <input type="search" class="form-control" id="search" placeholder="@lang('global.search')">
-                    <button class="btn btn-outline-main" onclick="location.reload()" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="search" class="form-control" id="search" placeholder="@lang('global.search')">
+                        <button class="btn btn-outline-main" onclick="location.reload()" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
                 <div class="col-4"></div>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-            <table class="table table-bordered table-striped data-table" style="border: 1px solid #959598; margin-bottom: 50px;">
+                <table class="table table-bordered table-striped data-table" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <tr>
                             <th rowspan="2">{{ trans('global.no') }}</th>
@@ -52,28 +52,28 @@
                     </thead>
                     <tbody class="text-center align-middle">
                         @forelse ($reports as $index => $track)
-                            <tr id="row{{ $track->id }}">
-                                <td class="text-center">{{ $index + 1 }}</td>
-                                <td>
-                                    @foreach ($track->fromcities as $city)
-                                        <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach ($track->tocities as $city)
-                                        <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
-                                    @endforeach
-                                </td>
-                                <td>{{ $track->times }}</td>
-                                <td>{{ number_format($track->expense) }}</td>
-                                <td>{{ number_format($track->total_oil) }}</td>
-                                <td>{{ number_format($track->total_price) }}</td>
-                                <td>{{ number_format($track->check_cost) }}</td>
-                                <td>{{ number_format($track->gate_cost) }}</td>
-                                <td>{{ number_format($track->food_cost) }}</td>
-                                <td>{{ number_format($track->other_cost) }}</td>
-                                <td>{{ number_format($track->total) }}</td>
-                            </tr>
+                        <tr id="row{{ $track->id }}">
+                            <td class="text-center">{{ $index + 1 }}</td>
+                            <td>
+                                @foreach ($track->fromcities as $city)
+                                <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach ($track->tocities as $city)
+                                <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
+                                @endforeach
+                            </td>
+                            <td>{{ $track->times }}</td>
+                            <td>{{ number_format($track->expense) }}</td>
+                            <td>{{ number_format($track->total_oil) }}</td>
+                            <td>{{ number_format($track->total_price) }}</td>
+                            <td>{{ number_format($track->check_cost) }}</td>
+                            <td>{{ number_format($track->gate_cost) }}</td>
+                            <td>{{ number_format($track->food_cost) }}</td>
+                            <td>{{ number_format($track->other_cost) }}</td>
+                            <td>{{ number_format($track->total) }}</td>
+                        </tr>
                         @empty
                         <tr>
                             <td colspan="18" class="text-center">
@@ -95,20 +95,11 @@
         </div>
     </section>
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
 @endsection
 @section('scripts')
 <script>
-    var table = $('.data-table').DataTable({
-        sPaginationType: "first_last_numbers",
-        autoWidth: false,
-        dom: "tp",
-        pageLength: 30,
-    });
-    $('#search').on( 'keyup', function () {
-        table.search( this.value ).draw();
-    } );
     flatpickr('#from_date', {
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format

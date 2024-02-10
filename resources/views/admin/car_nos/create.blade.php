@@ -24,11 +24,22 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
-                                <label class="required" for="name">{{ trans('global.name') }}</label>
+                                <label class="required" for="name">{{ trans('cruds.car_no.title_singular') }}</label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}">
                                 @if($errors->has('name'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('name') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required" for="category">{{ trans('global.car_category') }}</label>
+                                <input type="text" name="category" id="category" value="{{ old('category') }}" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}">
+                                @if($errors->has('category'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('category') }}
                                     </div>
                                 @endif
                             </div>

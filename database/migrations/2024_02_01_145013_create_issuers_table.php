@@ -16,6 +16,7 @@ class CreateIssuersTable extends Migration
         Schema::create('issuers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

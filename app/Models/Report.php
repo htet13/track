@@ -37,12 +37,12 @@ class Report extends Model
 
     public function fromcities()
     {
-        return $this->belongsToMany(City::class,'fromcities_reports');
+        return $this->belongsToMany(City::class,'fromcities_reports')->withTrashed();
     }
 
     public function tocities()
     {
-        return $this->belongsToMany(City::class,'tocities_reports');
+        return $this->belongsToMany(City::class,'tocities_reports')->withTrashed();
     }
 
     public function oilCosts()

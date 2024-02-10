@@ -16,6 +16,8 @@ class CreateCarNosTable extends Migration
         Schema::create('car_nos', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->string('category')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

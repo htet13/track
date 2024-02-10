@@ -1,4 +1,4 @@
-<label class="border-bottom border-primary mb-2">@lang('global.other_cost')</label>
+<label class="other-border-bottom mb-2">@lang('global.other_cost')</label>
 @php $loopCount = old("other") ? count(old("other.category")) : 1 @endphp
 @if(count($track) > 0 && !old("other"))
     @foreach ($track as $index => $other)

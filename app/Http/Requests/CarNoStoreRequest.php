@@ -25,6 +25,7 @@ class CarNoStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:car_nos,name',
+            'category' => 'nullable'
         ];
     }
 }

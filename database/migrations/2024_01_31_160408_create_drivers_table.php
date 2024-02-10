@@ -16,6 +16,7 @@ class CreateDriversTable extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
