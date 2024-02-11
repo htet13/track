@@ -381,8 +381,8 @@ h6 {
 }
 
 .logo img {
-    max-height: 34px;
-    margin-right: 14px;
+    max-height: 50px;
+    margin-right: 10px;
 }
 
 .logo span {
@@ -1454,4 +1454,21 @@ body {
 
 .other-border-bottom {
     border-bottom: 1px solid #031F63;
+}
+
+.rotate {
+    animation: rotation 2s linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.active, .active i {
+    color: #4154f1 !important;
 }

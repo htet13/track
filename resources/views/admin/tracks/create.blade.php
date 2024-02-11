@@ -1,8 +1,8 @@
-@php $route = route('admin.track.store'); @endphp
+@php $route = route('admin.track.store',$type); @endphp
 @include('admin.tracks._form',
     [   
         'track' => "",
-        'type'=>"create",
+        'form_type'=>"create",
         'method' =>"POST",
         'route' => $route,
         'btn'=>"Submit"

@@ -1,8 +1,8 @@
-@php $route = route('admin.track.update',$track); @endphp
+@php $route = route('admin.track.update',[$type,$track]); @endphp
 @include('admin.tracks._form',
     [   
         'track' => $track,
-        'type'=>"update",
+        'form_type'=>"update",
         'method' =>"PATCH",
         'route' => $route,
         'btn'=>"Update"

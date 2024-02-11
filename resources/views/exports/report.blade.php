@@ -10,6 +10,7 @@
     <tr>
         <th rowspan="2">{{ trans('global.no') }}</th>
         <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
+        <th rowspan="2">အကြိမ်ရေ</th>
         <th rowspan="2">{{ trans('global.expense') }}</th>
         <th colspan="2">{{ trans('global.oil') }}</th>
         <th colspan="2">{{ trans('global.road_cost') }}</th>
@@ -42,6 +43,7 @@
                 @if(!$loop->last)<br>@endif
             @endforeach
         </td>
+        <td>{{ number_format($track->times) }}</td>
         <td>{{ number_format($track->expense) }}</td>
         <td>{{ number_format($track->total_oil) }}</td>
         <td>{{ number_format($track->total_price) }}</td>

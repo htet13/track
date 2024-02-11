@@ -16,7 +16,7 @@ class Report extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'times','expense','total_oil','total_price','check_cost','gate_cost','food_cost','other_cost','total'
+        'type','times','expense','total_oil','total_price','check_cost','gate_cost','food_cost','other_cost','total'
     ];
 
     /**

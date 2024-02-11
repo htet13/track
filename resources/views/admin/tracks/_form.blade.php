@@ -7,8 +7,8 @@
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('admin.track.index') }}"><h1>{{ trans("cruds.track.title") }}</h1></a></li>
-          <li class="breadcrumb-item active">{{ trans('global.info') }} {{ trans('global.'.$type) }}</li>
+          <li class="breadcrumb-item"><a href="{{ route('admin.track.index', $type) }}"><h1>{{ trans("cruds.track.title") }}/ @lang('global.'.$type)</h1></a></li>
+          <li class="breadcrumb-item active">{{ trans('global.info') }} {{ trans('global.'.$form_type) }}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -181,7 +181,7 @@
                             <div class="form-group">
                                 <label class="mb-2" for="remark">@lang('global.remarks')</label>
                                 <textarea name="remark" id="remark" rows="4" cols="50" class="form-control summernote {{ $errors->has('remark') ? 'is-invalid' : '' }}">
-                                    {{ $track ? $track->remark : old('remark') }}
+                                    {{ old('remark') ?? ($track ? $track->remark : old('remark')) }} 
                                 </textarea>
                                 @if($errors->has('remark'))
                                     <div class="invalid-feedback">
@@ -194,7 +194,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div style="float: right">
-                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.track.index') }}">{{ trans('global.cancel') }}</a>
+                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.track.index',$type) }}">{{ trans('global.cancel') }}</a>
                                 <button type="submit" class="btn bg-main text-main btn-sm float-right">{{ trans('global.save') }}</button>
                             </div>
                         </div>

@@ -4,7 +4,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>{{ trans('cruds.report.title') }}</h1>
+        <h1>{{ trans('cruds.report.title') }}/ @lang('global.'.$type)</h1>
     </div><!-- End Page Title -->
 
     <section class="report-table">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-4"></div>
                 <div class="col-md-4 col-12 mb-3 d-flex justify-content-end">
-                    <form action="{{ route('admin.report') }}" method="GET">
+                    <form action="{{ route('admin.report',$type) }}" method="GET">
                         @can('Excel Export')
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}

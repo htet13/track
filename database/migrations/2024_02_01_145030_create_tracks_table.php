@@ -17,6 +17,7 @@ class CreateTracksTable extends Migration
         Schema::create('tracks', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->date('date');
+            $table->enum('type', ['tachileik', 'other'])->default('other');
             $table->uuid('car_no_id');
             $table->integer('expense')->default(0);
             $table->uuid('issuer_id');

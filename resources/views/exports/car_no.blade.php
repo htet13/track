@@ -10,6 +10,7 @@
     <tr class="bg-primary text-white">
       <th><b>စဉ်</b></th>
       <th><b>အမည်</b></th>
+      <th><b>ယာဉ်အမျိုးအစား</b></th>
       <th><b>ဒေတာသွင်းသည့်နေ့</b></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
     <tr>
       <td>{{ $index+1 }}</td>
       <td>{{ $car_no->name }}</td>
+      <td>{{ $car_no->category }}</td>
       <td>{{ $car_no->created_at->format('Y-m-d') }}</td>                
     </tr>
     @endforeach

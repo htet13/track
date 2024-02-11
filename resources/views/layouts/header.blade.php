@@ -2,7 +2,7 @@
 
   <div class="d-flex align-items-center justify-content-between">
     <a href="{{ route('admin.home') }}" class="logo d-flex align-items-center text-decoration-none">
-      <img src="{{ asset('images/header-logo.png') }}" alt="">
+      <img src="{{ asset('images/logo.png') }}" alt="" class="rotate" class="mr-2">
       <span class="d-none d-lg-block">{{ trans('global.web_title') }}</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>

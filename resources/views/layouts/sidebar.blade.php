@@ -83,33 +83,59 @@
 
         @can('Track Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('admin/track*') ? 'collapsed' : '' }}" href="{{ route('admin.track.index') }}">
-                <div class="me-2">
+            <a class="nav-link {{ !request()->is('admin/tachileik/track*') || !request()->is('admin/other/track*')  ? 'collapsed' : '' }} " data-bs-target="#track-nav" data-bs-toggle="collapse" href="#">
+                <div class="me-1">
                     <i class="fa-solid fa-truck"></i>
                 </div>
                 <div class="">
                     <span>{{ trans('cruds.track.title') }}</span>
                 </div>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="track-nav" class="nav-content collapse {{ request()->is('admin/tachileik/track*') || request()->is('admin/other/track*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="{{ request()->is('admin/tachileik/track*') ? 'active' : ''}}" href="{{ route('admin.track.index', 'tachileik') }}">
+                        <i class="bi bi-circle"></i><span>@lang('global.tachileik')</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('admin/other/track*') ? 'active' : '' }}" href="{{ route('admin.track.index', 'other') }}">
+                        <i class="bi bi-circle"></i><span>@lang('global.other')</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         @endcan
 
         @can('Report Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('admin/report*') ? 'collapsed' : '' }} " href="{{ route('admin.report') }}">
-                <div class="me-2">
+        <a class="nav-link {{ !request()->is('admin/other/report*') || !request()->is('admin/tachileik/report*') ? 'collapsed' : '' }}" data-bs-target="#report-nav" data-bs-toggle="collapse" href="#">
+                <div class="me-1">
                     <i class="fa fa-flag"></i>
                 </div>
                 <div class="">
                     <span>{{ trans('cruds.report.title') }}</span>
                 </div>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="report-nav" class="nav-content collapse {{ request()->is('admin/tachileik/report*') || request()->is('admin/other/report*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="{{ request()->is('admin/tachileik/report*') ? 'active' : ''  }}" href="{{ route('admin.report','tachileik') }}">
+                        <i class="bi bi-circle"></i><span>@lang('global.tachileik')</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('admin/other/report*') ? 'active' : '' }}" href="{{ route('admin.report','other') }}">
+                        <i class="bi bi-circle"></i><span>@lang('global.other')</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         @endcan
 
         @can('User Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('admin/user*') ? 'collapsed' : '' }} " data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link {{ !request()->is('admin/user*') || !request()->is('admin/role*') ? 'collapsed' : '' }}" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
                 <div class="me-1">
                     <i class="fa-solid fa-users-gear"></i>
                 </div>
@@ -120,12 +146,12 @@
             </a>
             <ul id="users-nav" class="nav-content collapse {{ request()->is('admin/user*') || request()->is('admin/role*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.user.index') }}">
+                    <a class="{{ request()->is('admin/user*') ? 'active' : '' }}" href="{{ route('admin.user.index') }}">
                         <i class="bi bi-circle"></i><span>{{ trans('cruds.user.title') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.role.index') }}">
+                    <a class="{{ request()->is('admin/role*') ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
                         <i class="bi bi-circle"></i><span>{{ trans('cruds.role.title') }}</span>
                     </a>
                 </li>

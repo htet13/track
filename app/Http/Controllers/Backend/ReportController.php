@@ -25,9 +25,9 @@ class ReportController extends Controller
      * @return \Illuminate\Http\Response
      * @return Collection
      */
-    public function index(ReportFilter $filter,Request $request)
+    public function index(ReportFilter $filter,Request $request, $type)
     {
-        $reports = $this->reportRepository->allWithPaginate($filter,30);
+        $reports = $this->reportRepository->allWithPaginate($filter,30, $type);
         $cities = $this->cityRepository->all();
 
         if($request->btn == "Export")
@@ -35,6 +35,6 @@ class ReportController extends Controller
             return Excel::download(new ReportExport($reports),'report-'.now().'.xlsx');
         }
 
-        return view('admin.reports.index', compact('reports','cities'));
+        return view('admin.reports.index', compact('reports','cities', 'type'));
     }
 }

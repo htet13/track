@@ -13,7 +13,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>{{ trans('cruds.track.title') }}</h1>
+        <h1>{{ trans('cruds.track.title') }}/ @lang('global.'.$type)</h1>
     </div><!-- End Page Title -->
 
     <section class="route-table">
@@ -27,14 +27,14 @@
                 </div>
                 <div class="col-4"></div>
                 <div class="col-md-4 col-12 mb-3 d-flex justify-content-end">
-                    <form action="{{ route('admin.track.index') }}" method="GET">
+                    <form action="{{ route('admin.track.index',$type) }}" method="GET">
                         @can('Excel Export')
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
                         @endcan
 
-                        <a class="btn bg-main text-main" href="{{ route('admin.track.create') }}">
+                        <a class="btn bg-main text-main" href="{{ route('admin.track.create',$type) }}">
                             <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
                         </a>
                     </form>
@@ -121,13 +121,13 @@
                             <td>{{ number_format($track->total) }}</td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{ route('admin.track.show', $track) }}" class="pe-3" title="route Details">
+                                    <a href="{{ route('admin.track.show', [$type,$track]) }}" class="pe-3" title="route Details">
                                         <i class="fa-regular fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('admin.track.edit', $track) }}" class="pe-3" title="Edit route Details">
+                                    <a href="{{ route('admin.track.edit', [$type,$track]) }}" class="pe-3" title="Edit route Details">
                                         <i class="fa-regular fa-pen-to-square text-success"></i>
                                     </a>
-                                    <form action="{{ route('admin.track.destroy', $track) }}" method="POST">
+                                    <form action="{{ route('admin.track.destroy', [$type,$track]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <a class="pe-3 delete text-danger" title="Delete Track">

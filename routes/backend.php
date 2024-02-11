@@ -25,7 +25,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Report
-    Route::get('report', [ReportController::class, 'index'])->name('report');
+    Route::get('{type}/report', [ReportController::class, 'index'])->name('report');
 
     // User
     Route::resource('user', UserController::class);
@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('spare',SpareController::class);
 
     //Track
-    Route::resource('track',TrackController::class);
+    Route::resource('{type}/track',TrackController::class);
 
     // Logout
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');

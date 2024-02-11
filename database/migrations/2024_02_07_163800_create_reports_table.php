@@ -15,6 +15,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->enum('type', ['tachileik', 'other'])->default('other');
             $table->integer('times')->default(0);
             $table->integer('expense')->default(0);
             $table->integer('total_oil')->default(0);
