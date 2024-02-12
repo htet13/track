@@ -6,6 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{{ trans('global.web_title') }}</title>
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,6 +43,7 @@
 </head>
 
 <body>
+@include('sweetalert::alert')
 
 @yield('content')
 
