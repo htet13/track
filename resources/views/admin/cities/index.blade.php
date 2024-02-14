@@ -43,7 +43,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" style="border: 1px solid #959598; margin-bottom: 50px;">
+                <table class="table table-bordered table-striped @if(!$cities->isEmpty()) data-table @endif" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <th>{{ trans('global.no') }}</th>
                         <th>{{ trans('global.name') }}</th>

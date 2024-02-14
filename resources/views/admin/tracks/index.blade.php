@@ -42,7 +42,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" style="border: 1px solid #959598; margin-bottom: 50px;">
+                <table class="table table-bordered table-striped @if(!$tracks->isEmpty()) data-table @endif" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <tr>
                             <th rowspan="2">{{ trans('global.no') }}</th>

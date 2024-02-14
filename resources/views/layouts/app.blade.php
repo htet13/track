@@ -113,8 +113,8 @@
     $(window).on('load', function() {
         $('#preloader').hide();
     });
-    var table = $('.table').DataTable({
-        errMode: none,
+    var table = $('.data-table').DataTable({
+        errMode: "none",
         sPaginationType: "first_last_numbers",
         autoWidth: false,
         dom: "tp",
