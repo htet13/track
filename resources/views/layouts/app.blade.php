@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>ဝယ်ရောင်း</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
+    <title>ACT Logistics Group</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="csrf-token" content="{{ csrf_token() }}">
