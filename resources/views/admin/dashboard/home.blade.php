@@ -62,13 +62,15 @@
     $('#from_date').flatpickr({
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format
-        placeholder: "From Date"
+        placeholder: "From Date",
+	disableMobile: "true"
     });
 
     flatpickr('#to_date', {
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format
-        placeholder: "To Date"
+        placeholder: "To Date",
+	disableMobile: "true"
     });
 </script>
 @endsection
