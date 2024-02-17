@@ -40,7 +40,6 @@ class TrackController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * @return Collection
      */
     public function index(TrackFilter $filter, Request $request, $type)
     {

@@ -21,8 +21,8 @@
             <div class="row my-2">
                 <div class="col-md-4 mb-3">
                     <div class="input-group">
-                        <input type="search" class="form-control" id="search" placeholder="@lang('global.search')">
-                        <button class="btn btn-outline-main" onclick="location.reload()" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="text" class="form-control" id="search" placeholder="@lang('global.search')">
+                        <button class="btn btn-outline-main" onclick="location.reload()" type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <div class="col-4"></div>
@@ -179,16 +179,5 @@
             }
         })
     })
-    flatpickr('#from_date', {
-        enableTime: false, // If you want to enable time as well
-        dateFormat: "Y-m-d", // Specify your desired date format
-        placeholder: "From Date"
-    });
-
-    flatpickr('#to_date', {
-        enableTime: false, // If you want to enable time as well
-        dateFormat: "Y-m-d", // Specify your desired date format
-        placeholder: "To Date"
-    });
 </script>
 @endsection

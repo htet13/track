@@ -59,7 +59,7 @@
 @section('scripts')
 @include('admin.dashboard.chart')
 <script>
-    flatpickr('#from_date', {
+    $('#from_date').flatpickr({
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format
         placeholder: "From Date"

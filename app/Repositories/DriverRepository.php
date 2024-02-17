@@ -16,7 +16,7 @@ class DriverRepository implements DriverRepositoryInterface
 
     public function allWithPaginate($filter,$paginate)
     {
-        return Driver::filter($filter)->paginate($paginate);
+        return Driver::filter($filter)->orderBy('name')->paginate($paginate);
     }
 
     public function create($data)

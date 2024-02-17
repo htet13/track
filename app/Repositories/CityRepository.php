@@ -16,7 +16,7 @@ class CityRepository implements CityRepositoryInterface
 
     public function allWithPaginate($filter,$paginate)
     {
-        return City::filter($filter)->paginate($paginate);
+        return City::filter($filter)->orderBy('name')->paginate($paginate);
     }
 
     public function create($data)

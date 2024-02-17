@@ -16,7 +16,7 @@ class CarNoRepository implements CarNoRepositoryInterface
 
     public function allWithPaginate($filter,$paginate)
     {
-        return CarNo::filter($filter)->paginate($paginate);
+        return CarNo::filter($filter)->orderBy('name')->paginate($paginate);
     }
 
     public function create($data)
