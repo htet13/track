@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{{ trans('global.web_title') }}</title>
+  <title>ACT Logistics Group</title>
   <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
   <meta content="" name="description">
   <meta content="" name="keywords">
