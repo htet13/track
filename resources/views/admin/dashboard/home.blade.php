@@ -25,7 +25,7 @@
                                     <div class="input-group">
                                         <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
                                         <input type="text" id="to_date" name="to_date" class="form-control" placeholder="To Date" value="{{ request('to_date') }}" />
-                                        <button class="btn btn-outline-main" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                        <button class="btn btn-outline-main" type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -63,14 +63,14 @@
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format
         placeholder: "From Date",
-	disableMobile: "true"
+	    disableMobile: "true"
     });
 
     flatpickr('#to_date', {
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format
         placeholder: "To Date",
-	disableMobile: "true"
+	    disableMobile: "true"
     });
 </script>
 @endsection
