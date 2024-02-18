@@ -29,6 +29,7 @@
                 <div class="col-md-4 col-12 mb-3 d-flex justify-content-end">
                     <form action="{{ route('admin.track.index',$type) }}" method="GET">
                         @can('Excel Export')
+                        <input type="hidden" name="page" value="{{ request()->page }}" />
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
