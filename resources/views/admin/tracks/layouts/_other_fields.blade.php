@@ -2,7 +2,7 @@
     <div class="col-xl-6 col-lg-6 col-md-6 col-5 col-sm-5 mb-2">
         <div class="form-group">
             <label class="mb-2" for="category">@if($loop->first) @lang('global.category') @endif</label>
-            <input type="text" value="{{ $fieldValue }}" name="{{ $fieldName }}" class="form-control {{ $errors->has($errorName) ? 'is-invalid' : '' }}" />
+            <input type="text" value="{{ $fieldValue }}" name="{{ $fieldName }}" placeholder="အမျိုးအမည် ထည့်သွင်းပါ။" class="form-control {{ $errors->has($errorName) ? 'is-invalid' : '' }}" />
             @if($errors->has($errorName))
                 <div class="invalid-feedback">
                     {{ $errors->first($errorName) }}

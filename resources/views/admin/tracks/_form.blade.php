@@ -26,7 +26,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="date">@lang('global.date')</label>
-                                <input type="text" name="date" id="date" value="{{ $track ? $track->date : old('date') }}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
+                                <input type="text" name="date" id="date" placeholder="ရက်စွဲ ရွေးချယ်ပါ။" value="{{ $track ? $track->date : old('date') }}"  class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}"/>
                                 @if($errors->has('date'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('date') }}
@@ -180,9 +180,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="mb-2" for="remark">@lang('global.remarks')</label>
-                                <textarea name="remark" id="remark" rows="4" cols="50" class="form-control summernote {{ $errors->has('remark') ? 'is-invalid' : '' }}">
-                                    {{ old('remark') ?? ($track ? $track->remark : old('remark')) }} 
-                                </textarea>
+                                <textarea name="remark" id="remark">{{ old('remark') ?? ($track ? $track->remark : old('remark')) }}</textarea>
                                 @if($errors->has('remark'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('remark') }}

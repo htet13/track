@@ -2,7 +2,8 @@
     flatpickr('#date', {
         enableTime: false, // If you want to enable time as well
         dateFormat: "Y-m-d", // Specify your desired date format
-        placeholder: "To Date"
+        placeholder: "ရက်စွဲရွေးချယ်ပါ။",
+        disableMobile: "true"
     });
     $('#car_no_id').select2({
         width: '100%',
@@ -32,10 +33,9 @@
         width: '100%',
         placeholder: "‌ရွေးချယ်ပါ"
     });
-    $(document).ready(function() {
-        $('.summernote').summernote({
+        $('#remark').summernote({
+            placeholder: 'မှတ်ချက် ရေးသားပါ။',
             height: 100,
             toolbar: false
         });
-    });
 </script>

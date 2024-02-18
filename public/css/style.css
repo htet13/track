@@ -1472,3 +1472,17 @@ body {
 .active, .active i {
     color: #4154f1 !important;
 }
+
+.note-modal {
+    display: none;
+}
+
+.page-link {
+    color: #031F63 !important;
+}
+
+.page-item.active .page-link {
+    background-color: #031F63 !important;
+    border-color: #031F63 !important;
+    color: #E1E889 !important;
+}

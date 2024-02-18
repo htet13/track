@@ -3,7 +3,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-5 col-sm-5 mb-2">
                             <div class="form-group">
                                 <label class="mb-2" for="other[][]"></label>
-                                <input type="text" name="other[category][]" id="category" class="form-control {{ $errors->has('other.category') ? 'is-invalid' : '' }}" />
+                                <input type="text" name="other[category][]" placeholder="အမျိုးအမည် ထည့်သွင်းပါ။" id="category" class="form-control {{ $errors->has('other.category') ? 'is-invalid' : '' }}" />
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 col-md-5 col-5 col-sm-5 mb-2">
