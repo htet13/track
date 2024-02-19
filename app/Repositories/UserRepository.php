@@ -16,7 +16,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::with('roles')
         ->filter($filter)
-        ->paginate($paginate);
+        ->get();
     }
 
     public function store($data)

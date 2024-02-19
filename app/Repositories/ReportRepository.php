@@ -10,7 +10,7 @@ class ReportRepository implements ReportRepositoryInterface
     public function allWithPaginate($filter, $paginate, $type)
     {
         // Use the query scope to retrieve reports with at least one non-zero value
-        $reports = Report::withNonZeroValues()->whereType($type)->paginate($paginate);
+        $reports = Report::withNonZeroValues()->whereType($type)->get();
 
         return $reports;
     }

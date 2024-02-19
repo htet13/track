@@ -89,7 +89,6 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div style="float:right">
-                        {{ $reports->appends(request()->input())->links() }}
                     </div>
                 </div>
             </div>

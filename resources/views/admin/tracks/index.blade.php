@@ -152,7 +152,6 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div style="float:right">
-                        {{ $tracks->appends(request()->input())->links() }}
                     </div>
                 </div>
             </div>

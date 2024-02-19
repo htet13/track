@@ -16,7 +16,7 @@ class SpareRepository implements SpareRepositoryInterface
 
     public function allWithPaginate($filter,$paginate)
     {
-        return Spare::filter($filter)->orderBy('name')->paginate($paginate);
+        return Spare::filter($filter)->orderBy('name')->get();
     }
 
     public function create($data)

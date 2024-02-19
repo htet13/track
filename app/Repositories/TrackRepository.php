@@ -16,7 +16,7 @@ class TrackRepository implements TrackRepositoryInterface
         return Track::filter($filter)
             ->whereType($type)
             ->orderBy('created_at', 'DESC')
-            ->paginate($paginate);
+            ->get();
     }
 
     public function create($data,$type)

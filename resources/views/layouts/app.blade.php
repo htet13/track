@@ -118,7 +118,7 @@
         sPaginationType: "first_last_numbers",
         autoWidth: false,
         dom: "tp",
-        bPaginate: false,
+        pageLength: 30,
         language: {
             "lengthMenu": "Display -- records per page",
             "zeroRecords": "အချက်အလက်များ မရှိပါ။",

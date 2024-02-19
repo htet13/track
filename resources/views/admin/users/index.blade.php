@@ -54,9 +54,9 @@
                         <th>{{ trans('global.actions') }}</th>
                     </thead>
                     <tbody class="text-center align-middle">
-                        @forelse ($users as $user)
+                        @forelse ($users as $index => $user)
                         <tr id="row{{ $user->id }}">
-                            <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
+                            <td>{{ $index +  1 }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
@@ -97,7 +97,6 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div style="float:right">
-                        {{ $users->appends(request()->input())->links() }}
                     </div>
                 </div>
             </div>
