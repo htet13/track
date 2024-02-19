@@ -15,7 +15,7 @@
         theme: {
             monochrome: {
                 enabled: true,
-                color: '#31316A',
+                color: '#031F63',
             }
         },
         labels: labels,
@@ -61,12 +61,12 @@
         theme: {
             monochrome: {
                 enabled: true,
-                color: '#31316A',
+                color: '#031F63',
             }
         },
         plotOptions: {
             bar: {
-                columnWidth: '25%',
+                columnWidth: '80%',
                 borderRadius: 5,
                 radiusOnLastStackedBar: true,
                 colors: {

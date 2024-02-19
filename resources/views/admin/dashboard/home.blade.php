@@ -25,7 +25,8 @@
                                     <div class="input-group">
                                         <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
                                         <input type="text" id="to_date" name="to_date" class="form-control" placeholder="To Date" value="{{ request('to_date') }}" />
-                                        <button class="btn btn-outline-main" type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                                        <button class="btn btn-outline-main" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
+                                        <a class="btn btn-outline-main" href="{{ route('admin.home') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
