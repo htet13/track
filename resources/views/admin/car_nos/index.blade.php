@@ -18,7 +18,7 @@
 
     <section class="car-no-table">
         <div class="card p-2">
-        <form action="{{ route('admin.car-no.index') }}" method="GET">
+            <form action="{{ route('admin.car-no.index') }}" method="GET">
                 <div class="row my-2">
                     <div class="col-md-4 mb-3">
                         <div class="input-group">
