@@ -28,12 +28,15 @@ class TrackRepository implements TrackRepositoryInterface
             $track = Track::create($data);
             $oldtracks = Report::get();
 
-            $oldtracks = Report::get();
+            $reportTrack = DB::table('reports_tracks')->where('track_id',$track->id);
+            if($reportTrack){
+                $reportTrack->delete();
+            }
 
             if ($oldtracks->isEmpty()) {
-                $this->createNewReport($data, $type);
+                $this->createNewReport($track, $data, $type);
             } else {
-                $this->updateOrCreateReport($data, $oldtracks, $type);
+                $this->updateOrCreateReport($track, $data, $oldtracks, $type);
             }
 
             $track->fromcities()->sync($data['fromcities']);
@@ -100,6 +103,11 @@ class TrackRepository implements TrackRepositoryInterface
         try {
             $oldtracks = Report::get();
 
+            $reportTrack = DB::table('reports_tracks')->where('track_id',$track->id);
+            if($reportTrack){
+                $reportTrack->delete();
+            }
+
             foreach ($oldtracks as $oldtrack) {
                 $fromcities = $track->fromcities->pluck('id')->toArray() === ($oldtrack->fromcities->pluck('id')->toArray());
                 $tocities = $track->tocities->pluck('id')->toArray() === ($oldtrack->tocities->pluck('id')->toArray());
@@ -118,7 +126,7 @@ class TrackRepository implements TrackRepositoryInterface
                 }
             }
 
-            $this->updateOrCreateReport($data, $oldtracks, $type);
+            $this->updateOrCreateReport($track, $data, $oldtracks, $type);
             $data['total'] = $this->getTotal($data);
             $track->update($data);
             $track->fromcities()->sync($data['fromcities']);
@@ -177,6 +185,7 @@ class TrackRepository implements TrackRepositoryInterface
             return $track;
         } catch (Exception $e) {
             DB::rollback();
+            dd($e);
             return false;
         }
     }
@@ -225,7 +234,7 @@ class TrackRepository implements TrackRepositoryInterface
         return $total;
     }
 
-    function createNewReport($data, $type)
+    function createNewReport($track, $data, $type)
     {
         $data['type'] = $type;
         $data['total_oil'] = array_sum($data['oil']['liter']);
@@ -235,11 +244,12 @@ class TrackRepository implements TrackRepositoryInterface
         $data['times'] = 1;
         $report = Report::create($data);
 
+        $report->reportTracks()->sync([$track->id]);
         $report->fromcities()->sync($data['fromcities']);
         $report->tocities()->sync($data['tocities']);
     }
 
-    function updateOrCreateReport($data, $oldtracks, $type)
+    function updateOrCreateReport($track, $data, $oldtracks, $type)
     {
         $isSame = false;
         foreach ($oldtracks as $oldtrack) {
@@ -257,13 +267,14 @@ class TrackRepository implements TrackRepositoryInterface
                 $combineData['gate_cost'] = $oldtrack->gate_cost + $data['gate_cost'];
                 $combineData['food_cost'] = $oldtrack->food_cost + $data['food_cost'];
                 $combineData['total'] = $oldtrack->total + $this->getTotal($data);
-                $nes = $oldtrack->update($combineData);
+                $oldtrack->update($combineData);
+                DB::table('reports_tracks')->insert(['track_id' => $track->id, 'report_id' => $oldtrack->id]);
                 break;
             }
         }
 
         if (!$isSame) {
-            $this->createNewReport($data, $type);
+            $this->createNewReport($track, $data, $type);
         }
     }
 }

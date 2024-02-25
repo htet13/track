@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     // Report
     Route::get('{type}/report', [ReportController::class, 'index'])->name('report');
+    Route::get('{type}/report/{report}', [ReportController::class, 'show'])->name('report.show');
 
     // User
     Route::resource('user', UserController::class);

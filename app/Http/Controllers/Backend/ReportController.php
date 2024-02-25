@@ -9,6 +9,7 @@ use App\Repositories\Interfaces\ReportRepositoryInterface;
 use App\Repositories\Interfaces\CityRepositoryInterface;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Filters\ReportFilter;
+use App\Models\Report;
 
 class ReportController extends Controller
 {
@@ -36,5 +37,10 @@ class ReportController extends Controller
         }
 
         return view('admin.reports.index', compact('reports','cities', 'type'));
+    }
+
+    public function show($type, Report $report)
+    {
+        return view('admin.reports.show', compact('report','type'));
     }
 }

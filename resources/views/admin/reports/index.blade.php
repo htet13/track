@@ -40,6 +40,7 @@
                             <th rowspan="2">{{ trans('global.food_cost') }}</th>
                             <th rowspan="2">{{ trans('global.other_cost') }}</th>
                             <th rowspan="2">{{ trans('global.total') }}</th>
+                            <th rowspan="2">{{ trans('global.actions') }}</th>
                         </tr>
                         <tr>
                             <th>{{ trans('global.from') }}</th>
@@ -52,28 +53,33 @@
                         </tr>
                     </thead>
                     <tbody class="text-center align-middle">
-                        @forelse ($reports as $index => $track)
-                        <tr id="row{{ $track->id }}">
+                        @forelse ($reports as $index => $report)
+                        <tr id="row{{ $report->id }}">
                             <td class="text-center">{{ $index + 1 }}</td>
                             <td>
-                                @foreach ($track->fromcities as $city)
+                                @foreach ($report->fromcities as $city)
                                 <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
                                 @endforeach
                             </td>
                             <td>
-                                @foreach ($track->tocities as $city)
+                                @foreach ($report->tocities as $city)
                                 <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
                                 @endforeach
                             </td>
-                            <td>{{ $track->times }}</td>
-                            <td>{{ number_format($track->expense) }}</td>
-                            <td>{{ number_format($track->total_oil) }}</td>
-                            <td>{{ number_format($track->total_price) }}</td>
-                            <td>{{ number_format($track->check_cost) }}</td>
-                            <td>{{ number_format($track->gate_cost) }}</td>
-                            <td>{{ number_format($track->food_cost) }}</td>
-                            <td>{{ number_format($track->other_cost) }}</td>
-                            <td>{{ number_format($track->total) }}</td>
+                            <td>{{ $report->times }}</td>
+                            <td>{{ number_format($report->expense) }}</td>
+                            <td>{{ number_format($report->total_oil) }}</td>
+                            <td>{{ number_format($report->total_price) }}</td>
+                            <td>{{ number_format($report->check_cost) }}</td>
+                            <td>{{ number_format($report->gate_cost) }}</td>
+                            <td>{{ number_format($report->food_cost) }}</td>
+                            <td>{{ number_format($report->other_cost) }}</td>
+                            <td>{{ number_format($report->total) }}</td>
+                            <td class="text-center">
+                                    <a href="{{ route('admin.report.show', [$type,$report]) }}" title="route Details">
+                                        <i class="fa-regular fa-eye"></i>
+                                    </a>
+                            </td>
                         </tr>
                         @empty
                         <tr>

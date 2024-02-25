@@ -45,6 +45,11 @@ class Report extends Model
         return $this->belongsToMany(City::class,'tocities_reports')->withTrashed();
     }
 
+    public function reportTracks()
+    {
+        return $this->belongsToMany(Track::class,'reports_tracks');
+    }
+
     public function oilCosts()
     {
         return $this->hasMany(OilCost::class);

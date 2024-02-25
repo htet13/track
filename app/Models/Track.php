@@ -45,6 +45,11 @@ class Track extends Model
         return $this->belongsToMany(City::class,'tocities_tracks')->withTrashed();
     }
 
+    public function reportTracks()
+    {
+        return $this->belongsToMany(Report::class,'reports_tracks');
+    }
+
     public function driverTracks()
     {
         return $this->hasMany(DriverTrack::class);

@@ -101,7 +101,7 @@
                                 <table class="table table-bordered table-striped" style="margin: unset;">
                                     <tbody>
                                     @foreach ($track->driverTracks as $driverTrack)
-                                        <tr style="border-bottom: 1px solid gray;">
+                                        <tr @if(!$loop->last) style="border-bottom: 1px solid gray;" @endif>
                                             <td style="border-right: 1px solid gray;">{{ $driverTrack->driver->name }}</td>
                                             <td style="border-right: 1px solid gray;">{{ $driverTrack->fee }}</td>
                                             <td>@lang('global.'.$driverTrack->is_paid)</td>
@@ -114,7 +114,7 @@
                                 <table class="table table-bordered table-striped" style="margin: unset;">
                                     <tbody>
                                     @foreach ($track->spareTracks as $spareTrack)
-                                        <tr style="border-bottom: 1px solid gray;">
+                                        <tr @if(!$loop->last) style="border-bottom: 1px solid gray;" @endif>
                                             <td style="border-right: 1px solid gray;">{{ $spareTrack->spare->name }}</td>
                                             <td style="border-right: 1px solid gray;">{{ $spareTrack->fee }}</td>
                                             <td>@lang('global.'.$spareTrack->is_paid)</td>
