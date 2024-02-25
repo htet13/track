@@ -17,7 +17,8 @@ class CarNoFilter extends Filters
 	 */
 	public function name($value)
 	{
-		return $this->builder->where('name','LIKE',"%$value%");
+		return $this->builder->where('name','LIKE',"%$value%")
+		->orWhere('category', 'LIKE', '%' . $value . '%');
 	}
 
 	public function from_date($value)

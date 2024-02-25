@@ -50,17 +50,21 @@ class TrackExport implements FromView, WithColumnFormatting, WithEvents
                 $event->sheet->getColumnDimension('I')->setWidth(15); 
                 $event->sheet->getColumnDimension('J')->setWidth(15); 
                 $event->sheet->getColumnDimension('K')->setWidth(15);
-		$event->sheet->getColumnDimension('L')->setWidth(15);
-		$event->sheet->getColumnDimension('M')->setWidth(15);
-		$event->sheet->getColumnDimension('N')->setWidth(15);
-		$event->sheet->getColumnDimension('O')->setWidth(15);
-		$event->sheet->getColumnDimension('P')->setWidth(15);
-		$event->sheet->getColumnDimension('Q')->setWidth(15);
+                $event->sheet->getColumnDimension('L')->setWidth(15);
+                $event->sheet->getColumnDimension('M')->setWidth(15);
+                $event->sheet->getColumnDimension('N')->setWidth(15);
+                $event->sheet->getColumnDimension('O')->setWidth(15);
+                $event->sheet->getColumnDimension('P')->setWidth(15);
+                $event->sheet->getColumnDimension('Q')->setWidth(15);
+                $event->sheet->getColumnDimension('R')->setWidth(15);
+                $event->sheet->getColumnDimension('S')->setWidth(15);
+                $event->sheet->getColumnDimension('T')->setWidth(15);
+                $event->sheet->getColumnDimension('U')->setWidth(15);
 
                 // Set static row height for all rows
                 $event->sheet->getDefaultRowDimension()->setRowHeight(50);
 
-                $event->sheet->getStyle('A:Q')->applyFromArray([
+                $event->sheet->getStyle('A:U')->applyFromArray([
                     'alignment' => [
                         'horizontal' => Alignment::HORIZONTAL_CENTER,
                         'vertical'   => Alignment::VERTICAL_CENTER,

@@ -18,19 +18,18 @@
 
     <section class="city-table">
         <div class="card p-2">
-
-            <div class="row my-2">
-                <div class="col-md-4 mb-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="search" placeholder="@lang('global.search')">
-                        <button class="btn btn-outline-main" onclick="location.reload()" type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            <form action="{{ route('admin.city.index') }}" method="GET">
+                <div class="row my-2">
+                    <div class="col-md-4 mb-3">
+                        <div class="input-group">
+                            <input type="text" name="name" value="{{ request('name') }}" class="form-control" id="search" placeholder="@lang('global.search')">
+                            <button class="btn btn-outline-main" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
+                            <a class="btn btn-outline-main" href="{{ route('admin.city.index') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4"></div>
-                <div class="col-md-4 col-12 mb-3 d-flex justify-content-end">
-                    <form action="{{ route('admin.city.index') }}" method="GET">
+                    <div class="col-4"></div>
+                    <div class="col-md-4 col-12 mb-3 d-flex justify-content-end">
                         @can('Excel Export')
-                        <input type="hidden" name="page" value="{{ request()->page }}" />
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
@@ -39,12 +38,12 @@
                         <a class="btn bg-main text-main" href="{{ route('admin.city.create') }}">
                             <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
                         </a>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped @if(!$cities->isEmpty()) data-table @endif" style="border: 1px solid #959598; margin-bottom: 50px;">
+                <table class="table table-bordered table-striped" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <th>{{ trans('global.no') }}</th>
                         <th>{{ trans('global.name') }}</th>
@@ -89,6 +88,7 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div style="float:right">
+                        {{ $cities->appends(request()->input())->links() }}
                     </div>
                 </div>
             </div>

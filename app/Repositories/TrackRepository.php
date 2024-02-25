@@ -7,7 +7,6 @@ use Exception;
 use App\Models\Track;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\Interfaces\TrackRepositoryInterface;
-use Illuminate\Support\Collection;
 
 class TrackRepository implements TrackRepositoryInterface
 {
@@ -16,7 +15,7 @@ class TrackRepository implements TrackRepositoryInterface
         return Track::filter($filter)
             ->whereType($type)
             ->orderBy('created_at', 'DESC')
-            ->get();
+            ->paginate($paginate);
     }
 
     public function create($data,$type)
@@ -92,7 +91,6 @@ class TrackRepository implements TrackRepositoryInterface
             return $track;
         } catch (Exception $e) {
             DB::rollback();
-            dd($e);
             return false;
         }
     }

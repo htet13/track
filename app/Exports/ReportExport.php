@@ -50,11 +50,12 @@ class ReportExport implements FromView, WithColumnFormatting, WithEvents
                 $event->sheet->getColumnDimension('I')->setWidth(15); 
                 $event->sheet->getColumnDimension('J')->setWidth(15); 
                 $event->sheet->getColumnDimension('K')->setWidth(15); 
+                $event->sheet->getColumnDimension('L')->setWidth(15); 
 
                 // Set static row height for all rows
                 $event->sheet->getDefaultRowDimension()->setRowHeight(50);
 
-                $event->sheet->getStyle('A:K')->applyFromArray([
+                $event->sheet->getStyle('A:L')->applyFromArray([
                     'alignment' => [
                         'horizontal' => Alignment::HORIZONTAL_CENTER,
                         'vertical'   => Alignment::VERTICAL_CENTER,

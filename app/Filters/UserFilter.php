@@ -18,7 +18,6 @@ class UserFilter extends Filters
 	public function name($value)
 	{
 		return $this->builder->where('name', 'LIKE', '%' . $value . '%')
-        ->orWhere('email', 'LIKE', '%' . $value . '%')
-        ->orWhereRelation('roles', 'name', 'LIKE', '%' . $value . '%');
+        ->orWhere('email', 'LIKE', '%' . $value . '%');
 	}
 }

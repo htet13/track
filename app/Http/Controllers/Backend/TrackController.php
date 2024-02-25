@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Enums\TrackActionModeEnum;
 use App\Exports\TrackExport;
 use App\Filters\TrackFilter;
 use App\Http\Controllers\Controller;
@@ -45,12 +44,16 @@ class TrackController extends Controller
     {
         $tracks = $this->trackRepository->allWithPaginate($filter, 30,$type);
         $cities = $this->cityRepository->all();
+        $car_nos = $this->carNoRepository->all();
+        $issuers = $this->issuerRepository->all();
+        $drivers = $this->driverRepository->all();
+        $spares = $this->spareRepository->all();
 
         if ($request->btn == "Export") {
             return Excel::download(new TrackExport($tracks), 'track' . now() . '.xlsx');
         }
 
-        return view('admin.tracks.index', compact('tracks', 'cities', 'type'));
+        return view('admin.tracks.index', compact('tracks', 'cities', 'type', 'car_nos', 'issuers', 'drivers', 'spares'));
     }
 
     /**

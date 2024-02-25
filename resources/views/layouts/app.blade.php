@@ -34,7 +34,7 @@
     <link href="{{ asset('vendors/quill/quill.snow.css') }}" rel="stylesheet">
     <link href="{{ asset('vendors/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('vendors/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendors/simple-datatables/style.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('vendors/simple-datatables/style.css') }}" rel="stylesheet"> -->
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -49,7 +49,6 @@
     <!-- Or for RTL support -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <link href="{{ asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     @yield('styles')
     <style>
@@ -89,7 +88,7 @@
 <script src="{{ asset('vendors/chart.js/chart.umd.js') }}"></script>
 <script src="{{ asset('vendors/echarts/echarts.min.js') }}"></script>
 <script src="{{ asset('vendors/quill/quill.min.js') }}"></script>
-<script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script>
+<!-- <script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script> -->
 <script src="{{ asset('vendors/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('vendors/php-email-form/validate.js') }}"></script>
 
@@ -102,7 +101,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @yield('scripts')
 <script type="text/javascript">
@@ -113,21 +112,27 @@
     $(window).on('load', function() {
         $('#preloader').hide();
     });
-    var table = $('.data-table').DataTable({
-        errMode: "none",
-        sPaginationType: "first_last_numbers",
-        autoWidth: false,
-        dom: "tp",
-        pageLength: 30,
-        language: {
-            "lengthMenu": "Display -- records per page",
-            "zeroRecords": "အချက်အလက်များ မရှိပါ။",
-            "infoEmpty": "အချက်အလက်များ မရှိပါ။"
-        }
+    flatpickr('#date', {
+        enableTime: false, // If you want to enable time as well
+        dateFormat: "Y-m-d", // Specify your desired date format
+        placeholder: "ရက်စွဲရွေးချယ်ပါ။",
+        disableMobile: "true"
     });
-    $('#search').on( 'keyup', function () {
-        table.search( this.value ).draw();
-    } );
+    // var table = $('.data-table').DataTable({
+    //     errMode: "none",
+    //     sPaginationType: "first_last_numbers",
+    //     autoWidth: false,
+    //     dom: "tp",
+    //     pageLength: 30,
+    //     language: {
+    //         "lengthMenu": "Display -- records per page",
+    //         "zeroRecords": "အချက်အလက်များ မရှိပါ။",
+    //         "infoEmpty": "အချက်အလက်များ မရှိပါ။"
+    //     }
+    // });
+    // $('#search').on( 'keyup', function () {
+    //     table.search( this.value ).draw();
+    // } );
 </script>
 
 </html>

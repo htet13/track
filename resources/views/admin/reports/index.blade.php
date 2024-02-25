@@ -9,27 +9,49 @@
 
     <section class="report-table">
         <div class="card p-2">
-            <div class="row my-2">
-                <div class="col-md-4 mb-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="search" placeholder="@lang('global.search')">
-                        <button class="btn btn-outline-main" onclick="location.reload()" type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            <form action="{{ route('admin.report',$type) }}" method="GET">
+                <div class="row my-2">
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group">
+                            <label class="required mb-2" for="from_city">{{ trans('global.from') }}</label>
+                            <select name="from_city" class="form-control select2 {{ $errors->has('from_city') ? 'is-invalid' : '' }}">
+                                <option value="" disabled selected>{{ trans('global.please_select') }}</option>
+                                @foreach ($cities as $id => $name)
+                                    <option value="{{ $id }}" {{ request('from_city') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group">
+                            <label class="required mb-2" for="to_city">{{ trans('global.to') }}</label>
+                            <select name="to_city" class="form-control select2 {{ $errors->has('to_city') ? 'is-invalid' : '' }}">
+                                <option value="" disabled selected>{{ trans('global.please_select') }}</option>
+                                @foreach ($cities as $id => $name)
+                                    <option value="{{ $id }}" {{ request('to_city') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col-4"></div>
-                <div class="col-md-4 col-12 mb-3 d-flex justify-content-end">
-                    <form action="{{ route('admin.report',$type) }}" method="GET">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6 col-12 mb-3 d-flex justify-content-end">
+                        <button class="btn btn-outline-main me-2" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
+                        <a class="btn btn-outline-main me-2" href="{{ route('admin.track.index',$type) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         @can('Excel Export')
-                        <input type="hidden" name="page" value="{{ request()->page }}" />
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
                         @endcan
-                    </form>
+                        <a class="btn bg-main text-main" href="{{ route('admin.track.create',$type) }}">
+                            <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </form>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped @if(!$reports->isEmpty()) data-table @endif" style="border: 1px solid #959598; margin-bottom: 50px;">
+                <table class="table table-bordered table-striped" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <tr>
                             <th rowspan="2">{{ trans('global.no') }}</th>
@@ -95,6 +117,7 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div style="float:right">
+                        {{ $reports->appends(request()->input())->links() }}
                     </div>
                 </div>
             </div>
@@ -118,4 +141,5 @@
         placeholder: "To Date"
     });
 </script>
+@include('admin.tracks.scripts.common')
 @endsection
