@@ -43,7 +43,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped @if(!$tracks->isEmpty()) data-table @endif" style="border: 1px solid #959598; margin-bottom: 50px;">
+                <table class="table table-bordered table-striped @if(!$tracks->isEmpty()) @endif" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <tr>
                             <th rowspan="2">{{ trans('global.no') }}</th>
@@ -51,7 +51,8 @@
                             <th rowspan="2" class="w-90">{{ trans('cruds.car_no.title_singular') }}</th>
                             <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
                             <th colspan="2">{{ trans('global.expense') }}</th>
-                            <th colspan="3">{{ trans('global.person') }}</th>
+                            <th colspan="3">{{ trans('cruds.driver.title_singular') }}</th>
+                            <th colspan="3">{{ trans('cruds.spare.title_singular') }}</th>
                             <th colspan="2">{{ trans('global.oil') }}</th>
                             <th colspan="2">{{ trans('global.road_cost') }}</th>
                             <th rowspan="2">{{ trans('global.food_cost') }}</th>
@@ -64,9 +65,12 @@
                             <th>{{ trans('global.to') }}</th>
                             <th>{{ trans('global.amount') }}</th>
                             <th>{{ trans('cruds.issuer.title_singular') }}</th>
-                            <th>{{ trans('cruds.driver.title_singular') }}</th>
-                            <th>{{ trans('cruds.spare.title_singular') }}</th>
+                            <th>{{ trans('global.name') }}</th>
                             <th>{{ trans('global.drive_fee') }}</th>
+                            <th>ရှင်း/ မရှင်း</th>
+                            <th>{{ trans('global.name') }}</th>
+                            <th>{{ trans('global.drive_fee') }}</th>
+                            <th>ရှင်း/ မရှင်း</th>
                             <th>{{ trans('global.liter') }}</th>
                             <th>{{ trans('global.price') }}</th>
                             <th>{{ trans('global.check') }}</th>
@@ -93,9 +97,32 @@
                             </td>
                             <td>{{ number_format($track->expense) }}</td>
                             <td>{{ $track->issuer->name }}</td>
-                            <td>{{ $track->driver->name }}</td>
-                            <td>{{ $track->spare->name }}</td>
-                            <td>@lang('global.'.$track->drive_fee)</td>
+                            <td style="padding: unset; margin: unset" colspan="3">
+                                <table class="table table-bordered table-striped" style="margin: unset;">
+                                    <tbody>
+                                    @foreach ($track->driverTracks as $driverTrack)
+                                        <tr style="border-bottom: 1px solid gray;">
+                                            <td style="border-right: 1px solid gray;">{{ $driverTrack->driver->name }}</td>
+                                            <td style="border-right: 1px solid gray;">{{ $driverTrack->fee }}</td>
+                                            <td>@lang('global.'.$driverTrack->is_paid)</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td style="padding: unset; margin: unset" colspan="3">
+                                <table class="table table-bordered table-striped" style="margin: unset;">
+                                    <tbody>
+                                    @foreach ($track->spareTracks as $spareTrack)
+                                        <tr style="border-bottom: 1px solid gray;">
+                                            <td style="border-right: 1px solid gray;">{{ $spareTrack->spare->name }}</td>
+                                            <td style="border-right: 1px solid gray;">{{ $spareTrack->fee }}</td>
+                                            <td>@lang('global.'.$spareTrack->is_paid)</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </td>
                             <td>
                                 @foreach ($track->oilCosts as $oil)
                                 <div>{{ number_format($oil->liter) }}</div>
@@ -140,7 +167,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="18" class="text-center">
+                            <td colspan="22" class="text-center">
                                 {{ trans('global.no_data_found') }}
                             </td>
                         </tr>

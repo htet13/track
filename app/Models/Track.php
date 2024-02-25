@@ -16,7 +16,7 @@ class Track extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'date','type','car_no_id','expense','issuer_id','driver_id','spare_id','drive_fee','check_cost','gate_cost','food_cost','total','remark'
+        'date','type','car_no_id','expense','issuer_id','check_cost','gate_cost','food_cost','total','remark'
     ];
 
     /**
@@ -43,6 +43,16 @@ class Track extends Model
     public function tocities()
     {
         return $this->belongsToMany(City::class,'tocities_tracks')->withTrashed();
+    }
+
+    public function driverTracks()
+    {
+        return $this->hasMany(DriverTrack::class);
+    }
+
+    public function spareTracks()
+    {
+        return $this->hasMany(SpareTrack::class);
     }
 
     public function oilCosts()

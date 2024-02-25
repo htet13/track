@@ -39,6 +39,28 @@ class TrackRepository implements TrackRepositoryInterface
             $track->fromcities()->sync($data['fromcities']);
             $track->tocities()->sync($data['tocities']);
 
+            // Create and attach driver tracks
+            if (isset($data['driver']) && is_array($data['driver'])) {
+                $driverTracks = [];
+                for ($i = 0; $i < count($data['driver']['driver_id']); $i++) {
+                    $driverTracks[$i]['driver_id'] = $data['driver']['driver_id'][$i];
+                    $driverTracks[$i]['fee'] = $data['driver']['fee'][$i];
+                    $driverTracks[$i]['is_paid'] = $data['driver']['is_paid'][$i];
+                }
+                $track->driverTracks()->createMany($driverTracks);
+            }
+
+            // Create and attach spare tracks
+            if (isset($data['spare']) && is_array($data['spare'])) {
+                $spareTracks = [];
+                for ($i = 0; $i < count($data['spare']['spare_id']); $i++) {
+                    $spareTracks[$i]['spare_id'] = $data['spare']['spare_id'][$i];
+                    $spareTracks[$i]['fee'] = $data['spare']['fee'][$i];
+                    $spareTracks[$i]['is_paid'] = $data['spare']['is_paid'][$i];
+                }
+                $track->spareTracks()->createMany($spareTracks);
+            }
+
             // Create and attach other_costs
             if (isset($data['other']['category']) && is_array($data['other']['category'])) {
                 $otherCostsData = [];
@@ -67,6 +89,7 @@ class TrackRepository implements TrackRepositoryInterface
             return $track;
         } catch (Exception $e) {
             DB::rollback();
+            dd($e);
             return false;
         }
     }
@@ -100,6 +123,30 @@ class TrackRepository implements TrackRepositoryInterface
             $track->update($data);
             $track->fromcities()->sync($data['fromcities']);
             $track->tocities()->sync($data['tocities']);
+
+            // Update and attach driver tracks
+            if (isset($data['driver']) && is_array($data['driver'])) {
+                $driverTracks = [];
+                for ($i = 0; $i < count($data['driver']['driver_id']); $i++) {
+                    $driverTracks[$i]['driver_id'] = $data['driver']['driver_id'][$i];
+                    $driverTracks[$i]['fee'] = $data['driver']['fee'][$i];
+                    $driverTracks[$i]['is_paid'] = $data['driver']['is_paid'][$i];
+                }
+                $track->driverTracks()->delete();
+                $track->driverTracks()->createMany($driverTracks);
+            }
+
+            // Update and attach spare tracks
+            if (isset($data['spare']) && is_array($data['spare'])) {
+                $spareTracks = [];
+                for ($i = 0; $i < count($data['spare']['spare_id']); $i++) {
+                    $spareTracks[$i]['spare_id'] = $data['spare']['spare_id'][$i];
+                    $spareTracks[$i]['fee'] = $data['spare']['fee'][$i];
+                    $spareTracks[$i]['is_paid'] = $data['spare']['is_paid'][$i];
+                }
+                $track->spareTracks()->delete();
+                $track->spareTracks()->createMany($spareTracks);
+            }
 
             // Update and attach other_costs
             if (isset($data['other']) && is_array($data['other'])) {

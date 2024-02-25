@@ -5,37 +5,13 @@
         placeholder: "ရက်စွဲရွေးချယ်ပါ။",
         disableMobile: "true"
     });
-    $('#car_no_id').select2({
+    $('.select2').select2({
         width: '100%',
         placeholder: "‌ရွေးချယ်ပါ"
     });
-    $('#fromcities').select2({
-        width: '100%',
-        placeholder: "‌ရွေးချယ်ပါ"
+    $('#remark').summernote({
+        placeholder: 'မှတ်ချက် ရေးသားပါ။',
+        height: 100,
+        toolbar: false
     });
-    $('#tocities').select2({
-        width: '100%',
-        placeholder: "‌ရွေးချယ်ပါ"
-    });
-    $('#issuer_id').select2({
-        width: '100%',
-        placeholder: "‌ရွေးချယ်ပါ"
-    });
-    $('#driver_id').select2({
-        width: '100%',
-        placeholder: "‌ရွေးချယ်ပါ"
-    });
-    $('#spare_id').select2({
-        width: '100%',
-        placeholder: "‌ရွေးချယ်ပါ"
-    });
-    $('#drive_fee').select2({
-        width: '100%',
-        placeholder: "‌ရွေးချယ်ပါ"
-    });
-        $('#remark').summernote({
-            placeholder: 'မှတ်ချက် ရေးသားပါ။',
-            height: 100,
-            toolbar: false
-        });
 </script>

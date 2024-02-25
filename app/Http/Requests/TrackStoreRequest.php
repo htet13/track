@@ -50,13 +50,46 @@ class TrackStoreRequest extends FormRequest
             'oil.liter' => [
                 'array',
             ],
+            'driver.driver_id.*' => [
+                'required'
+            ],
+            'driver.driver_id' => [
+                'array',
+            ],
+            'driver.fee.*' => [
+                'required'
+            ],
+            'driver.fee' => [
+                'array',
+            ],
+            'driver.is_paid.*' => [
+                'required'
+            ],
+            'driver.is_paid' => [
+                'array',
+            ],
+            'spare.spare_id.*' => [
+                'required'
+            ],
+            'spare.spare_id' => [
+                'array',
+            ],
+            'spare.fee.*' => [
+                'required'
+            ],
+            'spare.fee' => [
+                'array',
+            ],
+            'spare.is_paid.*' => [
+                'required'
+            ],
+            'spare.is_paid' => [
+                'array',
+            ],
             'date' => 'required',
             'car_no_id' => 'required',
             'expense' => 'required',
             'issuer_id' => 'required',
-            'driver_id' => 'required',
-            'drive_fee' => 'required',
-            'spare_id'  => 'required',
             'check_cost' => 'required',
             'gate_cost' => 'required',
             'food_cost' =>  'required',
@@ -71,6 +104,12 @@ class TrackStoreRequest extends FormRequest
             'tocities.required' => 'ပို့မည့်မြို့ ရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'oil.price.*.required' => 'ဈေးနှုန်းထည့်သွင်းရန် လိုအပ်ပါသည်။',
             'oil.liter.*.required' => 'လီတာထည့်သွင်းရန် လိုအပ်ပါသည်။',
+            'driver.driver_id.*.required' => 'ယာဉ်မောင်းအမည်ရွေးချယ်ရန် လိုအပ်ပါသည်။',
+            'driver.fee.*.required' => 'ခေါက်ကြေးထည့်သွင်းရန် လိုအပ်ပါသည်။',
+            'driver.is_paid.*.required' => 'ရှင်းပြီး/ မရှင်းရွေးချယ်ရန် လိုအပ်ပါသည်။',
+            'driver.driver_id.*.required' => 'ယာဉ်နောက်လိုက်အမည်ရွေးချယ်ရန် လိုအပ်ပါသည်။',
+            'driver.fee.*.required' => 'ခေါက်ကြေးထည့်သွင်းရန် လိုအပ်ပါသည်။',
+            'driver.is_paid.*.required' => 'ရှင်းပြီး/ မရှင်းရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'date.required' => 'ရက်စွဲ ရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'car_no_id.required' => 'ကားနံပါတ် ရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'expense.required' => 'စရိတ် ထည့်သွင်းရန် လိုအပ်ပါသည်။',

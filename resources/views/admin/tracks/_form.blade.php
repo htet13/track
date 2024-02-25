@@ -39,7 +39,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="car_no_id">@lang('cruds.car_no.title_singular')</label>
-                                <select name="car_no_id" id="car_no_id" class="form-control {{ $errors->has('car_no_id') ? 'is-invalid' : '' }}">
+                                <select name="car_no_id" class="form-control select2 {{ $errors->has('car_no_id') ? 'is-invalid' : '' }}">
                                     <option value="" disabled selected>{{ trans('global.please_select') }}</option>
                                     @foreach ($car_nos as $id => $name)
                                         <option value="{{ $id }}"{{ ($track ? $track->car_no_id : old('car_no_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
@@ -70,7 +70,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="issuer_id">@lang('cruds.issuer.title_singular')</label>
-                                <select name="issuer_id" id="issuer_id" class="form-control {{ $errors->has('issuer_id') ? 'is-invalid' : '' }}">
+                                <select name="issuer_id" id="issuer_id" class="form-control select2 {{ $errors->has('issuer_id') ? 'is-invalid' : '' }}">
                                     <option value="" disabled selected>{{ trans('global.please_select') }}</option>
                                     @foreach ($issuers as $id => $name)
                                         <option value="{{ $id }}"{{ ($track ? $track->issuer_id : old('issuer_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
@@ -85,56 +85,8 @@
                         </div>
                     </div>
                     <div class="line-break"></div>
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
-                            <div class="form-group">
-                                <label class="required mb-2" for="diver_id">@lang('cruds.driver.title_singular')</label>
-                                <select name="driver_id" id="driver_id" class="form-control {{ $errors->has('driver_id') ? 'is-invalid' : '' }}">
-                                    <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                    @foreach ($drivers as $id => $name)
-                                        <option value="{{ $id }}"{{ ($track ? $track->driver_id : old('driver_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('driver_id'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('driver_id') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
-                            <div class="form-group">
-                                <label class="required mb-2" for="spare_id">@lang('cruds.spare.title_singular')</label>
-                                <select name="spare_id" id="spare_id" class="form-control {{ $errors->has('spare_id') ? 'is-invalid' : '' }}">
-                                    <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                    @foreach ($spares as $id => $name)
-                                        <option value="{{ $id }}"{{ ($track ? $track->spare_id : old('spare_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('spare_id'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('spare_id') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
-                            <div class="form-group">
-                                <label class="required mb-2" for="drive_fee">@lang('global.drive_fee')</label>
-                                <select name="drive_fee" id="drive_fee" class="form-control {{ $errors->has('drive_fee') ? 'is-invalid' : '' }}">
-                                    <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                    <option value="paid" {{ ($track ? $track->drive_fee : old('drive_fee')) == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
-                                    <option value="unpaid" {{ ($track ? $track->drive_fee : old('drive_fee')) == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
-                                </select>
-                                @if($errors->has('drive_fee'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('drive_fee') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line-break"></div>
+                    @include('admin.tracks.layouts.driver')
+                    @include('admin.tracks.layouts.spare')
                     @include('admin.tracks.layouts.oil')
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-6 col-sm-6 mb-2">
@@ -207,6 +159,8 @@
 @endsection
 @section('scripts')
 @include('admin.tracks.scripts.liter-price-plus')
+@include('admin.tracks.scripts.driver-track-plus')
+@include('admin.tracks.scripts.spare-track-plus')
 @include('admin.tracks.scripts.other-plus')
 @include('admin.tracks.scripts.common')
 @endsection
