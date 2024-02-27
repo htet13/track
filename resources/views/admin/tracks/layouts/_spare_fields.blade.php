@@ -5,7 +5,7 @@
             <select name="{{ $fieldName }}" class="form-control select2 {{ $errors->has($errorName) ? 'is-invalid' : '' }}">
                 <option value="" selected>{{ trans('global.please_select') }}</option>
                 @foreach ($spares as $id => $name)
-                    <option value="{{ $id }}"{{ ($track ? $fieldValue : old('spare_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
+                    <option value="{{ $id }}"{{ $fieldValue == $id ? 'selected' : '' }}>{{ $name }}</option>
                 @endforeach
             </select>
             @if($errors->has($errorName))
@@ -31,8 +31,8 @@
             <label class="required mb-2" for="is_paid">@if($customLoop->first) @lang('global.paid')/ @lang('global.unpaid') @endif</label>
             <select name="{{ $fieldIsPaidName }}" class="form-control select2 {{ $errors->has($errorIsPaidName) ? 'is-invalid' : '' }}">
                 <option value="" selected>{{ trans('global.please_select') }}</option>
-                <option value="paid" {{ ($track ? $fieldIsPaidValue : old('drive_fee')) == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
-                <option value="unpaid" {{ ($track ? $fieldIsPaidValue : old('drive_fee')) == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
+                <option value="paid" {{ $fieldIsPaidValue == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
+                <option value="unpaid" {{ $fieldIsPaidValue == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
             </select>
             @if($errors->has($errorIsPaidName))
                 <div class="invalid-feedback">

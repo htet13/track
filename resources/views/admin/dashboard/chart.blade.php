@@ -56,7 +56,20 @@
         chart: {
             type: 'bar',
             width: "100%",
-            height: 360
+            height: 360,
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 800,
+                animateGradually: {
+                    enabled: true,
+                    delay: 150
+                },
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 350
+                }
+            }
         },
         theme: {
             monochrome: {
@@ -64,15 +77,23 @@
                 color: '#031F63',
             }
         },
+        dataLabels: {
+          formatter: (val) => {
+            return val / 1000 + 'K'
+          }
+        },
         plotOptions: {
             bar: {
-                columnWidth: '80%',
+                columnWidth: '20%',
                 borderRadius: 5,
                 radiusOnLastStackedBar: true,
                 colors: {
                     backgroundBarColors: ['#F2F4F6', '#F2F4F6', '#F2F4F6', '#F2F4F6'],
                     backgroundBarRadius: 5,
                 },
+                dataLabels: {
+                    position: 'top'
+                }
             }
         },
         labels: [1, 2, 3, 4, 5, 6, 7],
@@ -81,6 +102,13 @@
             crosshairs: {
                 width: 1
             },
+        },
+        yaxis: {
+          labels: {
+            formatter: (val) => {
+              return val / 1000 + 'K'
+            }
+          }
         },
         tooltip: {
             fillSeriesColor: false,

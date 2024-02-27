@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-xl-4 col-lg-4 col-md-4 col-4 col-sm-4 mb-2">
+    <div class="col-xl-4 col-lg-4 col-md-4 col-3 col-sm-3 mb-2">
         <div class="form-group">
             <label class="required mb-2" for="diver_id">@lang('cruds.driver.title_singular')</label>
-            <select name="{{ $fieldName }}" id="driver_id" class="form-control select2 {{ $errors->has($errorName) ? 'is-invalid' : '' }}">
+            <select name="{{ $fieldName }}" class="form-control select2 {{ $errors->has($errorName) ? 'is-invalid' : '' }}">
                 <option value="" selected>{{ trans('global.please_select') }}</option>
                 @foreach ($drivers as $id => $name)
-                    <option value="{{ $id }}"{{ ($track ? $fieldValue : old('driver_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
+                    <option value="{{ $id }}"{{ $fieldValue == $id ? 'selected' : '' }}>{{ $name }}</option>
                 @endforeach
             </select>
             @if($errors->has($errorName))
@@ -31,8 +31,8 @@
             <label class="required mb-2" for="is_paid">@if($customLoop->first) @lang('global.paid')/ @lang('global.unpaid')  @endif</label>
             <select name="{{ $fieldIsPaidName }}" class="form-control select2 {{ $errors->has($errorIsPaidName) ? 'is-invalid' : '' }}">
                 <option value="" selected>{{ trans('global.please_select') }}</option>
-                <option value="paid" {{ ($track ? $fieldIsPaidValue : old('drive_fee')) == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
-                <option value="unpaid" {{ ($track ? $fieldIsPaidValue : old('drive_fee')) == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
+                <option value="paid" {{ $fieldIsPaidValue == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
+                <option value="unpaid" {{ $fieldIsPaidValue == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
             </select>
             @if($errors->has($errorIsPaidName))
                 <div class="invalid-feedback">
