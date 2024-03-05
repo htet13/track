@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Filters\ReportFilter;
+use App\Models\SpareTrack;
 use App\Models\Track;
 class HomeController extends Controller
 {

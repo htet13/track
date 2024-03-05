@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Filters\TrackFilter;
 use App\Models\Report;
 use Exception;
 use App\Models\Track;
@@ -12,7 +13,8 @@ class TrackRepository implements TrackRepositoryInterface
 {
     public function allWithPaginate($filter, $paginate,$type)
     {
-        return Track::filter($filter)
+        return Track::with('fromcities','tocities','driverTracks','spareTracks','oilCosts','otherCosts')
+            ->filter($filter)
             ->whereType($type)
             ->orderBy('created_at', 'DESC')
             ->paginate($paginate);

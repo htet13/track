@@ -50,16 +50,6 @@ class Report extends Model
         return $this->belongsToMany(Track::class,'reports_tracks');
     }
 
-    public function oilCosts()
-    {
-        return $this->hasMany(OilCost::class);
-    }
-
-    public function otherCosts()
-    {
-        return $this->hasMany(OtherCost::class);
-    }
-
     public function scopeWithNonZeroValues($query)
     {
         return $query->where(function ($query) {

@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\DriverController;
 use App\Http\Controllers\Backend\SpareController;
 use App\Http\Controllers\Backend\TrackController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\DriveFeeController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -52,6 +53,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     //Track
     Route::resource('{type}/track',TrackController::class);
+
+    //Drive Fee
+    Route::get('fee/driver',[DriveFeeController::class, 'driver'])->name('fee.driver');
+    Route::get('fee/driver/{driver_id}',[DriveFeeController::class, 'driverDetail'])->name('fee.driver.detail');
+    Route::get('fee/driver/{track_id}/edit',[DriveFeeController::class, 'driverEdit'])->name('fee.driver.edit');
+    Route::put('fee/driver/{driver_track}/update',[DriveFeeController::class, 'driverUpdate'])->name('fee.driver.update');
+
+    //Spare Fee
+    Route::get('fee/spare',[DriveFeeController::class, 'spare'])->name('fee.spare');
+    Route::get('fee/spare/{spare_id}',[DriveFeeController::class, 'spareDetail'])->name('fee.spare.detail');
+    Route::get('fee/spare/{track_id}/edit',[DriveFeeController::class, 'spareEdit'])->name('fee.spare.edit');
+    Route::put('fee/spare/{spare_track}/update',[DriveFeeController::class, 'spareUpdate'])->name('fee.spare.update');
 
     // Logout
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');

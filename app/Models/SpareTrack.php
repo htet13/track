@@ -37,4 +37,9 @@ class SpareTrack extends Model
     {
         return $this->belongsTo(Spare::class);
     }
+
+    public function track()
+    {
+        return $this->belongsTo(Track::class);
+    }
 }

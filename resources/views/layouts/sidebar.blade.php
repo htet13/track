@@ -109,7 +109,7 @@
 
         @can('Report Access')
         <li class="nav-item">
-        <a class="nav-link {{ !request()->is('admin/other/report*') || !request()->is('admin/tachileik/report*') ? 'collapsed' : '' }}" data-bs-target="#report-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link {{ !request()->is('admin/other/report*') || !request()->is('admin/tachileik/report*') ? 'collapsed' : '' }}" data-bs-target="#report-nav" data-bs-toggle="collapse" href="#">
                 <div class="me-1">
                     <i class="fa fa-flag"></i>
                 </div>
@@ -132,6 +132,30 @@
             </ul>
         </li>
         @endcan
+
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('admin/fee/driver') || !request()->is('admin/fee/spare') ? 'collapsed' : '' }}" data-bs-target="#fee-nav" data-bs-toggle="collapse" href="#">
+                <div class="me-1">
+                    <i class="fa fa-flag"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('global.drive_fee') }}</span>
+                </div>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="fee-nav" class="nav-content collapse {{ request()->is('admin/fee/driver') || request()->is('admin/fee/spare') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="{{ request()->is('admin/fee/driver') ? 'active' : ''  }}" href="{{ route('admin.fee.driver') }}">
+                        <i class="bi bi-circle"></i><span>@lang('cruds.driver.title_singular')</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('admin/fee/spare') ? 'active' : ''  }}" href="{{ route('admin.fee.spare') }}">
+                        <i class="bi bi-circle"></i><span>@lang('cruds.spare.title_singular')</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         @can('User Access')
         <li class="nav-item">
