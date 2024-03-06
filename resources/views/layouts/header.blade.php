@@ -1,5 +1,5 @@
 <header id="header" class="header fixed-top d-flex align-items-center bg-main">
-
+<div class="d-flex flex-row justify-content-between align-items-center w-100">
   <div class="d-flex align-items-center justify-content-between">
     <a href="{{ route('admin.home') }}" class="logo d-flex align-items-center text-decoration-none">
       <img src="{{ asset('images/logo.png') }}" alt="" class="rotate" class="mr-2">
@@ -7,6 +7,8 @@
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div><!-- End Logo -->
+  <div class="text-main" style="font-size: 12px;"><a href="{{ route('admin.home') }}" class="text-decoration-none text-main">မူလစာမျက်နှာသို့</a></div>
+</div>
 
   <nav class="header-nav ms-auto">
 

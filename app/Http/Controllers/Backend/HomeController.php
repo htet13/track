@@ -26,7 +26,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(ReportFilter $filter, Request $request)
+    public function index()
+    {
+        return view('home'); 
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function logistics(ReportFilter $filter, Request $request)
     {
         $tracks = Track::filter($filter)
         ->leftJoin('issuers', function ($join) {
@@ -42,4 +52,13 @@ class HomeController extends Controller
         return view('admin.dashboard.home', compact('tracks')); 
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function hr()
+    {
+        return redirect()->route('admin.fee.driver'); 
+    }
 }

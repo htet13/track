@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.hr.app')
 
 @section('styles')
 {{-- sweet alert --}}

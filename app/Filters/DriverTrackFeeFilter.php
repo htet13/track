@@ -9,7 +9,7 @@ class DriverTrackFeeFilter extends Filters
 	 * Register filter properties
 	 */
 	protected $filters = [
-		'date', 'car_no_id', 'from_city', 'to_city', 'issuer_id', 'driver_id', 'spare_id', 'other_cost'
+		'date', 'car_no_id', 'from_city', 'to_city', 'issuer_id', 'other_cost', 'route', 'driver_is_paid', 'spare_is_paid'
 	];
 
 	/**
@@ -54,22 +54,39 @@ class DriverTrackFeeFilter extends Filters
         });
 	}
 
-	public function driver_id($value)
+	// public function driver_id($value)
+	// {
+    //     return $this->builder->whereHas('track', function($query) use ($value) {
+    //         $query->whereHas('driverTracks', function($query) use ($value) {
+	// 		    $query->whereDriverId($value);
+    //         });
+	// 	});
+	// }
+
+	// public function spare_id($value)
+	// {
+    //     return $this->builder->whereHas('track', function($query) use ($value) {
+    //         $query->whereHas('spareTracks', function($query) use ($value) {
+	// 		    $query->whereSpareId($value);
+    //         });
+	// 	});
+	// }
+
+	public function route($value)
 	{
-        return $this->builder->whereHas('track', function($query) use ($value) {
-            $query->whereHas('driverTracks', function($query) use ($value) {
-			    $query->whereDriverId($value);
-            });
+		return $this->builder->whereHas('track', function($query) use($value) {
+			$query->whereType($value);
 		});
 	}
 
-	public function spare_id($value)
+	public function driver_is_paid($value)
 	{
-        return $this->builder->whereHas('track', function($query) use ($value) {
-            $query->whereHas('spareTracks', function($query) use ($value) {
-			    $query->whereSpareId($value);
-            });
-		});
+		return $this->builder->whereIsPaid($value);
+	}
+
+	public function spare_is_paid($value)
+	{
+		return $this->builder->whereIsPaid($value);
 	}
 
 	public function other_cost($value)

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.hr.app')
 
 @section('styles')
 {{-- sweet alert --}}
@@ -72,23 +72,21 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="form-group">
-                            <label class="required mb-2" for="driver_id">{{ trans('cruds.driver.title_singular') }}</label>
-                            <select name="driver_id" class="form-control select2 {{ $errors->has('driver_id') ? 'is-invalid' : '' }}">
+                            <label class="required mb-2" for="route">@lang('global.route')</label>
+                            <select name="route" class="form-control select2 {{ $errors->has('route') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($drivers as $id => $name)
-                                    <option value="{{ $id }}" {{ request('driver_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
+                                <option value="tachileik" {{ request('route') == 'tachileik' ? 'selected' : '' }}>@lang('global.tachileik')</option>
+                                <option value="other" {{ request('route') == 'other' ? 'selected' : '' }}>@lang('global.other')</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="form-group">
-                            <label class="required mb-2" for="spare_id">{{ trans('cruds.spare.title_singular') }}</label>
-                            <select name="spare_id" class="form-control select2 {{ $errors->has('spare_id') ? 'is-invalid' : '' }}">
+                            <label class="required mb-2" for="driver_is_paid">@lang('global.paid')/ @lang('global.unpaid')</label>
+                            <select name="driver_is_paid" class="form-control select2 {{ $errors->has('driver_is_paid') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($spares as $id => $name)
-                                    <option value="{{ $id }}" {{ request('spare_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
+                                <option value="paid" {{ request('driver_is_paid') == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
+                                <option value="unpaid" {{ request('driver_is_paid') == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
                             </select>
                         </div>
                     </div>
