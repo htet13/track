@@ -21,6 +21,10 @@ class WebExceptionHandler extends Exception
         if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
             return redirect()->route('login');
         }
+
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect()->route('login');
+        }
         
         if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
             $message = "Not found what you are searching for!";
