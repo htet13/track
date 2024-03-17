@@ -94,7 +94,7 @@ class DriveFeeController extends Controller
     {
         $driver_track->update(['is_paid' => $request->is_paid, 'remark' => $request->remark]);
 
-        return redirect()->route('admin.fee.driver.detail',$driver_track->driver_id);
+        return redirect()->route('admin.fee.driver.detail',['driver_id' => $driver_track->driver_id, 'driver_is_paid' => $request->is_paid]);
     }
 
     /**
@@ -152,7 +152,7 @@ class DriveFeeController extends Controller
     {
         $spare_track->update(['is_paid' => $request->is_paid, 'remark' => $request->remark]);
 
-        return redirect()->route('admin.fee.spare.detail',$spare_track->spare_id);
+        return redirect()->route('admin.fee.spare.detail',[$spare_track->spare_id, 'driver_is_paid' => $request->is_paid]);
     }
 
 }

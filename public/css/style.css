@@ -1486,3 +1486,25 @@ body {
     border-color: #031F63 !important;
     color: #E1E889 !important;
 }
+
+.min-vh-80 {
+    min-height: 80vh;
+}
+
+.btn-success {
+    color: #031F63 !important;
+    background-color: #E8E189 !important;
+    border-color: #031F63 !important;
+}
+
+.btn-main {
+    color: #E8E189 !important;
+    background-color: #031F63 !important;
+    border-color: #E8E189 !important;
+}
+
+.icon-box {
+    border: 1px solid #031F63;
+    border-radius: 5px;
+    padding: 9px;
+}

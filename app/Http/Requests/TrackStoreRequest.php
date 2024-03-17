@@ -38,18 +38,18 @@ class TrackStoreRequest extends FormRequest
                 'required',
                 'array',
             ],
-            'oil.price.*' => [
-                'required'
-            ],
-            'oil.price' => [
-                'array',
-            ],
-            'oil.liter.*' => [
-                'required'
-            ],
-            'oil.liter' => [
-                'array',
-            ],
+            // 'oil.price.*' => [
+            //     'required'
+            // ],
+            // 'oil.price' => [
+            //     'array',
+            // ],
+            // 'oil.liter.*' => [
+            //     'required'
+            // ],
+            // 'oil.liter' => [
+            //     'array',
+            // ],
             'driver.driver_id.*' => [
                 'required'
             ],
@@ -90,9 +90,9 @@ class TrackStoreRequest extends FormRequest
             'car_no_id' => 'required',
             'expense' => 'required',
             'issuer_id' => 'required',
-            'check_cost' => 'required',
-            'gate_cost' => 'required',
-            'food_cost' =>  'required',
+            // 'check_cost' => 'required',
+            // 'gate_cost' => 'required',
+            // 'food_cost' =>  'required',
             'remark'    =>  'nullable'
         ];
     }

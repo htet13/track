@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div style="float: right">
-                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.fee.spare.detail',$spare_track->spare_id) }}">{{ trans('global.cancel') }}</a>
+                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.fee.spare.detail',['spare_id' => $spare_track->spare_id, 'driver_is_paid' => request('driver_is_paid')]) }}">{{ trans('global.cancel') }}</a>
                                 <button type="submit" class="btn bg-main text-main btn-sm float-right">{{ trans('global.save') }}</button>
                             </div>
                         </div>

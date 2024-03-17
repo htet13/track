@@ -48,7 +48,7 @@
                         <tr>
                             <th rowspan="2">{{ trans('global.no') }}</th>
                             <th rowspan="2">{{ trans('global.name') }}</th>
-                            <th colspan="2">ခေါက်ရေ</th>
+                            <th colspan="2">@lang('cruds.track.title_singular')</th>
                             <th colspan="2">@lang('global.drive_fee')</th>
                             <th rowspan="2">{{ trans('global.actions') }}</th>
                         </tr>
@@ -68,9 +68,15 @@
                             <td>{{ $driver->unpaid_track_count }}</td>
                             <td>{{ $driver->paid_fee_sum }}</td>
                             <td>{{ $driver->unpaid_fee_sum }}</td>
-                            <td>
-                                <a href="{{ route('admin.fee.driver.detail',$driver->driver_id) }}" title="Driver Fee Details">
-                                    <i class="fa-regular fa-eye"></i>
+                            <td class="d-flex justify-content-center gap-1 align-items-center w-100" style="min-width: 195px;">
+                                <a style="text-decoration: none;" href="{{ route('admin.track.index','tachileik') }}" title="Driver Fee Details">
+                                    <i class="fa-regular fa-eye icon-box"></i>
+                                </a>
+                                <a class="btn btn-success" href="{{ route('admin.fee.driver.detail',['driver_id' => $driver->driver_id, 'driver_is_paid' => 'paid']) }}" title="Driver Fee Details">
+                                    ရှင်းပြီး
+                                </a>
+                                <a class="btn btn-main" href="{{ route('admin.fee.driver.detail',['driver_id' => $driver->driver_id, 'driver_is_paid' => 'unpaid']) }}" title="Driver Fee Details">
+                                    မရှင်း
                                 </a>
                             </td>
                         </tr>

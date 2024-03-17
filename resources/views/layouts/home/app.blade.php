@@ -38,19 +38,18 @@
     </style>
 </head>
 
-<body style="overflow-x: hidden;">
+<body style="overflow-x: hidden;" class="position-relative">
     <!-- ======= Header ======= -->
     @include('layouts.home.header')
 
     @include('sweetalert::alert')
 
-    <div style="height: 75vh;">
-        @yield('content')
-    </div>
+    @yield('content')
 
     <!-- ======= Footer ======= -->
     @include('layouts.home.footer')
-    <div id="preloader" style="">
+
+    <div id="preloader">
         <div id="loader"></div>
     </div>
 
