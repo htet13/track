@@ -16,7 +16,7 @@ class SpareTrack extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'spare_id','track_id','fee','is_paid',
+        'spare_id','track_id','fee','is_paid','remark','payment_date'
     ];
 
     /**

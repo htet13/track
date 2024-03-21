@@ -69,7 +69,7 @@
                             <td>{{ $driver->paid_fee_sum }}</td>
                             <td>{{ $driver->unpaid_fee_sum }}</td>
                             <td class="d-flex justify-content-center gap-1 align-items-center w-100" style="min-width: 195px;">
-                                <a style="text-decoration: none;" href="{{ route('admin.track.index','tachileik') }}" title="Driver Fee Details">
+                                <a style="text-decoration: none;" href="{{ route('admin.track.index',['tachileik','arrival']) }}" title="Driver Fee Details">
                                     <i class="fa-regular fa-eye icon-box"></i>
                                 </a>
                                 <a class="btn btn-success" href="{{ route('admin.fee.driver.detail',['driver_id' => $driver->driver_id, 'driver_is_paid' => 'paid']) }}" title="Driver Fee Details">

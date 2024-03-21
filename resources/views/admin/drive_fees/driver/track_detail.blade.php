@@ -61,17 +61,6 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="form-group">
-                            <label class="required mb-2" for="issuer_id">{{ trans('cruds.issuer.title_singular') }}</label>
-                            <select name="issuer_id" class="form-control select2 {{ $errors->has('issuer_id') ? 'is-invalid' : '' }}">
-                                <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($issuers as $id => $name)
-                                    <option value="{{ $id }}" {{ request('issuer_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="form-group">
                             <label class="required mb-2" for="route">@lang('global.route')</label>
                             <select name="route" class="form-control select2 {{ $errors->has('route') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
@@ -88,12 +77,6 @@
                                 <option value="paid" {{ request('driver_is_paid') == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
                                 <option value="unpaid" {{ request('driver_is_paid') == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="form-group">
-                            <label class="required mb-2" for="other_cost">@lang('global.other_cost')</label>
-                            <input type="text" name="other_cost" placeholder="အမျိုးအမည်ဖြင့် @lang('global.search')" value="{{ request('other_cost') }}"  class="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -114,33 +97,12 @@
                             <th rowspan="2" class="w-90">{{ trans('global.date') }}</th>
                             <th rowspan="2" class="w-90">{{ trans('cruds.car_no.title_singular') }}</th>
                             <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
-                            <!-- <th colspan="2">{{ trans('global.expense') }}</th>
-                            <th colspan="3">{{ trans('cruds.driver.title_singular') }}</th>
-                            <th colspan="3">{{ trans('cruds.spare.title_singular') }}</th>
-                            <th colspan="2">{{ trans('global.oil') }}</th>
-                            <th colspan="2">{{ trans('global.road_cost') }}</th>
-                            <th rowspan="2">{{ trans('global.food_cost') }}</th>
-                            <th colspan="2">{{ trans('global.other_cost') }}</th>
-                            <th rowspan="2">{{ trans('global.total') }}</th> -->
+                            <th rowspan="2">@lang('global.payment_date')</th>
                             <th rowspan="2">{{ trans('cruds.track.action') }}</th>
                         </tr>
                         <tr>
                             <th>{{ trans('global.from') }}</th>
                             <th>{{ trans('global.to') }}</th>
-                            <!-- <th>{{ trans('global.amount') }}</th>
-                            <th>{{ trans('cruds.issuer.title_singular') }}</th>
-                            <th>{{ trans('global.name') }}</th>
-                            <th>{{ trans('global.drive_fee') }}</th>
-                            <th>ရှင်း/ မရှင်း</th>
-                            <th>{{ trans('global.name') }}</th>
-                            <th>{{ trans('global.drive_fee') }}</th>
-                            <th>ရှင်း/ မရှင်း</th>
-                            <th>{{ trans('global.liter') }}</th>
-                            <th>{{ trans('global.price') }}</th>
-                            <th>{{ trans('global.check') }}</th>
-                            <th>{{ trans('global.gate') }}</th>
-                            <th>{{ trans('global.category') }}</th>
-                            <th>{{ trans('global.cost') }}</th> -->
                         </tr>
                     </thead>
                     <tbody class="text-center align-middle">
@@ -166,6 +128,7 @@
                                 <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
                                 @endforeach
                             </td>
+                            <td>{{ $driver_track->payment_date }}</td>
                             <td>
                                 <a href="{{ route('admin.fee.driver.edit', ['track_id' => $track->id, 'driver_is_paid' => request('driver_is_paid')]) }}" class="pe-3" title="route Details">
                                     <i class="fa-regular fa-eye"></i>

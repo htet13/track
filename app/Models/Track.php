@@ -16,7 +16,7 @@ class Track extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'date','type','car_no_id','expense','issuer_id','check_cost','gate_cost','food_cost','total','remark'
+        'date','type','car_no_id','expense','issuer_id','check_cost','gate_cost','food_cost','total','remark','status'
     ];
 
     /**

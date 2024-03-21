@@ -41,12 +41,12 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $exception)
-    {
-        // Handle all exceptions here
-        if ($request->is('api/*')) {
-            return (new ApiExceptionHandler)->render( $exception );
-        }
-        return (new WebExceptionHandler)->render( $exception );
-    }
+    // public function render($request, Throwable $exception)
+    // {
+    //     // Handle all exceptions here
+    //     if ($request->is('api/*')) {
+    //         return (new ApiExceptionHandler)->render( $exception );
+    //     }
+    //     return (new WebExceptionHandler)->render( $exception );
+    // }
 }

@@ -103,7 +103,7 @@
                     <div class="col-md-6"></div>
                     <div class="col-md-6 col-12 mb-3 d-flex justify-content-end">
                         <button class="btn btn-outline-main me-2" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
-                        <a class="btn btn-outline-main me-2" href="{{ route('admin.track.index',$type) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-main me-2" href="{{ route('admin.track.index',[$type,'arrival']) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </form>

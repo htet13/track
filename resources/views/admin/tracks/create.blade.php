@@ -1,4 +1,4 @@
-@php $route = route('admin.track.store',$type); @endphp
+@php $route = route('admin.track.store',[$type,'departure']); @endphp
 @include('admin.tracks._form',
     [   
         'track' => "",

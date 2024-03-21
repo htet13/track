@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Enums\IntervalEnum;
+use App\Filters\DriverTrackFilter;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Filters\ReportFilter;
-use App\Models\SpareTrack;
-use App\Models\Track;
+use App\Models\DriverTrack;
 class HomeController extends Controller
 {
     /**
@@ -36,18 +34,29 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function logistics(ReportFilter $filter, Request $request)
+    public function logistics(DriverTrackFilter $filter, Request $request)
     {
-        $tracks = Track::filter($filter)
-        ->leftJoin('issuers', function ($join) {
-            $join->on('tracks.issuer_id', '=', 'issuers.id');
-        })
+        // $tracks = Track::filter($filter)
+        // ->leftJoin('issuers', function ($join) {
+        //     $join->on('tracks.issuer_id', '=', 'issuers.id');
+        // })
+        // ->selectRaw('
+        //     tracks.issuer_id,
+        //     SUM(tracks.expense) as total_expense
+        // ')
+        // ->groupBy('tracks.issuer_id')
+        // ->get();
+
+        $tracks = DriverTrack::filter($filter)
+        ->where('is_paid', 'paid')
         ->selectRaw('
-            tracks.issuer_id,
-            SUM(tracks.expense) as total_expense
+            driver_tracks.driver_id,
+            SUM(driver_tracks.fee) as total_fee
         ')
-        ->groupBy('tracks.issuer_id')
+        ->groupBy('driver_id')
         ->get();
+
+        // dd($tracks);
 
         return view('admin.dashboard.home', compact('tracks')); 
     }

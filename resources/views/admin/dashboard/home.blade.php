@@ -19,14 +19,14 @@
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-12 col-xl-12">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.home') }}" method="GET" class="mb-4">
+                        <form action="{{ route('admin.logistics') }}" method="GET" class="mb-4">
                             <div class="row mb-2">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <input type="text" id="from_date" name="from_date" class="form-control" placeholder="From Date" value="{{ request('from_date') }}" />
                                         <input type="text" id="to_date" name="to_date" class="form-control" placeholder="To Date" value="{{ request('to_date') }}" />
                                         <button class="btn btn-outline-main" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
-                                        <a class="btn btn-outline-main" href="{{ route('admin.home') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                        <a class="btn btn-outline-main" href="{{ route('admin.logistics') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -41,11 +41,11 @@
                             </div>
                         </div> -->
                             <div class="row m-1 border rounded">
-                                <div class="col-md-6 col-12 barchart-border-right">
-                                    <div id="barChart"></div>
-                                </div>
-                                <div class="col-md-6 col-12 custom-center" >
+                                <div class="col-md-12 col-12 custom-center" >
                                     <div id="pieChart"></div>
+                                </div>
+                                <div class="col-md-12 col-12 ">
+                                    <div id="barChart"></div>
                                 </div>
                             </div>
                         @endif

@@ -68,13 +68,8 @@
                             <td>{{ $spare->unpaid_track_count }}</td>
                             <td>{{ $spare->paid_fee_sum }}</td>
                             <td>{{ $spare->unpaid_fee_sum }}</td>
-                            <td>
-                                <a href="{{ route('admin.fee.spare.detail',$spare->spare_id) }}" title="Spare Fee Details">
-                                    <i class="fa-regular fa-eye"></i>
-                                </a>
-                            </td>
                             <td class="d-flex justify-content-center gap-1 align-items-center w-100" style="min-width: 195px;">
-                                <a style="text-decoration: none;" href="{{ route('admin.track.index','tachileik') }}" title="Spare Fee Details">
+                                <a style="text-decoration: none;" href="{{ route('admin.track.index',['tachileik','arrival']) }}" title="Spare Fee Details">
                                     <i class="fa-regular fa-eye icon-box"></i>
                                 </a>
                                 <a class="btn btn-success" href="{{ route('admin.fee.spare.detail',['spare_id' => $spare->spare_id, 'driver_is_paid' => 'paid']) }}" title="spare Fee Details">

@@ -38,15 +38,12 @@
                     <div class="col-md-6"></div>
                     <div class="col-md-6 col-12 mb-3 d-flex justify-content-end">
                         <button class="btn btn-outline-main me-2" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
-                        <a class="btn btn-outline-main me-2" href="{{ route('admin.track.index',$type) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-main me-2" href="{{ route('admin.track.index',[$type,'arrival']) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         @can('Excel Export')
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
                         @endcan
-                        <a class="btn bg-main text-main" href="{{ route('admin.track.create',$type) }}">
-                            <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
-                        </a>
                     </div>
                 </div>
             </form>

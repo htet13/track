@@ -83,23 +83,46 @@
 
         @can('Track Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('admin/tachileik/track*') || !request()->is('admin/other/track*')  ? 'collapsed' : '' }} " data-bs-target="#track-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link {{ !request()->is('admin/tachileik/departure/track*') || !request()->is('admin/other/departure/track*')  ? 'collapsed' : '' }} " data-bs-target="#departure-track-nav" data-bs-toggle="collapse" href="#">
                 <div class="me-1">
-                    <i class="fa-solid fa-truck"></i>
+                    <i class="fa-solid fa-truck-fast"></i>                
                 </div>
                 <div class="">
-                    <span>{{ trans('cruds.track.title') }}</span>
+                    <span>{{ trans('cruds.track.title') }}(ထွက်ခွါ)</span>
                 </div>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="track-nav" class="nav-content collapse {{ request()->is('admin/tachileik/track*') || request()->is('admin/other/track*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+            <ul id="departure-track-nav" class="nav-content collapse {{ request()->is('admin/tachileik/departure/track*') || request()->is('admin/other/departure/track*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a class="{{ request()->is('admin/tachileik/track*') ? 'active' : ''}}" href="{{ route('admin.track.index', 'tachileik') }}">
+                    <a class="{{ request()->is('admin/tachileik/departure/track*') ? 'active' : ''}}" href="{{ route('admin.track.index', ['tachileik','departure']) }}">
                         <i class="bi bi-circle"></i><span>@lang('global.tachileik')</span>
                     </a>
                 </li>
                 <li>
-                    <a class="{{ request()->is('admin/other/track*') ? 'active' : '' }}" href="{{ route('admin.track.index', 'other') }}">
+                    <a class="{{ request()->is('admin/other/departure/track*') ? 'active' : '' }}" href="{{ route('admin.track.index', ['other','departure']) }}">
+                        <i class="bi bi-circle"></i><span>@lang('global.other')</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('admin/tachileik/arrival/track*') || !request()->is('admin/other/arrival/track*')  ? 'collapsed' : '' }} " data-bs-target="#arrival-track-nav" data-bs-toggle="collapse" href="#">
+                <div class="me-1">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('cruds.track.title') }}(ရောက်ရှိ)</span>
+                </div>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="arrival-track-nav" class="nav-content collapse {{ request()->is('admin/tachileik/arrival/track*') || request()->is('admin/other/arrival/track*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="{{ request()->is('admin/tachileik/arrival/track*') ? 'active' : ''}}" href="{{ route('admin.track.index', ['tachileik','arrival']) }}">
+                        <i class="bi bi-circle"></i><span>@lang('global.tachileik')</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('admin/other/arrival/track*') ? 'active' : '' }}" href="{{ route('admin.track.index', ['other','arrival']) }}">
                         <i class="bi bi-circle"></i><span>@lang('global.other')</span>
                     </a>
                 </li>

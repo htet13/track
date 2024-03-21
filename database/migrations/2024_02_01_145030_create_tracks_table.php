@@ -25,6 +25,7 @@ class CreateTracksTable extends Migration
             $table->integer('gate_cost')->default(0);
             $table->integer('food_cost')->default(0);
             $table->integer('total')->default(0);
+            $table->enum('status',['departure','arrival'])->default('departure');
             $table->text('remark')->nullable();
             $table->timestamps();
 

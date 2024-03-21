@@ -61,17 +61,6 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="form-group">
-                            <label class="required mb-2" for="issuer_id">{{ trans('cruds.issuer.title_singular') }}</label>
-                            <select name="issuer_id" class="form-control select2 {{ $errors->has('issuer_id') ? 'is-invalid' : '' }}">
-                                <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($issuers as $id => $name)
-                                    <option value="{{ $id }}" {{ request('issuer_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="form-group">
                             <label class="required mb-2" for="route">@lang('global.route')</label>
                             <select name="route" class="form-control select2 {{ $errors->has('route') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
@@ -88,12 +77,6 @@
                                 <option value="paid" {{ request('driver_is_paid') == 'paid' ? 'selected' : '' }}>@lang('global.paid')</option>
                                 <option value="unpaid" {{ request('driver_is_paid') == 'unpaid' ? 'selected' : '' }}>@lang('global.unpaid')</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="form-group">
-                            <label class="required mb-2" for="other_cost">@lang('global.other_cost')</label>
-                            <input type="text" name="other_cost" placeholder="အမျိုးအမည်ဖြင့် @lang('global.search')" value="{{ request('other_cost') }}"  class="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -114,6 +97,7 @@
                             <th rowspan="2" class="w-90">{{ trans('global.date') }}</th>
                             <th rowspan="2" class="w-90">{{ trans('cruds.car_no.title_singular') }}</th>
                             <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
+                            <th rowspan="2">@lang('global.payment_date')</th>
                             <th rowspan="2">{{ trans('cruds.track.action') }}</th>
                         </tr>
                         <tr>
@@ -144,6 +128,7 @@
                                 <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
                                 @endforeach
                             </td>
+                            <td>{{ $spare_track->payment_date }}</td>
                             <td>
                                 <a href="{{ route('admin.fee.spare.edit', ['track_id' => $track->id, 'driver_is_paid' => request('driver_is_paid')]) }}" class="pe-3" title="route Details">
                                     <i class="fa-regular fa-eye"></i>

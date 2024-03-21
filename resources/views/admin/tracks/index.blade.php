@@ -18,7 +18,7 @@
 
     <section class="route-table">
         <div class="card p-2">
-            <form action="{{ route('admin.track.index',$type) }}" method="GET">
+            <form action="{{ route('admin.track.index',[$type,$status]) }}" method="GET">
                 <div class="row my-2">
                     <div class="col-md-3 mb-3">
                         <div class="form-group">
@@ -103,15 +103,17 @@
                     <div class="col-md-6"></div>
                     <div class="col-md-6 col-12 mb-3 d-flex justify-content-end">
                         <button class="btn btn-outline-main me-2" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
-                        <a class="btn btn-outline-main me-2" href="{{ route('admin.track.index',$type) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-main me-2" href="{{ route('admin.track.index',[$type,$status]) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         @can('Excel Export')
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
                         @endcan
-                        <a class="btn bg-main text-main" href="{{ route('admin.track.create',$type) }}">
+                        @if($status == 'departure')
+                        <a class="btn bg-main text-main" href="{{ route('admin.track.create',[$type,$status]) }}">
                             <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
                         </a>
+                        @endif
                     </div>
                 </div>
             </form>
@@ -208,20 +210,29 @@
                             </td>
                             <td rowspan="{{ $maxCount }}">{{ number_format($track->total) }}</td>
                             <td rowspan="{{ $maxCount }}">
-                                <div class="d-flex">
-                                    <a href="{{ route('admin.track.show', [$type,$track]) }}" class="pe-3" title="route Details">
-                                        <i class="fa-regular fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('admin.track.edit', [$type,$track]) }}" class="pe-3" title="Edit route Details">
-                                        <i class="fa-regular fa-pen-to-square text-success"></i>
-                                    </a>
-                                    <form action="{{ route('admin.track.destroy', [$type,$track]) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <a class="pe-3 delete text-danger" title="Delete Track">
-                                            <i class="fa-solid fa-trash"></i>
+                                <div  class="d-flex flex-column">
+                                    <div class="d-flex justify-content-between">
+                                        @if($status == 'departure')
+                                        <a href="{{ route('admin.track.show', [$type,$status,$track]) }}" title="route Details">
+                                            <i class="fa-regular fa-eye"></i>
                                         </a>
-                                    </form>
+                                        <a href="{{ route('admin.track.edit', [$type,$status,$track]) }}" title="Edit route Details">
+                                            <i class="fa-regular fa-pen-to-square text-success"></i>
+                                        </a>
+                                        <form action="{{ route('admin.track.destroy', [$type,$status,$track]) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a class="delete text-danger" title="Delete Track">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </form>
+                                        @endif
+                                    </div>
+                                    <div style="width: 86px;">
+                                        <a class="btn bg-main text-main pointer" href="{{ route('admin.arrival.edit',[$type,$track]) }}">
+                                            <i class="fa-solid fa-plus"></i>ရောက်ရှိ
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

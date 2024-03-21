@@ -20,6 +20,7 @@ class CreateDriverTracksTable extends Migration
             $table->integer('fee')->default(0);
             $table->enum('is_paid', ['paid', 'unpaid'])->default('unpaid');
             $table->text('remark')->nullable();
+            $table->date('payment_date')->nullable();
             $table->timestamps();
 
             $table->foreign('track_id')

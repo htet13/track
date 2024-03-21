@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TrackStoreRequest extends FormRequest
+class TrackDepartureRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,18 +38,6 @@ class TrackStoreRequest extends FormRequest
                 'required',
                 'array',
             ],
-            // 'oil.price.*' => [
-            //     'required'
-            // ],
-            // 'oil.price' => [
-            //     'array',
-            // ],
-            // 'oil.liter.*' => [
-            //     'required'
-            // ],
-            // 'oil.liter' => [
-            //     'array',
-            // ],
             'driver.driver_id.*' => [
                 'required'
             ],
@@ -90,9 +78,6 @@ class TrackStoreRequest extends FormRequest
             'car_no_id' => 'required',
             'expense' => 'required',
             'issuer_id' => 'required',
-            // 'check_cost' => 'required',
-            // 'gate_cost' => 'required',
-            // 'food_cost' =>  'required',
             'remark'    =>  'nullable'
         ];
     }
@@ -102,8 +87,6 @@ class TrackStoreRequest extends FormRequest
         return [
             'fromcities.required' => 'ဖမ်းမည့်မြို့ ရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'tocities.required' => 'ပို့မည့်မြို့ ရွေးချယ်ရန် လိုအပ်ပါသည်။',
-            'oil.price.*.required' => 'ဈေးနှုန်းထည့်သွင်းရန် လိုအပ်ပါသည်။',
-            'oil.liter.*.required' => 'လီတာထည့်သွင်းရန် လိုအပ်ပါသည်။',
             'driver.driver_id.*.required' => 'ယာဉ်မောင်းအမည်ရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'driver.fee.*.required' => 'ခေါက်ကြေးထည့်သွင်းရန် လိုအပ်ပါသည်။',
             'driver.is_paid.*.required' => 'ရှင်းပြီး/ မရှင်းရွေးချယ်ရန် လိုအပ်ပါသည်။',
@@ -115,10 +98,6 @@ class TrackStoreRequest extends FormRequest
             'expense.required' => 'စရိတ် ထည့်သွင်းရန် လိုအပ်ပါသည်။',
             'issuer_id.required' => 'ထုတ်ပေးသူ ရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'drive_fee.required' => 'ခေါက်ကြေး ရွေးချယ်ရန် လိုအပ်ပါသည်။',
-            'check_cost.required' => 'ရဲ/စစ် ထည့်သွင်းရန် လိုအပ်ပါသည်။',
-            'gate_cost.required' => 'တိုးဂိတ် ထည့်သွင်းရန် လိုအပ်ပါသည်။',
-            'food_cost.required' => 'စားစရိတ် ထည့်သွင်းရန် လိုအပ်ပါသည်။',
-            'total.required' => 'စုစုပေါင်း ထည့်သွင်းရန် လိုအပ်ပါသည်။',
         ];
     }
 

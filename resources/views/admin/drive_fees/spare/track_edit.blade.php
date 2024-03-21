@@ -3,14 +3,8 @@
 @section('content')
 <main id="main" class="main">
 
-<div class="pagetitle">
-      
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('admin.fee.spare') }}"><h1>{{ trans("cruds.track.title") }}</h1></a></li>
-          <li class="breadcrumb-item active">{{ trans('global.info') }}</li>
-        </ol>
-      </nav>
+    <div class="pagetitle">
+        <h1>{{ trans('global.drive_fee') }}/ @lang('cruds.spare.title_singular')</h1>
     </div><!-- End Page Title -->
 
     <form action="{{ route('admin.fee.spare.update', $spare_track) }}" method="post">
@@ -33,6 +27,20 @@
                                 @if($errors->has('is_paid'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('is_paid') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-break"></div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="mb-2" for="payment_date">@lang('global.payment_date')</label>
+                                <input type="text" name="payment_date" id="date" placeholder="ရက်စွဲ ရွေးချယ်ပါ။" value="{{ $spare_track->payment_date }}"  class="form-control {{ $errors->has('payment_date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('payment_date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('payment_date') }}
                                     </div>
                                 @endif
                             </div>

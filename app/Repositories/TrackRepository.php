@@ -11,11 +11,12 @@ use App\Repositories\Interfaces\TrackRepositoryInterface;
 
 class TrackRepository implements TrackRepositoryInterface
 {
-    public function allWithPaginate($filter, $paginate,$type)
+    public function allWithPaginate($filter, $paginate,$type, $status)
     {
         return Track::with('fromcities','tocities','driverTracks','spareTracks','oilCosts','otherCosts')
             ->filter($filter)
             ->whereType($type)
+            ->whereStatus($status)
             ->orderBy('created_at', 'DESC')
             ->paginate($paginate);
     }
@@ -25,20 +26,7 @@ class TrackRepository implements TrackRepositoryInterface
         DB::beginTransaction();
         try {
             $data['type'] = $type;
-            $data['total'] = $this->getTotal($data);
             $track = Track::create($data);
-            $oldtracks = Report::get();
-
-            $reportTrack = DB::table('reports_tracks')->where('track_id',$track->id);
-            if($reportTrack){
-                $reportTrack->delete();
-            }
-
-            if ($oldtracks->isEmpty()) {
-                $this->createNewReport($track, $data, $type);
-            } else {
-                $this->updateOrCreateReport($track, $data, $oldtracks, $type);
-            }
 
             $track->fromcities()->sync($data['fromcities']);
             $track->tocities()->sync($data['tocities']);
@@ -65,34 +53,11 @@ class TrackRepository implements TrackRepositoryInterface
                 $track->spareTracks()->createMany($spareTracks);
             }
 
-            // Create and attach other_costs
-            if (isset($data['other']['category']) && is_array($data['other']['category'])) {
-                $otherCostsData = [];
-                for ($i = 0; $i < count($data['other']['category']); $i++) {
-                    if ($data['other']['category'][$i] != null) {
-                        $otherCostsData[$i]['category'] = $data['other']['category'][$i];
-                    }
-                    if ($data['other']['category'][$i] != null) {
-                        $otherCostsData[$i]['cost'] = $data['other']['cost'][$i];
-                    }
-                }
-                $track->otherCosts()->createMany($otherCostsData);
-            }
-
-            // Create and attach oil costs
-            if (isset($data['oil']) && is_array($data['oil'])) {
-                $oilCostsData = [];
-                for ($i = 0; $i < count($data['oil']['liter']); $i++) {
-                    $oilCostsData[$i]['liter'] = $data['oil']['liter'][$i];
-                    $oilCostsData[$i]['price'] = $data['oil']['price'][$i];
-                }
-                $track->oilCosts()->createMany($oilCostsData);
-            }
-
             DB::commit();
             return $track;
         } catch (Exception $e) {
             DB::rollback();
+            dd($e);
             return false;
         }
     }
@@ -101,33 +66,12 @@ class TrackRepository implements TrackRepositoryInterface
     {
         DB::beginTransaction();
         try {
-            $oldtracks = Report::get();
-
-            $reportTrack = DB::table('reports_tracks')->where('track_id',$track->id);
-            if($reportTrack){
-                $reportTrack->delete();
+            $reportTrackId = DB::table('reports_tracks')->where('track_id',$track->id)->pluck('report_id')->first();
+            if($reportTrackId){
+                $report = Report::whereId($reportTrackId)->first();
+                $renewData = ($report->expense - $track->expense) + $data['expense'];
+                $report->update(['expense' => $renewData]);
             }
-
-            foreach ($oldtracks as $oldtrack) {
-                $fromcities = $track->fromcities->pluck('id')->toArray() === ($oldtrack->fromcities->pluck('id')->toArray());
-                $tocities = $track->tocities->pluck('id')->toArray() === ($oldtrack->tocities->pluck('id')->toArray());
-                if ($fromcities && $tocities) {
-                    $combineData['total_oil'] = $oldtrack->total_oil - $track->oilCosts->sum('liter');
-                    $combineData['total_price'] = $oldtrack->total_price - $track->oilCosts->sum('price');
-                    $combineData['other_cost'] = $oldtrack->other_cost - $track->otherCosts->sum('cost');
-                    $combineData['times'] = $oldtrack->times - 1;
-                    $combineData['expense'] = $oldtrack->expense - $track->expense;
-                    $combineData['check_cost'] = $oldtrack->check_cost - $track->check_cost;
-                    $combineData['gate_cost'] = $oldtrack->gate_cost - $track->gate_cost;
-                    $combineData['food_cost'] = $oldtrack->food_cost - $track->food_cost;
-                    $combineData['total'] = $oldtrack->total - $track->total;
-                    $oldtrack->update($combineData);
-                    break;
-                }
-            }
-
-            $this->updateOrCreateReport($track, $data, $oldtracks, $type);
-            $data['total'] = $this->getTotal($data);
             $track->update($data);
             $track->fromcities()->sync($data['fromcities']);
             $track->tocities()->sync($data['tocities']);
@@ -155,6 +99,33 @@ class TrackRepository implements TrackRepositoryInterface
                 $track->spareTracks()->delete();
                 $track->spareTracks()->createMany($spareTracks);
             }
+
+            DB::commit();
+            return $track;
+        } catch (Exception $e) {
+            DB::rollback();
+            dd($e);
+            return false;
+        }
+    }
+
+    public function arrivalUpdate(Track $track, $data, $type)
+    {
+        DB::beginTransaction();
+        try {
+            $oldtracks = Report::get();
+            
+            $this->checkAlreadyReport($track, $oldtracks);
+
+            if ($oldtracks->isEmpty()) {
+                $this->createNewReport($track, $data, $type);
+            } else {
+                $this->updateOrCreateReport($track, $data, $oldtracks, $type);
+            }
+
+            $data['total'] = $this->getTotal($data);
+            $data['status'] = 'arrival';
+            $track->update($data);
 
             // Update and attach other_costs
             if (isset($data['other']) && is_array($data['other'])) {
@@ -240,21 +211,22 @@ class TrackRepository implements TrackRepositoryInterface
         $data['total_oil'] = array_sum($data['oil']['liter']);
         $data['total_price'] = array_sum($data['oil']['price']);
         $data['other_cost'] = array_sum($data['other']['cost']);
+        $data['expense'] = $track->expense;
         $data['total'] = $this->getTotal($data);
         $data['times'] = 1;
         $report = Report::create($data);
 
         $report->reportTracks()->sync([$track->id]);
-        $report->fromcities()->sync($data['fromcities']);
-        $report->tocities()->sync($data['tocities']);
+        $report->fromcities()->sync($track->fromcities->pluck('id')->toArray());
+        $report->tocities()->sync($track->tocities->pluck('id')->toArray());
     }
 
     function updateOrCreateReport($track, $data, $oldtracks, $type)
     {
         $isSame = false;
         foreach ($oldtracks as $oldtrack) {
-            $fromcities = $data['fromcities'] === ($oldtrack->fromcities->pluck('id')->toArray());
-            $tocities = $data['tocities'] === ($oldtrack->tocities->pluck('id')->toArray());
+            $fromcities = $track->fromcities->pluck('id')->toArray() === ($oldtrack->fromcities->pluck('id')->toArray());
+            $tocities = $track->tocities->pluck('id')->toArray() === ($oldtrack->tocities->pluck('id')->toArray());
             if ($fromcities && $tocities) {
                 $isSame = true;
                 $combineData['type'] = $type;
@@ -262,7 +234,7 @@ class TrackRepository implements TrackRepositoryInterface
                 $combineData['total_price'] = $oldtrack->total_price + array_sum($data['oil']['price']);
                 $combineData['other_cost'] = $oldtrack->other_cost + array_sum($data['other']['cost']);
                 $combineData['times'] = $oldtrack->times + 1;
-                $combineData['expense'] = $oldtrack->expense + $data['expense'];
+                $combineData['expense'] = $oldtrack->expense + $track->expense;
                 $combineData['check_cost'] = $oldtrack->check_cost + $data['check_cost'];
                 $combineData['gate_cost'] = $oldtrack->gate_cost + $data['gate_cost'];
                 $combineData['food_cost'] = $oldtrack->food_cost + $data['food_cost'];
@@ -275,6 +247,30 @@ class TrackRepository implements TrackRepositoryInterface
 
         if (!$isSame) {
             $this->createNewReport($track, $data, $type);
+        }
+    }
+
+    function checkAlreadyReport($track, $oldtracks)
+    {
+        $reportTrack = DB::table('reports_tracks')->where('track_id',$track->id)->get();
+        if(!$reportTrack->isEmpty()){
+            DB::table('reports_tracks')->where('track_id',$track->id)->delete();
+            foreach ($oldtracks as $oldtrack) {
+                $fromcities = $track->fromcities->pluck('id')->toArray() === ($oldtrack->fromcities->pluck('id')->toArray());
+                $tocities = $track->tocities->pluck('id')->toArray() === ($oldtrack->tocities->pluck('id')->toArray());
+                if ($fromcities && $tocities) {
+                    $combineData['total_oil'] = $oldtrack->total_oil - $track->oilCosts->sum('liter');
+                    $combineData['total_price'] = $oldtrack->total_price - $track->oilCosts->sum('price');
+                    $combineData['other_cost'] = $oldtrack->other_cost - $track->otherCosts->sum('cost');
+                    $combineData['times'] = $oldtrack->times - 1;
+                    $combineData['check_cost'] = $oldtrack->check_cost - $track->check_cost;
+                    $combineData['gate_cost'] = $oldtrack->gate_cost - $track->gate_cost;
+                    $combineData['food_cost'] = $oldtrack->food_cost - $track->food_cost;
+                    $combineData['total'] = $oldtrack->total - $track->total;
+                    $oldtrack->update($combineData);
+                    break;
+                }
+            }
         }
     }
 }

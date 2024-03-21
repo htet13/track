@@ -2,8 +2,8 @@
     var tracks = @json($tracks->toArray());
     var data = []; var labels = [];
     tracks.map((track) => {
-        data.push(parseFloat(track.total_expense));
-        labels.push(track.issuer.name);
+        data.push(parseFloat(track.total_fee));
+        labels.push(track.driver.name);
     });
     
     var optionsPieChart = {

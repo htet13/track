@@ -54,7 +54,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('spare',SpareController::class);
 
     //Track
-    Route::resource('{type}/track',TrackController::class);
+    Route::resource('{type}/{status}/track',TrackController::class);
+    Route::get('{type}/arrival-track/{track}/edit',[TrackController::class, 'arrivalEdit'])->name('arrival.edit');
+    Route::patch('{type}/arrival-track/{track}',[TrackController::class, 'arrivalUpdate'])->name('arrival.update');
 
     //Drive Fee
     Route::get('fee/driver',[DriveFeeController::class, 'driver'])->name('fee.driver');

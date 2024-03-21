@@ -1,4 +1,4 @@
-@php $route = route('admin.track.update',[$type,$track]); @endphp
+@php $route = route('admin.track.update',[$type,'departure',$track]); @endphp
 @include('admin.tracks._form',
     [   
         'track' => $track,
