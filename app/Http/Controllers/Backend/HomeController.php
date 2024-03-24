@@ -50,10 +50,10 @@ class HomeController extends Controller
         $tracks = DriverTrack::filter($filter)
         ->where('is_paid', 'paid')
         ->selectRaw('
-            driver_tracks.driver_id,
+            driver_tracks.employee_id,
             SUM(driver_tracks.fee) as total_fee
         ')
-        ->groupBy('driver_id')
+        ->groupBy('employee_id')
         ->get();
 
         // dd($tracks);
@@ -68,6 +68,6 @@ class HomeController extends Controller
      */
     public function hr()
     {
-        return redirect()->route('admin.fee.driver'); 
+        return redirect()->route('hr.fee.driver'); 
     }
 }

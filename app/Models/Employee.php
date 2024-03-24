@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Enums\PositionEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasUuid;
 
-class SpareTrack extends Model
+class Employee extends Model
 {
-    use HasFactory, HasUuid;
+    use HasFactory, HasUuid, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +18,7 @@ class SpareTrack extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'employee_id','track_id','fee','is_paid','remark','payment_date'
+        'name','position'
     ];
 
     /**
@@ -31,15 +33,5 @@ class SpareTrack extends Model
     public function scopeFilter($query,$filter)
     {
         $filter->apply($query);
-    }
-
-    public function spare() 
-    {
-        return $this->belongsTo(Employee::class,'employee_id','id');
-    }
-
-    public function track()
-    {
-        return $this->belongsTo(Track::class);
     }
 }

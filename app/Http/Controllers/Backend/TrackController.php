@@ -10,29 +10,27 @@ use App\Models\Track;
 use App\Repositories\Interfaces\CityRepositoryInterface;
 use App\Repositories\Interfaces\CarNoRepositoryInterface;
 use App\Repositories\Interfaces\IssuerRepositoryInterface;
-use App\Repositories\Interfaces\DriverRepositoryInterface;
-use App\Repositories\Interfaces\SpareRepositoryInterface;
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use App\Repositories\TrackRepository;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Enums\PositionEnum;
 
 class TrackController extends Controller
 {
-    protected $trackRepository, $cityRepository, $carNoRepository, $driverRepository, $spareRepository, $issuerRepository;
+    protected $trackRepository, $cityRepository, $carNoRepository, $employeeRepository, $issuerRepository;
 
     public function __construct(
         TrackRepository $trackRepository, 
         CityRepositoryInterface $cityRepository, 
         CarNoRepositoryInterface $carNoRepository,
         IssuerRepositoryInterface $issuerRepository,
-        DriverRepositoryInterface $driverRepository,
-        SpareRepositoryInterface $spareRepository,
+        EmployeeRepositoryInterface $employeeRepository,
     ){
         $this->cityRepository = $cityRepository;
         $this->carNoRepository = $carNoRepository;
         $this->issuerRepository = $issuerRepository;
-        $this->driverRepository = $driverRepository;
-        $this->spareRepository = $spareRepository;
+        $this->employeeRepository = $employeeRepository;
         $this->trackRepository = $trackRepository;
     }
     /**
@@ -46,8 +44,8 @@ class TrackController extends Controller
         $cities = $this->cityRepository->all();
         $car_nos = $this->carNoRepository->all();
         $issuers = $this->issuerRepository->all();
-        $drivers = $this->driverRepository->all();
-        $spares = $this->spareRepository->all();
+        $drivers = $this->employeeRepository->all(PositionEnum::DRIVER);
+        $spares = $this->employeeRepository->all(PositionEnum::SPARE);
 
         if ($request->btn == "Export") {
             return Excel::download(new TrackExport($tracks), 'track' . now() . '.xlsx');
@@ -66,8 +64,8 @@ class TrackController extends Controller
         $cities = $this->cityRepository->all();
         $car_nos = $this->carNoRepository->all();
         $issuers = $this->issuerRepository->all();
-        $drivers = $this->driverRepository->all();
-        $spares = $this->spareRepository->all();
+        $drivers = $this->employeeRepository->all(PositionEnum::DRIVER);
+        $spares = $this->employeeRepository->all(PositionEnum::SPARE);
         return view('admin.tracks.create', compact('cities','car_nos','issuers','drivers','spares','type'));
     }
 
@@ -110,14 +108,14 @@ class TrackController extends Controller
         $cities = $this->cityRepository->all();
         $car_nos = $this->carNoRepository->all();
         $issuers = $this->issuerRepository->all();
-        $drivers = $this->driverRepository->all();
-        $spares = $this->spareRepository->all();
+        $drivers = $this->employeeRepository->all(PositionEnum::DRIVER);
+        $spares = $this->employeeRepository->all(PositionEnum::SPARE);
         return view('admin.tracks.edit', compact('track', 'cities', 'car_nos','issuers','drivers','spares', 'type'));
     }
 
-    public function arrivalEdit($type, Track $track)
+    public function arrivalEdit($type, $status, Track $track)
     {
-        return view('admin.tracks._arrival_form', compact('track','type'));
+        return view('admin.tracks._arrival_form', compact('track','type','status'));
     }
 
     /**

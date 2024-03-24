@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Filters\UserFilter;
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;

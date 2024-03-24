@@ -16,7 +16,7 @@ class CreateSpareTracksTable extends Migration
         Schema::create('spare_tracks', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('track_id');
-            $table->uuid('spare_id')->nullable();
+            $table->uuid('employee_id')->nullable();
             $table->integer('fee')->default(0);
             $table->enum('is_paid', ['paid', 'unpaid'])->default('unpaid');
             $table->text('remark')->nullable();
@@ -27,9 +27,9 @@ class CreateSpareTracksTable extends Migration
                 ->references('id')
                 ->on('tracks')
                 ->onDelete('cascade');
-            $table->foreign('spare_id')
+            $table->foreign('employee_id')
                 ->references('id')
-                ->on('spares')
+                ->on('employees')
                 ->onDelete('cascade');
         });
     }

@@ -129,11 +129,13 @@
                             <th colspan="2">{{ trans('global.expense') }}</th>
                             <th colspan="3">{{ trans('cruds.driver.title_singular') }}</th>
                             <th colspan="3">{{ trans('cruds.spare.title_singular') }}</th>
+                            @if($status == 'arrival')
                             <th colspan="2">{{ trans('global.oil') }}</th>
                             <th colspan="2">{{ trans('global.road_cost') }}</th>
                             <th rowspan="2">{{ trans('global.food_cost') }}</th>
                             <th colspan="2">{{ trans('global.other_cost') }}</th>
                             <th rowspan="2">{{ trans('global.total') }}</th>
+                            @endif
                             <th rowspan="2">{{ trans('cruds.track.action') }}</th>
                         </tr>
                         <tr>
@@ -147,12 +149,14 @@
                             <th>{{ trans('global.name') }}</th>
                             <th>{{ trans('global.drive_fee') }}</th>
                             <th>ရှင်း/ မရှင်း</th>
+                            @if($status == 'arrival')
                             <th>{{ trans('global.liter') }}</th>
                             <th>{{ trans('global.price') }}</th>
                             <th>{{ trans('global.check') }}</th>
                             <th>{{ trans('global.gate') }}</th>
                             <th>{{ trans('global.category') }}</th>
                             <th>{{ trans('global.cost') }}</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody class="text-center align-middle">
@@ -185,6 +189,7 @@
                             <td>{{ $track->spareTracks[0]->spare->name }}</td>
                             <td>{{ $track->spareTracks[0]->fee }}</td>
                             <td>@lang('global.'.$track->spareTracks[0]->is_paid)</td>
+                            @if($status == 'arrival')
                             <td rowspan="{{ $maxCount }}">
                                 @foreach ($track->oilCosts as $oil)
                                 <div>{{ number_format($oil->liter) }}</div>
@@ -209,6 +214,7 @@
                                 @endforeach
                             </td>
                             <td rowspan="{{ $maxCount }}">{{ number_format($track->total) }}</td>
+                            @endif
                             <td rowspan="{{ $maxCount }}">
                                 <div  class="d-flex flex-column">
                                     <div class="d-flex justify-content-between">
@@ -229,8 +235,12 @@
                                         @endif
                                     </div>
                                     <div style="width: 86px;">
-                                        <a class="btn bg-main text-main pointer" href="{{ route('admin.arrival.edit',[$type,$track]) }}">
+                                        <a class="btn bg-main text-main pointer" href="{{ route('admin.arrival.edit',[$type,$status,$track]) }}">
+                                            @if($status == 'departure')
                                             <i class="fa-solid fa-plus"></i>ရောက်ရှိ
+                                            @elseif($status == 'arrival')
+                                            <i class="fa-regular fa-pen-to-square"></i><span class="ms-1">ပြင်ရန်</span>
+                                            @endif
                                         </a>
                                     </div>
                                 </div>

@@ -16,7 +16,7 @@ class DriverTrack extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'driver_id','track_id','fee','is_paid','remark','payment_date'
+        'employee_id','track_id','fee','is_paid','remark','payment_date'
     ];
 
     /**
@@ -34,7 +34,7 @@ class DriverTrack extends Model
     }
 
     public function driver(){
-        return $this->belongsTo(Driver::class);
+        return $this->belongsTo(Employee::class,'employee_id','id');
     }
 
     public function track()

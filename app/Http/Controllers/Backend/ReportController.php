@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Enums\PositionEnum;
 use App\Exports\ReportExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,8 +10,7 @@ use App\Repositories\Interfaces\ReportRepositoryInterface;
 use App\Repositories\Interfaces\CityRepositoryInterface;
 use App\Repositories\Interfaces\CarNoRepositoryInterface;
 use App\Repositories\Interfaces\IssuerRepositoryInterface;
-use App\Repositories\Interfaces\DriverRepositoryInterface;
-use App\Repositories\Interfaces\SpareRepositoryInterface;
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Filters\ReportFilter;
 use App\Filters\TrackFilter;
@@ -18,22 +18,20 @@ use App\Models\Report;
 
 class ReportController extends Controller
 {
-    protected $reportRepository, $cityRepository, $carNoRepository, $driverRepository, $spareRepository, $issuerRepository;
+    protected $reportRepository, $cityRepository, $carNoRepository, $employeeRepository, $issuerRepository;
 
     public function __construct(
         ReportRepositoryInterface $reportRepository, 
         CityRepositoryInterface $cityRepository,
         CarNoRepositoryInterface $carNoRepository,
         IssuerRepositoryInterface $issuerRepository,
-        DriverRepositoryInterface $driverRepository,
-        SpareRepositoryInterface $spareRepository,
+        EmployeeRepositoryInterface $employeeRepository,
     ){
         $this->reportRepository = $reportRepository;
         $this->cityRepository = $cityRepository;
         $this->carNoRepository = $carNoRepository;
         $this->issuerRepository = $issuerRepository;
-        $this->driverRepository = $driverRepository;
-        $this->spareRepository = $spareRepository;
+        $this->employeeRepository = $employeeRepository;
     }
 
     /**
@@ -60,8 +58,8 @@ class ReportController extends Controller
         $cities = $this->cityRepository->all();
         $car_nos = $this->carNoRepository->all();
         $issuers = $this->issuerRepository->all();
-        $drivers = $this->driverRepository->all();
-        $spares = $this->spareRepository->all();
+        $drivers = $this->employeeRepository->all(PositionEnum::DRIVER);
+        $spares = $this->employeeRepository->all(PositionEnum::SPARE);
 
         return view('admin.reports.show', compact('report', 'tracks', 'cities', 'type', 'car_nos', 'issuers', 'drivers', 'spares'));
     }

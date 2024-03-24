@@ -16,6 +16,6 @@ class SpareTrackFilter extends Filters
 	 */
 	public function spare_id($value)
 	{
-		return $this->builder->where('spare_id',$value);
+		return $this->builder->where('employee_id',$value);
 	}
 }

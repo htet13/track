@@ -16,7 +16,7 @@ class CreateDriverTracksTable extends Migration
         Schema::create('driver_tracks', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('track_id');
-            $table->uuid('driver_id')->nullable();
+            $table->uuid('employee_id')->nullable();
             $table->integer('fee')->default(0);
             $table->enum('is_paid', ['paid', 'unpaid'])->default('unpaid');
             $table->text('remark')->nullable();
@@ -27,9 +27,9 @@ class CreateDriverTracksTable extends Migration
                 ->references('id')
                 ->on('tracks')
                 ->onDelete('cascade');
-            $table->foreign('driver_id')
+            $table->foreign('employee_id')
                 ->references('id')
-                ->on('drivers')
+                ->on('employees')
                 ->onDelete('cascade');
         });
     }

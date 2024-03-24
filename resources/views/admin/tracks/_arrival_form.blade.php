@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div style="float: right">
-                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.track.index',[$type,'arrival']) }}">{{ trans('global.cancel') }}</a>
+                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.track.index',[$type,$status]) }}">{{ trans('global.cancel') }}</a>
                                 <button type="submit" class="btn bg-main text-main btn-sm float-right">{{ trans('global.save') }}</button>
                             </div>
                         </div>

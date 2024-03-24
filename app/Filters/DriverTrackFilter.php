@@ -17,7 +17,7 @@ class DriverTrackFilter extends Filters
 	 */
 	public function driver_id($value)
 	{
-		return $this->builder->where('driver_id',$value);
+		return $this->builder->where('employee_id',$value);
 	}
 
 	public function from_date($value)

@@ -35,9 +35,9 @@ class TrackRepository implements TrackRepositoryInterface
             if (isset($data['driver']) && is_array($data['driver'])) {
                 $driverTracks = [];
                 for ($i = 0; $i < count($data['driver']['driver_id']); $i++) {
-                    $driverTracks[$i]['driver_id'] = $data['driver']['driver_id'][$i];
+                    $driverTracks[$i]['employee_id'] = $data['driver']['driver_id'][$i];
                     $driverTracks[$i]['fee'] = $data['driver']['fee'][$i];
-                    $driverTracks[$i]['is_paid'] = $data['driver']['is_paid'][$i];
+                    // $driverTracks[$i]['is_paid'] = $data['driver']['is_paid'][$i];
                 }
                 $track->driverTracks()->createMany($driverTracks);
             }
@@ -46,9 +46,9 @@ class TrackRepository implements TrackRepositoryInterface
             if (isset($data['spare']) && is_array($data['spare'])) {
                 $spareTracks = [];
                 for ($i = 0; $i < count($data['spare']['spare_id']); $i++) {
-                    $spareTracks[$i]['spare_id'] = $data['spare']['spare_id'][$i];
+                    $spareTracks[$i]['employee_id'] = $data['spare']['spare_id'][$i];
                     $spareTracks[$i]['fee'] = $data['spare']['fee'][$i];
-                    $spareTracks[$i]['is_paid'] = $data['spare']['is_paid'][$i];
+                    // $spareTracks[$i]['is_paid'] = $data['spare']['is_paid'][$i];
                 }
                 $track->spareTracks()->createMany($spareTracks);
             }
@@ -80,9 +80,9 @@ class TrackRepository implements TrackRepositoryInterface
             if (isset($data['driver']) && is_array($data['driver'])) {
                 $driverTracks = [];
                 for ($i = 0; $i < count($data['driver']['driver_id']); $i++) {
-                    $driverTracks[$i]['driver_id'] = $data['driver']['driver_id'][$i];
+                    $driverTracks[$i]['employee_id'] = $data['driver']['driver_id'][$i];
                     $driverTracks[$i]['fee'] = $data['driver']['fee'][$i];
-                    $driverTracks[$i]['is_paid'] = $data['driver']['is_paid'][$i];
+                    // $driverTracks[$i]['is_paid'] = $data['driver']['is_paid'][$i];
                 }
                 $track->driverTracks()->delete();
                 $track->driverTracks()->createMany($driverTracks);
@@ -92,9 +92,9 @@ class TrackRepository implements TrackRepositoryInterface
             if (isset($data['spare']) && is_array($data['spare'])) {
                 $spareTracks = [];
                 for ($i = 0; $i < count($data['spare']['spare_id']); $i++) {
-                    $spareTracks[$i]['spare_id'] = $data['spare']['spare_id'][$i];
+                    $spareTracks[$i]['employee_id'] = $data['spare']['spare_id'][$i];
                     $spareTracks[$i]['fee'] = $data['spare']['fee'][$i];
-                    $spareTracks[$i]['is_paid'] = $data['spare']['is_paid'][$i];
+                    // $spareTracks[$i]['is_paid'] = $data['spare']['is_paid'][$i];
                 }
                 $track->spareTracks()->delete();
                 $track->spareTracks()->createMany($spareTracks);

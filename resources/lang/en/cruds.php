@@ -24,6 +24,10 @@ return [
         'title' => 'ကားနံပါတ်များ',
         'title_singular' => 'ကားနံပါတ်',
     ],
+    'employee' => [
+        'title' => 'ဝန်ထမ်းများ',
+        'title_singular' => 'ဝန်ထမ်း',
+    ],
     'driver' => [
         'title' => 'ယာဉ်မောင်းများ',
         'title_singular' => 'ယာဉ်မောင်း',

@@ -17,7 +17,7 @@
 
             <div class="card mb-3 bg-main text-main">
                <div class="py-3" style="margin: 0 41px"> 
-                  <div class="fs-4"><a href="{{route('admin.hr')}}" style="background-color: #031F63; color: #E1E889">HR System</a></div>
+                  <div class="fs-4"><a href="{{route('hr.home')}}" style="background-color: #031F63; color: #E1E889">HR System</a></div>
                 </div>
             </div>
           </div>

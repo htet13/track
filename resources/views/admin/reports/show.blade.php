@@ -11,9 +11,11 @@
 @endsection
 @section('content')
 <main id="main" class="main">
-
-    <div class="pagetitle">
+    <div class="pagetitle d-flex justify-content-between align-items-center">
         <h1>{{ trans('cruds.track.title') }}/ @lang('global.'.$type)</h1>
+        <a class="btn bg-main text-main" href="{{ route('admin.report',$type) }}">
+            @lang('global.back')
+        </a>
     </div><!-- End Page Title -->
 
     <section class="route-table">
