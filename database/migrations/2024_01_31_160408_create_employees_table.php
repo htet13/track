@@ -17,6 +17,9 @@ class CreateEmployeesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('position');
+            $table->enum('status',['new','resign'])->default('new');
+            $table->date('resign_date')->nullable();
+            $table->text('remark')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

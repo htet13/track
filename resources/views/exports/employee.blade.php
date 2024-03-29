@@ -12,6 +12,7 @@
       <th><b>@lang('global.name')</b></th>
       <th><b>@lang('global.position')</b></th>
       <th><b>@lang('global.created_at')</b></th>
+      <th><b>@lang('global.resign_date')</b></th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td>{{ $employee->name }}</td>
       <td>@lang("cruds.$employee->position.title_singular")</td>
       <td>{{ $employee->created_at->format('Y-m-d') }}</td>                
+      <td>{{ $employee->resign_date }}</td>                
     </tr>
     @endforeach
   </tbody>

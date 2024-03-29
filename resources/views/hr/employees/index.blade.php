@@ -18,13 +18,13 @@
 
     <section class="employee-table">
         <div class="card p-2">
-            <form action="{{ route('hr.employee.index') }}" method="GET">
+            <form action="{{ route('hr.employee.index',$status) }}" method="GET">
                 <div class="row my-2">
                     <div class="col-md-4 mb-3">
                         <div class="input-group">
                             <input type="text" name="name" value="{{ request('name') }}" class="form-control" id="search" placeholder="@lang('global.search')">
                             <button class="btn btn-outline-main" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
-                            <a class="btn btn-outline-main" href="{{ route('hr.employee.index') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                            <a class="btn btn-outline-main" href="{{ route('hr.employee.index',$status) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="col-4"></div>
@@ -35,7 +35,7 @@
                         </button>
                         @endcan
 
-                        <a class="btn bg-main text-main" href="{{ route('hr.employee.create') }}">
+                        <a class="btn bg-main text-main" href="{{ route('hr.employee.create',$status) }}">
                             <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
                         </a>
                     </div>
@@ -49,7 +49,14 @@
                         <th>{{ trans('global.name') }}</th>
                         <th>{{ trans('global.position') }}</th>
                         <th>{{ trans('global.created_at') }}</th>
+                        @if($status == 'new')
+                        <th>{{ trans('global.resign_propose_date') }}</th>
+                        @else
+                        <th>{{ trans('global.resign_date') }}</th>
+                        @endif
+                        @if($status == 'new')
                         <th>{{ trans('global.actions') }}</th>
+                        @endif
                     </thead>
                     <tbody class="text-center align-middle">
                         @forelse ($employees as $index => $employee)
@@ -58,27 +65,37 @@
                             <td>{{ $employee->name }}</td>
                             <td>@lang("cruds.$employee->position.title_singular")</td>
                             <td>{{ $employee->created_at->format('d-m-Y | h:i:s') }}</td>
+                            <td>{{ $employee->resign_date }}</td>
+                            @if($status == 'new')
                             <td>
-                                <div class="d-flex">
-                                    <a href="{{ route('hr.employee.show', $employee) }}" class="pe-3" title="Employee Details">
-                                        <i class="fa-regular fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('hr.employee.edit', $employee) }}" class="pe-3" title="Edit Employee Details">
-                                        <i class="fa-regular fa-pen-to-square text-success"></i>
-                                    </a>
-                                    <form action="{{ route('hr.employee.destroy', $employee) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <a class="pe-3 delete text-danger" title="Delete employee">
-                                            <i class="fa-solid fa-trash"></i>
+                                <div  class="d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('hr.employee.show', [$status,$employee]) }}" title="Employee Details">
+                                            <i class="fa-regular fa-eye"></i>
                                         </a>
-                                    </form>
+                                        <a href="{{ route('hr.employee.edit', [$status,$employee]) }}" class="mx-2" title="Edit Employee Details">
+                                            <i class="fa-regular fa-pen-to-square text-success"></i>
+                                        </a>
+                                        <form action="{{ route('hr.employee.destroy', [$status,$employee]) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a class="delete text-danger" title="Delete employee">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <a class="btn bg-main text-main pointer" href="{{ route('hr.employee.resign', [$employee,$status]) }}">
+                                            <i class="fa-solid fa-plus"></i>နှုတ်ထွက်
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4" class="text-center">
+                            <td colspan="6" class="text-center">
                                 {{ trans('global.no_data_found') }}
                             </td>
                         </tr>

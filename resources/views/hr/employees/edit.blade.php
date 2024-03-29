@@ -6,7 +6,7 @@
     <div class="pagetitle">
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('hr.employee.index') }}"><h1>{{ trans('cruds.employee.title') }}</h1></a></li>
+          <li class="breadcrumb-item"><a href="{{ route('hr.employee.index',$status) }}"><h1>{{ trans('cruds.employee.title') }}</h1></a></li>
           <li class="breadcrumb-item active">{{ trans('global.info') }}{{ trans('global.update') }}</li>
         </ol>
       </nav>
@@ -15,7 +15,7 @@
     <section class="employee-table">
         <div class="card p-2">
             <div class="card-body p-2">
-                <form action="{{ route('hr.employee.update', $employee) }}" method="post">
+                <form action="{{ route('hr.employee.update', [$status,$employee]) }}" method="post">
                     @method('PUT')
                     @csrf
                     <div class="row">
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div style="float: right">
-                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('hr.employee.index') }}">{{ trans('global.cancel') }}</a>
+                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('hr.employee.index', $status) }}">{{ trans('global.cancel') }}</a>
                                 <button type="submit" class="btn bg-main text-main btn-sm float-right">{{ trans('global.update') }}</button>
                             </div>
                         </div>

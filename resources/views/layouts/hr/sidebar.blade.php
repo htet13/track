@@ -7,14 +7,27 @@
     <ul class="sidebar-nav" id="sidebar-nav">
         @can('Employee Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('hr/employee*') ? 'collapsed' : '' }}" href="{{ route('hr.employee.index') }}">
-                <div class="me-2">
-                <i class='fa fa-drivers-license'></i>
+            <a class="nav-link {{ !request()->is('hr/new/employee') || !request()->is('hr/resign/employee') ? 'collapsed' : '' }}" data-bs-target="#employee-nav" data-bs-toggle="collapse" href="#">
+                <div class="me-1">
+                    <i class='fa fa-drivers-license'></i>
                 </div>
                 <div class="">
                     <span>{{ trans('cruds.employee.title') }}</span>
                 </div>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="employee-nav" class="nav-content collapse {{ request()->is('hr/new/employee') || request()->is('hr/resign/employee') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="{{ request()->is('hr/new/employee') ? 'active' : ''  }}" href="{{ route('hr.employee.index', 'new') }}">
+                        <i class="bi bi-circle"></i><span>လက်ရှိ</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('hr/resign/employee') ? 'active' : ''  }}" href="{{ route('hr.employee.index', 'resign') }}">
+                        <i class="bi bi-circle"></i><span>လူဟောင်း</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         @endcan
         

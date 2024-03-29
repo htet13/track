@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     // Dashboard
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/logistics', [HomeController::class, 'logistics'])->name('logistics');
-    Route::get('/home', [HomeController::class, 'hr'])->name('home');
+    Route::get('/hr', [HomeController::class, 'hr'])->name('hr');
 
     // Report
     Route::get('{type}/report', [ReportController::class, 'index'])->name('report');

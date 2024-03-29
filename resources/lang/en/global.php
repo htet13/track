@@ -74,5 +74,8 @@ return [
     'route' => 'လမ်းကြောင်း',
     'payment_date' => 'ငွေချေသည့်ရက်စွဲ',
     'back'  => 'နောက်သို့',
-    'position' => 'ရာထူး'
+    'position' => 'ရာထူး',
+    'resign' => 'နှုတ်ထွက်',
+    'resign_date' => 'နှုတ်ထွက်သည့်ရက်',
+    'resign_propose_date' => 'နှုတ်ထွက်မည့်ရက်'
 ];

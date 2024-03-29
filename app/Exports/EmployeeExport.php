@@ -43,11 +43,12 @@ class EmployeeExport implements FromView, WithColumnFormatting, WithEvents
                 $event->sheet->getColumnDimension('B')->setWidth(20); // Assuming 'B' is the second column
                 $event->sheet->getColumnDimension('C')->setWidth(20);  
                 $event->sheet->getColumnDimension('D')->setWidth(20);  
+                $event->sheet->getColumnDimension('E')->setWidth(20);  
 
                 // Set static row height for all rows
                 $event->sheet->getDefaultRowDimension()->setRowHeight(50);
 
-                $event->sheet->getStyle('A:D')->applyFromArray([
+                $event->sheet->getStyle('A:E')->applyFromArray([
                     'alignment' => [
                         'horizontal' => Alignment::HORIZONTAL_CENTER,
                         'vertical'   => Alignment::VERTICAL_CENTER,

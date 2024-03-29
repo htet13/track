@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Hr;
 
+use App\Enums\EmployeeEnum;
 use App\Enums\PositionEnum;
 use App\Exports\EmployeeExport;
 use App\Filters\EmployeeFilter;
@@ -9,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
-use App\Http\Requests\EmployeeStoreRequest;
+use App\Http\Requests\{EmployeeStoreRequest,ResignRequest};
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
@@ -27,16 +28,16 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      * @return Collection
      */
-    public function index(EmployeeFilter $filter, Request $request)
+    public function index(EmployeeFilter $filter, Request $request, $status)
     {
-        $employees = $this->employeeRepository->allWithPaginate($filter,30);
+        $employees = $this->employeeRepository->allWithPaginate($filter,30,$status);
 
         if($request->btn == "Export")
         {
             return Excel::download(new EmployeeExport($employees),'driver'.now().'.xlsx');
         }
 
-        return view('hr.employees.index', compact('employees'));
+        return view('hr.employees.index', compact('employees','status'));
     }
 
     /**
@@ -44,11 +45,11 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($status)
     {
         $positions = PositionEnum::all();
         
-        return view('hr.employees.create', compact('positions'));
+        return view('hr.employees.create', compact('positions','status'));
     }
 
     /**
@@ -57,15 +58,15 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmployeeStoreRequest $request)
+    public function store(EmployeeStoreRequest $request, $status)
     {
-        $status = $this->employeeRepository->create($request->all());
+        $result = $this->employeeRepository->create($request->all());
 
-        ($status) ? $message = trans('cruds.employee.title_singular') . ' ' . trans('global.create_success') : $message = trans('cruds.employee.title_singular') . trans('global.create_fail');
+        ($result) ? $message = trans('cruds.employee.title_singular') . ' ' . trans('global.create_success') : $message = trans('cruds.employee.title_singular') . trans('global.create_fail');
 
-        toast($message,$status ? 'success' : 'error');
+        toast($message,$result ? 'success' : 'error');
 
-        return redirect()->route('hr.employee.index');
+        return redirect()->route('hr.employee.index',$status);
     }
 
     /**
@@ -74,9 +75,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show($status, Employee $employee)
     {
-        return view('hr.employees.show', compact('employee'));
+        return view('hr.employees.show', compact('employee','status'));
     }
 
     /**
@@ -85,10 +86,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($status, Employee $employee)
     {
         $positions = PositionEnum::all();
-        return view('hr.employees.edit', compact('employee','positions'));
+        return view('hr.employees.edit', compact('employee','positions','status'));
     }
 
     /**
@@ -98,15 +99,15 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeStoreRequest $request, Employee $employee)
+    public function update(EmployeeStoreRequest $request, $status, Employee $employee)
     {
-        $status = $this->employeeRepository->update($employee, $request->all());
+        $result = $this->employeeRepository->update($employee, $request->all());
 
-        ($status) ? $message = trans('cruds.employee.title_singular') . ' ' . trans('global.update_success') : $message = trans('cruds.employee.title_singular') . trans('global.update_fail');
+        ($result) ? $message = trans('cruds.employee.title_singular') . ' ' . trans('global.update_success') : $message = trans('cruds.employee.title_singular') . trans('global.update_fail');
 
-        toast($message,$status ? 'success' : 'error');
+        toast($message,$result ? 'success' : 'error');
 
-        return redirect()->route('hr.employee.index');
+        return redirect()->route('hr.employee.index', $status);
     }
 
     /**
@@ -115,10 +116,27 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($status,Employee $employee)
     {
         $employee->delete();
         
-        return redirect()->route('hr.employee.index');
+        return redirect()->route('hr.employee.index',$status);
+    }
+
+    public function resign(Employee $employee, $status)
+    {
+        return view('hr.employees.resign', compact('employee','status'));
+    }
+
+    public function resignUpdate(ResignRequest $request, Employee $employee, $status)
+    {
+        $type =  $request->type == 'resign' ? 'resign' : 'new';
+        $employee->update([
+            'status' => $type, 
+            'resign_date' => $request->resign_date,
+            'remark' => $request->remark
+        ]);
+
+        return redirect()->route('hr.employee.index',$status);
     }
 }

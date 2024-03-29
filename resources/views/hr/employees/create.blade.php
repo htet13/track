@@ -7,7 +7,7 @@
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('hr.employee.index') }}"><h1>{{ trans('cruds.employee.title') }}</h1></a></li>
+          <li class="breadcrumb-item"><a href="{{ route('hr.employee.index',$status) }}"><h1>{{ trans('cruds.employee.title') }}</h1></a></li>
           <li class="breadcrumb-item active">{{ trans('global.info') }} {{ trans('global.create') }}</li>
         </ol>
       </nav>
@@ -19,7 +19,7 @@
                 <h5>{{ trans('global.create') }} {{ trans('cruds.employee.title_singular') }}</h5>
             </div> --}}
             <div class="card-body p-2">
-                <form action="{{ route('hr.employee.store') }}" method="post">
+                <form action="{{ route('hr.employee.store',$status) }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div style="float: right">
-                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('hr.employee.index') }}">{{ trans('global.cancel') }}</a>
+                                <a class="btn btn-secondary btn-sm float-right" href="{{ route('hr.employee.index',$status) }}">{{ trans('global.cancel') }}</a>
                                 <button type="submit" class="btn bg-main text-main btn-sm float-right">{{ trans('global.save') }}</button>
                             </div>
                         </div>
