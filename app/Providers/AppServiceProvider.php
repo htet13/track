@@ -11,6 +11,7 @@ use App\Repositories\CityRepository;
 use App\Repositories\IssuerRepository;
 use App\Repositories\CarNoRepository;
 use App\Repositories\EmployeeRepository;
+use App\Repositories\AdvanceEmployeeRepository;
 use App\Repositories\ReportRepository;
 use App\Repositories\TrackRepository;
 use App\Repositories\Interfaces\RoleRepositoryInterface;
@@ -20,6 +21,7 @@ use App\Repositories\Interfaces\CityRepositoryInterface;
 use App\Repositories\Interfaces\IssuerRepositoryInterface;
 use App\Repositories\Interfaces\CarNoRepositoryInterface;
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
+use App\Repositories\Interfaces\AdvanceEmployeeRepositoryInterface;
 use App\Repositories\Interfaces\ReportRepositoryInterface;
 use App\Repositories\Interfaces\TrackRepositoryInterface;
 
@@ -49,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IssuerRepositoryInterface::class, IssuerRepository::class);
         $this->app->bind(CarNoRepositoryInterface::class, CarNoRepository::class);
         $this->app->bind(EmployeeRepositoryInterface::class, EmployeeRepository::class);
+        $this->app->bind(AdvanceEmployeeRepositoryInterface::class, AdvanceEmployeeRepository::class);
         $this->app->bind(ReportRepositoryInterface::class, ReportRepository::class);
         $this->app->bind(TrackRepositoryInterface::class, TrackRepository::class);
         Paginator::useBootstrap();

@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use App\Enums\PositionEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasUuid;
 
-class Employee extends Model
+class AdvanceEmployee extends Model
 {
-    use HasFactory, HasUuid, SoftDeletes;
+    use HasFactory, HasUuid;
 
     /**
      * The attributes that are mass assignable.
@@ -18,10 +16,8 @@ class Employee extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name','position','status','joined_date','resign_date','remark','advance'
+        'date','employee_id','amount','reason','remark'
     ];
-
-    protected $dates = ['joined_date','resign_date'];
 
     /**
      * The attributes that should be cast.
@@ -35,5 +31,9 @@ class Employee extends Model
     public function scopeFilter($query,$filter)
     {
         $filter->apply($query);
+    }
+
+    public function employee(){
+        return $this->belongsTo(Employee::class);
     }
 }

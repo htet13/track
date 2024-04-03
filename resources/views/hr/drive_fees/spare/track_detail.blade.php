@@ -100,6 +100,7 @@
                             <th rowspan="2" class="w-90">{{ trans('global.date') }}</th>
                             <th rowspan="2" class="w-90">{{ trans('cruds.car_no.title_singular') }}</th>
                             <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
+                            <th rowspan="2">@lang('global.drive_fee')</th>
                             <th rowspan="2">@lang('global.payment_date')</th>
                             <th rowspan="2">{{ trans('cruds.track.action') }}</th>
                         </tr>
@@ -131,6 +132,7 @@
                                 <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
                                 @endforeach
                             </td>
+                            <td>{{ $spare_track->fee }}</td>
                             <td>{{ $spare_track->payment_date }}</td>
                             <td>
                                 <a href="{{ route('hr.fee.spare.edit', ['track_id' => $track->id, 'driver_is_paid' => request('driver_is_paid')]) }}" class="pe-3" title="route Details">

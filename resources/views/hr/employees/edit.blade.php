@@ -19,9 +19,20 @@
                     @method('PUT')
                     @csrf
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
                             <div class="form-group">
-                                <label class="required" for="name">{{ trans('global.name') }}</label>
+                                <label class="required mb-2" for="joined_date">@lang('global.joined_date')</label>
+                                <input type="text" name="joined_date" id="date" placeholder="ရက်စွဲ ရွေးချယ်ပါ။" value="{{ old('joined_date', $employee->joined_date) }}"  class="form-control {{ $errors->has('joined_date') ? 'is-invalid' : '' }}"/>
+                                @if($errors->has('joined_date'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('joined_date') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="name">{{ trans('global.name') }}</label>
                                 <input type="text" name="name" id="name" value="{{ old('name', $employee->name) }}" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}">
                                 @if($errors->has('name'))
                                     <div class="invalid-feedback">
@@ -30,9 +41,9 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
                             <div class="form-group">
-                                <label class="required" for="position">@lang('global.position')</label>
+                                <label class="required mb-2" for="position">@lang('global.position')</label>
                                 <select name="position" class="form-control select2 {{ $errors->has('position') ? 'is-invalid' : '' }}">
                                     <option value="" disabled selected>{{ trans('global.please_select') }}</option>
                                     @foreach ($positions as $position)

@@ -15,11 +15,12 @@ class CityTableSeeder extends Seeder
     public function run()
     {
         $cities = [
-            ['name'  =>  'မိတ္ထီလာ'],
-            ['name'  =>  'ပျော်ဘွယ်'],
-            ['name'  =>  'ရမည်းသင်း'],
-            ['name'  =>  'တပ်ကုန်း'],
-            ['name'  =>  'နေပြည်တော်'],
+            ['name'  =>  'YGN cp'],
+            ['name'  =>  'ညောင်တုန်း အဝေ'],
+            ['name'  =>  'တန့်ယန်း'],
+            ['name'  =>  'တပ်ကုန်း ပြည်သာနိုင်'],
+            ['name'  =>  'မိတ္ထီလာ အနောက်ခြံ'],
+            ['name'  =>  'အင်းတကော် sunjin'],
         ];
 
         collect($cities)->map(function ($city) {

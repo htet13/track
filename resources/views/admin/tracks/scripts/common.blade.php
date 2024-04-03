@@ -8,4 +8,9 @@
         height: 100,
         toolbar: false
     });
+    $('#reason').summernote({
+        placeholder: 'အကြောင်းအရာ ရေးသားပါ။',
+        height: 100,
+        toolbar: false
+    });
 </script>

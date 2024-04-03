@@ -6,7 +6,7 @@
                 <span class="d-none d-lg-block">{{ trans('global.web_title') }}</span>
             </a>
         </div><!-- End Logo -->
-        <div class="text-main fw-bold" style="width: 33%; text-align:center">WAREHOUSE</div>
+        <div class="text-main fw-bold" style="width: 33%; text-align:center">ACT Logistics Group</div>
         <div class="text-main mx-3" style="width: 33%; text-align:end">
             <a href="{{ route('admin.logout') }}" class="text-decoration-none text-main fs-5">
                 <i class="fa-solid fa-power-off"></i>

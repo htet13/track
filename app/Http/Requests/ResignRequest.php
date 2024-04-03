@@ -28,4 +28,11 @@ class ResignRequest extends FormRequest
             'resign_date' => 'required'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'resign_date.required' => 'နှုတ်ထွက်မည့်ရက် ရွေးချယ်ရန် လိုအပ်ပါသည်။',
+        ];
+    }
 }

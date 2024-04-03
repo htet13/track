@@ -21,13 +21,21 @@ class StoreRoleRequest extends FormRequest
     {
         return [
             'name' => [
-                'string',
                 'required',
+                'string',
             ],
             'permissions' => [
                 'required',
                 'array',
             ],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'အမည်ထည့်သွင်းရန် လိုအပ်ပါသည်။',
+            'permissions.required' => 'permission ရွေးချယ်ရန် လိုအပ်ပါသည်။'
         ];
     }
 }

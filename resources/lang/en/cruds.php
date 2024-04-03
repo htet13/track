@@ -28,6 +28,10 @@ return [
         'title' => 'ဝန်ထမ်းများ',
         'title_singular' => 'ဝန်ထမ်း',
     ],
+    'advance_employee' => [
+        'title' => 'ကြိုထုတ်ဝန်ထမ်းများ',
+        'title_singular' => 'ကြိုထုတ်ဝန်ထမ်း',
+    ],
     'driver' => [
         'title' => 'ယာဉ်မောင်းများ',
         'title_singular' => 'ယာဉ်မောင်း',

@@ -17,6 +17,27 @@
                 </div>
                 <div class="card-body p-2">
                     <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="mb-2" for="drive_fee">@lang('global.drive_fee')</label>
+                                <input type="text" value="{{ $driver_track->fee }}" class="form-control" disabled/>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="mb-2" for="advance">@lang('global.advance')</label>
+                                <input type="text" value="{{ $driver_track->driver->advance }}" class="form-control" disabled/>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="mb-2" for="paid_amount">နှိမ်မည့်ပမာဏ</label>
+                                <input type="number" name="paid_amount" value="old('paid_amount')" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-break"></div>
+                    <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2" for="is_paid">@lang('global.paid')/ @lang('global.unpaid')</label>
@@ -31,9 +52,6 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
-                    <div class="line-break"></div>
-                    <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">
                                 <label class="mb-2" for="payment_date">@lang('global.payment_date')</label>

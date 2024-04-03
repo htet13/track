@@ -88,11 +88,13 @@ class DriveFeeController extends Controller
 
     public function driverUpdate(DriverTrack $driver_track, Request $request )
     {
-        $uuu = $driver_track->update([
+        $driver_track->update([
             'is_paid' => $request->is_paid, 
             'remark' => $request->remark, 
-            'payment_date' => $request->payment_date ?? now()
+            'payment_date' => $request->payment_date
         ]);
+
+        $driver_track->driver->decrement('advance', $request->paid_amount);
 
         return redirect()->route('hr.fee.driver.detail',['driver_id' => $driver_track->employee_id, 'driver_is_paid' => $request->is_paid]);
     }
@@ -153,8 +155,10 @@ class DriveFeeController extends Controller
         $spare_track->update([
             'is_paid' => $request->is_paid, 
             'remark' => $request->remark, 
-            'payment_date' => $request->payment_date ?? now()
+            'payment_date' => $request->payment_date
         ]);
+
+        $spare_track->spare->decrement('advance', $request->paid_amount);
 
         return redirect()->route('hr.fee.spare.detail',[$spare_track->employee_id, 'driver_is_paid' => $request->is_paid]);
     }

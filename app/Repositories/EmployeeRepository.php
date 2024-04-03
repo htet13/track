@@ -14,9 +14,14 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         return Employee::wherePosition($type)->pluck('name','id');
     }
 
+    public function allWithoutType()
+    {
+        return Employee::pluck('name','id');
+    }
+
     public function allWithPaginate($filter,$paginate,$status)
     {
-        return Employee::filter($filter)->whereStatus($status)->orderBy('name')->paginate($paginate);
+        return Employee::filter($filter)->whereStatus($status)->orderBy('position')->paginate($paginate);
     }
 
     public function create($data)

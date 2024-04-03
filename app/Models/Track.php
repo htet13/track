@@ -82,11 +82,11 @@ class Track extends Model
 
     public function driver()
     {
-        return $this->belongsTo(Driver::class)->withTrashed();
+        return $this->belongsTo(Employee::class, 'employee_id','id')->withTrashed();
     }
 
     public function spare()
     {
-        return $this->belongsTo(Spare::class)->withTrashed();
+        return $this->belongsTo(Employee::class, 'employee_id','id')->withTrashed();
     }
 }

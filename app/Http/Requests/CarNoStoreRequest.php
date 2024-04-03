@@ -28,4 +28,10 @@ class CarNoStoreRequest extends FormRequest
             'category' => 'nullable'
         ];
     }
+    public function messages()
+    {
+        return [
+            'name.required' => 'ကားနံပါတ်ထည့်သွင်းရန် လိုအပ်ပါသည်။'
+        ];
+    }
 }

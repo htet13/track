@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\Hr\AdvanceEmployeeController;
 use App\Http\Controllers\Backend\Hr\EmployeeController;
 use App\Http\Controllers\Backend\Hr\DriveFeeController;
+use App\Http\Controllers\Backend\Hr\ReportController;
 
 Route::group(['prefix' => 'hr', 'as' => 'hr.', 'middleware' => 'auth'], function () {
 
@@ -13,6 +14,9 @@ Route::group(['prefix' => 'hr', 'as' => 'hr.', 'middleware' => 'auth'], function
     //Employee Resign 
     Route::get('resign/{employee}/{status}',[EmployeeController::class,'resign'])->name('employee.resign');
     Route::put('resign/{employee}/{status}/update',[EmployeeController::class,'resignUpdate'])->name('employee.resign.update');
+
+    //Advance Employee 
+    Route::resource('advance-employee',AdvanceEmployeeController::class);
 
     //Drive Fee
     Route::get('fee/driver',[DriveFeeController::class, 'driver'])->name('fee.driver');
@@ -25,5 +29,8 @@ Route::group(['prefix' => 'hr', 'as' => 'hr.', 'middleware' => 'auth'], function
     Route::get('fee/spare/{spare_id}',[DriveFeeController::class, 'spareDetail'])->name('fee.spare.detail');
     Route::get('fee/spare/{track_id}/edit',[DriveFeeController::class, 'spareEdit'])->name('fee.spare.edit');
     Route::put('fee/spare/{spare_track}/update',[DriveFeeController::class, 'spareUpdate'])->name('fee.spare.update');
+
+    //Report
+    Route::get('report/advance-employee',[ReportController::class, 'advanceEmployee'])->name('report.advanceEmployee');
 });
 

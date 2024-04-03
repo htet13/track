@@ -12,27 +12,30 @@
 @section('content')
 <main id="main" class="main">
 
-    <div class="pagetitle">
-        <h1>{{ trans('cruds.employee.title') }}</h1>
+    <div class="pagetitle d-flex justify-content-between align-items-center">
+        <h1>{{ trans('cruds.advance_employee.title') }}/ အသေးစိတ်အချက်အလက်များ</h1>
+        <a class="btn bg-main text-main" href="{{ route('hr.report.advanceEmployee') }}">
+            @lang('global.back')
+        </a>
     </div><!-- End Page Title -->
 
-    <section class="employee-table">
+    <section class="advance-employee-table">
         <div class="card p-2">
-            <form action="{{ route('hr.employee.index',$status) }}" method="GET">
+            <form action="{{ route('hr.advance-employee.index') }}" method="GET">
                 <div class="row my-2">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <div class="form-group">
-                            <label class="required mb-2" for="position">@lang('global.name')</label>
-                            <input type="text" name="name" value="{{ request('name') }}" class="form-control" id="search" placeholder="@lang('global.search')">
+                            <label class="required mb-2" for="date">@lang('global.date')</label>
+                            <input type="text" name="date" id="date" placeholder="ရက်စွဲ ရွေးချယ်ပါ။" value="{{ request('date') }}"  class="form-control"/>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <div class="form-group">
-                            <label class="required mb-2" for="position">@lang('global.position')</label>
-                            <select name="position" class="form-control select2 {{ $errors->has('position') ? 'is-invalid' : '' }}">
+                            <label class="required mb-2" for="employee_id">{{ trans('global.name') }}</label>
+                            <select name="employee_id" class="form-control select2 {{ $errors->has('employee_id') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($positions as $position)
-                                    <option value="{{ $position }}"{{ request()->position == $position ? 'selected' : '' }}>@lang("cruds.$position.title_singular")</option>
+                                @foreach ($employees as $id => $name)
+                                    <option value="{{ $id }}" {{ request('employee_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -42,13 +45,13 @@
                     <div class="col-md-6"></div>
                     <div class="col-md-6 col-12 mb-3 d-flex justify-content-end">
                         <button class="btn btn-outline-main me-2" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
-                        <a class="btn btn-outline-main me-2" href="{{ route('hr.employee.index',$status) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-main me-2" href="{{ route('hr.advance-employee.index') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         @can('Excel Export')
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
                         @endcan
-                        <a class="btn bg-main text-main" href="{{ route('hr.employee.create',$status) }}">
+                        <a class="btn bg-main text-main" href="{{ route('hr.advance-employee.create') }}">
                             <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
                         </a>
                     </div>
@@ -59,52 +62,37 @@
                 <table class="table table-bordered table-striped" style="border: 1px solid #959598; margin-bottom: 50px;">
                     <thead class="text-center align-middle">
                         <th>{{ trans('global.no') }}</th>
+                        <th>{{ trans('global.date') }}</th>
                         <th>{{ trans('global.name') }}</th>
                         <th>{{ trans('global.position') }}</th>
-                        <th>{{ trans('global.joined_date') }}</th>
-                        @if($status == 'new')
-                        <th>{{ trans('global.resign_propose_date') }}</th>
-                        @else
-                        <th>{{ trans('global.resign_date') }}</th>
-                        @endif
-                        @if($status == 'new')
+                        <th>{{ trans('global.amount') }}</th>
                         <th>{{ trans('global.actions') }}</th>
-                        @endif
                     </thead>
                     <tbody class="text-center align-middle">
-                        @forelse ($employees as $index => $employee)
-                        <tr id="row{{ $employee->id }}">
+                        @forelse ($advance_employees as $index => $advance_employee)
+                        <tr id="row{{ $advance_employee->id }}">
                             <td>{{ $index+1 }}</td>
-                            <td>{{ $employee->name }}</td>
-                            <td>@lang("cruds.$employee->position.title_singular")</td>
-                            <td>{{ optional($employee->joined_date)->format('d-m-Y') }}</td>
-                            <td>{{ optional($employee->resign_date)->format('d-m-Y') }}</td>
-                            @if($status == 'new')
+                            <td>{{ $advance_employee->date }}</td>
+                            <td>{{ $advance_employee->employee->name }}</td>
+                            <td>{{ $advance_employee->employee->position }}</td>
+                            <td>{{ $advance_employee->amount }}</td>
                             <td>
-                                <div  class="d-flex flex-column justify-content-center">
-                                    <div class="d-flex justify-content-center">
-                                        <a href="{{ route('hr.employee.show', [$status,$employee]) }}" title="Employee Details">
-                                            <i class="fa-regular fa-eye"></i>
+                                <div class="d-flex justify-content-center">
+                                    <a href="{{ route('hr.advance-employee.show', $advance_employee) }}" class="pe-3" title="Car No Details">
+                                        <i class="fa-regular fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('hr.advance-employee.edit', $advance_employee) }}" class="pe-3" title="Edit Car No Details">
+                                        <i class="fa-regular fa-pen-to-square text-success"></i>
+                                    </a>
+                                    <form action="{{ route('hr.advance-employee.destroy', $advance_employee) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <a class="pe-3 delete text-danger" title="Delete Car No">
+                                            <i class="fa-solid fa-trash"></i>
                                         </a>
-                                        <a href="{{ route('hr.employee.edit', [$status,$employee]) }}" class="mx-2" title="Edit Employee Details">
-                                            <i class="fa-regular fa-pen-to-square text-success"></i>
-                                        </a>
-                                        <form action="{{ route('hr.employee.destroy', [$status,$employee]) }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <a class="delete text-danger" title="Delete employee">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </a>
-                                        </form>
-                                    </div>
-                                    <div>
-                                        <a class="btn bg-main text-main pointer" href="{{ route('hr.employee.resign', [$employee,$status]) }}">
-                                            <i class="fa-solid fa-plus"></i>နှုတ်ထွက်
-                                        </a>
-                                    </div>
+                                    </form>
                                 </div>
                             </td>
-                            @endif
                         </tr>
                         @empty
                         <tr>
@@ -120,7 +108,7 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div style="float:right">
-                        {{ $employees->appends(request()->input())->links() }}
+                        {{ $advance_employees->appends(request()->input())->links() }}
                     </div>
                 </div>
             </div>

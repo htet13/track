@@ -16,7 +16,7 @@ class IssuerRepository implements IssuerRepositoryInterface
 
     public function allWithPaginate($filter,$paginate)
     {
-        return Issuer::filter($filter)->orderBy('name')->paginate($paginate);
+        return Issuer::filter($filter)->orderBy('name')->orderBy('name')->paginate($paginate);
     }
 
     public function create($data)

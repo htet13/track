@@ -31,13 +31,14 @@ class EmployeeController extends Controller
     public function index(EmployeeFilter $filter, Request $request, $status)
     {
         $employees = $this->employeeRepository->allWithPaginate($filter,30,$status);
+        $positions = PositionEnum::all();
 
         if($request->btn == "Export")
         {
             return Excel::download(new EmployeeExport($employees),'driver'.now().'.xlsx');
         }
 
-        return view('hr.employees.index', compact('employees','status'));
+        return view('hr.employees.index', compact('employees','status','positions'));
     }
 
     /**

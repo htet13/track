@@ -27,4 +27,10 @@ class IssuerStoreRequest extends FormRequest
             'name' => 'required|string|unique:issuers,name',
         ];
     }
+    public function messages()
+    {
+        return [
+            'name.required' => 'အမည်ထည့်သွင်းရန် လိုအပ်ပါသည်။'
+        ];
+    }
 }

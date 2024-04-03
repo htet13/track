@@ -27,4 +27,11 @@ class CityStoreRequest extends FormRequest
             'name' => 'required|string|unique:cities,name',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'မြို့အမည်ထည့်သွင်းရန် လိုအပ်ပါသည်။'
+        ];
+    }
 }

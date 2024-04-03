@@ -6,6 +6,7 @@ use App\Models\Employee;
 
 Interface EmployeeRepositoryInterface{
     public function all($type);
+    public function allWithoutType();
     public function allWithPaginate(EmployeeFilter $filter,$paginate,$status);
     public function create($data);
     public function update(Employee $employee, $data);

@@ -21,8 +21,8 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => [
-                'string',
                 'required',
+                'string',
             ],
             'email' => [
                 'required',
@@ -38,6 +38,16 @@ class StoreUserRequest extends FormRequest
                 'required',
                 'array',
             ],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'အမည်ထည့်သွင်းရန် လိုအပ်ပါသည်။',
+            'email.required' => 'အီးမေးလ်ထည့်သွင်းရန် လိုအပ်ပါသည်။',
+            'roles.required' => 'role ရွေးချယ်ရန် လိုအပ်ပါသည်။',
+            'password.required' => 'လျှို့ဝှက်နံပါတ် ထည့်သွင်းရန် လိုအပ်ပါသည်။'
         ];
     }
 }
