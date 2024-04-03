@@ -57,7 +57,7 @@
                             <td>{{ $city->name }}</td>
                             <td>{{ $city->created_at->format('d-m-Y | h:i:s') }}</td>
                             <td>
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-center">
                                     <a href="{{ route('admin.city.show', $city) }}" class="pe-3" title="city Details">
                                         <i class="fa-regular fa-eye"></i>
                                     </a>

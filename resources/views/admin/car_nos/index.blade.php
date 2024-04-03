@@ -59,7 +59,7 @@
                             <td>{{ $car_no->category }}</td>
                             <td>{{ $car_no->created_at->format('d-m-Y | h:i:s') }}</td>
                             <td>
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-center">
                                     <a href="{{ route('admin.car-no.show', $car_no) }}" class="pe-3" title="Car No Details">
                                         <i class="fa-regular fa-eye"></i>
                                     </a>

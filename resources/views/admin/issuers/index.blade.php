@@ -56,7 +56,7 @@
                             <td>{{ $issuer->name }}</td>
                             <td>{{ $issuer->created_at->format('d-m-Y | h:i:s') }}</td>
                             <td>
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-center">
                                     <a href="{{ route('admin.issuer.show', $issuer) }}" class="pe-3" title="issuer Details">
                                         <i class="fa-regular fa-eye"></i>
                                     </a>
