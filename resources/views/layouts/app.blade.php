@@ -109,6 +109,20 @@
         // Remove non-numeric characters using a regular expression
         $(this).val($(this).val().replace(/[^0-9]/g, ''));
     });
+
+    $('body').on('input', '#allow-decimal', function(event) {
+        const value = $(this).val();
+        const caretPos = this.selectionStart;
+        const newValue = event.target.value.replace(/[^\d.]/g, ''); // Allow only digits and a single decimal point
+        if (value !== newValue) {
+            $(this).val(newValue);
+            // Adjust cursor position based on the difference in lengths of old and new values
+            const deltaLength = newValue.length - value.length;
+            const newCaretPos = caretPos + deltaLength;
+            this.setSelectionRange(newCaretPos, newCaretPos);
+        }
+    });
+
     $(window).on('load', function() {
         $('#preloader').hide();
     });

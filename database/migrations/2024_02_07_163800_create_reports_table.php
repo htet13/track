@@ -18,7 +18,7 @@ class CreateReportsTable extends Migration
             $table->enum('type', ['tachileik', 'other'])->default('other');
             $table->integer('times')->default(0);
             $table->integer('expense')->default(0);
-            $table->integer('total_oil')->default(0);
+            $table->string('total_oil')->default(0);
             $table->integer('total_price')->default(0);
             $table->integer('check_cost')->default(0);
             $table->integer('gate_cost')->default(0);

@@ -94,7 +94,7 @@ class DriveFeeController extends Controller
             'payment_date' => $request->payment_date
         ]);
 
-        $driver_track->driver->decrement('advance', $request->paid_amount);
+        $driver_track->driver->decrement('advance', $request->paid_amount ?? 0);
 
         return redirect()->route('hr.fee.driver.detail',['driver_id' => $driver_track->employee_id, 'driver_is_paid' => $request->is_paid]);
     }
@@ -158,7 +158,7 @@ class DriveFeeController extends Controller
             'payment_date' => $request->payment_date
         ]);
 
-        $spare_track->spare->decrement('advance', $request->paid_amount);
+        $spare_track->spare->decrement('advance', $request->paid_amount ?? 0);
 
         return redirect()->route('hr.fee.spare.detail',[$spare_track->employee_id, 'driver_is_paid' => $request->is_paid]);
     }

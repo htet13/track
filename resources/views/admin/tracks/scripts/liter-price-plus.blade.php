@@ -3,7 +3,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-5 col-sm-5 mb-2">
                             <div class="form-group">
                                 <label class="required mb-2"></label>
-                                <input type="number" name="oil[liter][]" placeholder="@lang('global.number_placeholder')" id="liter" class="form-control {{ $errors->has('oil.liter') ? 'is-invalid' : '' }}" />
+                                <input id="allow-decimal" name="oil[liter][]" placeholder="@lang('global.number_placeholder')" id="liter" class="form-control {{ $errors->has('oil.liter') ? 'is-invalid' : '' }}" />
                                 @if($errors->has('liter'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('liter') }}

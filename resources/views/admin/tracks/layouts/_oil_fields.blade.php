@@ -2,7 +2,7 @@
     <div class="col-xl-6 col-lg-6 col-md-6 col-5 col-sm-5 mb-2">
         <div class="form-group">
             <label class="required mb-2" for="liter">@if($loop->first) @lang('global.liter') @endif</label>
-            <input type="number" value="{{ $fieldValue }}" name="{{ $fieldName }}" placeholder="@lang('global.number_placeholder')" class="form-control {{ $errors->has($errorName) ? 'is-invalid' : '' }}" />
+            <input id="allow-decimal" value="{{ $fieldValue }}" name="{{ $fieldName }}" placeholder="@lang('global.number_placeholder')" class="form-control {{ $errors->has($errorName) ? 'is-invalid' : '' }}" />
             @if($errors->has($errorName))
                 <div class="invalid-feedback">
                     {{ $errors->first($errorName) }}
