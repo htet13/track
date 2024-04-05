@@ -7,7 +7,7 @@ $loopCount = old("driver") ? count(old("driver.fee")) : 1;
         @include('admin.tracks.layouts._driver_fields', 
         [
             'customLoop' => $loop, 
-            'fieldValue' => $driver->driver_id, 'fieldName' => 'driver[driver_id][]', 'errorName' => 'driver.driver_id.'.$index, 
+            'fieldValue' => $driver->employee_id, 'fieldName' => 'driver[driver_id][]', 'errorName' => 'driver.driver_id.'.$index, 
             'fieldFeeValue' => $driver->fee, 'fieldFeeName' => 'driver[fee][]', 'errorFeeName' => 'driver.fee.'.$index,
             'fieldIsPaidValue' => $driver->is_paid, 'fieldIsPaidName' => 'driver[is_paid][]', 'errorIsPaidName' => 'driver.is_paid.'.$index
         ])

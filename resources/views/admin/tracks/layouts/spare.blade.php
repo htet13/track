@@ -7,7 +7,7 @@ $loopCount = old("spare") ? count(old("spare.fee")) : 1;
         @include('admin.tracks.layouts._spare_fields', 
         [
             'customLoop' => $loop, 
-            'fieldValue' => $spare->spare_id, 'fieldName' => 'spare[spare_id][]', 'errorName' => 'spare.spare_id.'.$index, 
+            'fieldValue' => $spare->employee_id, 'fieldName' => 'spare[spare_id][]', 'errorName' => 'spare.spare_id.'.$index, 
             'fieldFeeValue' => $spare->fee, 'fieldFeeName' => 'spare[fee][]', 'errorFeeName' => 'spare.fee.'.$index,
             'fieldIsPaidValue' => $spare->is_paid, 'fieldIsPaidName' => 'spare[is_paid][]', 'errorIsPaidName' => 'spare.is_paid.'.$index
         ])
