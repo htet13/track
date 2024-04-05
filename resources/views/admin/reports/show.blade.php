@@ -77,8 +77,8 @@
                             <label class="required mb-2" for="driver_id">{{ trans('cruds.driver.title_singular') }}</label>
                             <select name="driver_id" class="form-control select2 {{ $errors->has('driver_id') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($drivers as $id => $name)
-                                    <option value="{{ $id }}" {{ request('driver_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                @foreach ($drivers as $driver)
+                                    <option value="{{ $driver->id }}" {{ request('driver_id') == $driver->id ? 'selected' : '' }}>{{ $driver->name }} ( @lang("global.$driver->salary_type") )</option>
                                 @endforeach
                             </select>
                         </div>
@@ -88,8 +88,8 @@
                             <label class="required mb-2" for="spare_id">{{ trans('cruds.spare.title_singular') }}</label>
                             <select name="spare_id" class="form-control select2 {{ $errors->has('spare_id') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($spares as $id => $name)
-                                    <option value="{{ $id }}" {{ request('spare_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                @foreach ($spares as $spare)
+                                    <option value="{{ $spare->id }}" {{ request('spare_id') == $spare->id ? 'selected' : '' }}>{{ $spare->name }} ( @lang("global.$spare->salary_type") ) </option>
                                 @endforeach
                             </select>
                         </div>
@@ -266,4 +266,5 @@
         })
     })
 </script>
+@include('admin.tracks.scripts.common')
 @endsection

@@ -73,7 +73,7 @@
                         <tr id="row{{ $advance_employee->id }}">
                             <td>{{ $index+1 }}</td>
                             <td>{{ $advance_employee->date }}</td>
-                            <td>{{ $advance_employee->employee->name }}</td>
+                            <td>{{ $advance_employee->employee->name ($advance_employee->employee->salary_type) }}</td>
                             <td>{{ $advance_employee->employee->position }}</td>
                             <td>{{ $advance_employee->amount }}</td>
                             <td>

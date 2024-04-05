@@ -24,8 +24,8 @@
                         <div class="form-group">
                             <select name="spare_id" class="form-control select2 {{ $errors->has('spare_id') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($spares as $id => $name)
-                                    <option value="{{ $id }}" {{ request('spare_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                @foreach ($spares as $spare)
+                                    <option value="{{ $spare->id }}" {{ request('spare_id') == $spare->id ? 'selected' : '' }}>{{ $spare->name }}</option>
                                 @endforeach
                             </select>
                         </div>

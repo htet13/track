@@ -24,8 +24,8 @@
                         <div class="form-group">
                             <select name="driver_id" class="form-control select2 {{ $errors->has('driver_id') ? 'is-invalid' : '' }}">
                                 <option value="" disabled selected>{{ trans('global.please_select') }}</option>
-                                @foreach ($drivers as $id => $name)
-                                    <option value="{{ $id }}" {{ request('driver_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                @foreach ($drivers as $driver)
+                                    <option value="{{ $driver->id }}" {{ request('driver_id') == $driver->id ? 'selected' : '' }}>{{ $driver->name }}</option>
                                 @endforeach
                             </select>
                         </div>

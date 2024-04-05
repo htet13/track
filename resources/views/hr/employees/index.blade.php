@@ -37,6 +37,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                            <label class="required mb-2" for="salary_type">@lang('global.salary_type')</label>
+                            <select name="salary_type" class="form-control select2 {{ $errors->has('salary_type') ? 'is-invalid' : '' }}">
+                                <option value="" disabled selected>{{ trans('global.please_select') }}</option>
+                                @foreach ($salary_types as $salary_type)
+                                    <option value="{{ $salary_type }}"{{ request()->salary_type == $salary_type ? 'selected' : '' }}>@lang("global.$salary_type")</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6"></div>
@@ -61,6 +72,7 @@
                         <th>{{ trans('global.no') }}</th>
                         <th>{{ trans('global.name') }}</th>
                         <th>{{ trans('global.position') }}</th>
+                        <th>{{ trans('global.salary_type') }}</th>
                         <th>{{ trans('global.joined_date') }}</th>
                         @if($status == 'new')
                         <th>{{ trans('global.resign_propose_date') }}</th>
@@ -77,6 +89,7 @@
                             <td>{{ $index+1 }}</td>
                             <td>{{ $employee->name }}</td>
                             <td>@lang("cruds.$employee->position.title_singular")</td>
+                            <td>@lang("global.$employee->salary_type")</td>
                             <td>{{ optional($employee->joined_date)->format('d-m-Y') }}</td>
                             <td>{{ optional($employee->resign_date)->format('d-m-Y') }}</td>
                             @if($status == 'new')

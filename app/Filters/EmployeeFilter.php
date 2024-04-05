@@ -9,7 +9,7 @@ class EmployeeFilter extends Filters
 	 * Register filter properties
 	 */
 	protected $filters = [
-		'name', 'from_date', 'to_date','position'
+		'name', 'from_date', 'to_date','position', 'salary_type'
 	];
 
 	/**
@@ -22,7 +22,12 @@ class EmployeeFilter extends Filters
 
 	public function position($value)
 	{
-		return $this->builder->where('position','LIKE',"%$value%");
+		return $this->builder->wherePosition($value);
+	}
+
+	public function salary_type($value)
+	{
+		return $this->builder->whereSalaryType($value);
 	}
 
 	public function from_date($value)

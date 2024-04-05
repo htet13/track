@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Hr;
 
-use App\Enums\EmployeeEnum;
-use App\Enums\PositionEnum;
+use App\Enums\{PositionEnum,SalaryTypeEnum};
 use App\Exports\EmployeeExport;
 use App\Filters\EmployeeFilter;
 use App\Http\Controllers\Controller;
@@ -32,13 +31,14 @@ class EmployeeController extends Controller
     {
         $employees = $this->employeeRepository->allWithPaginate($filter,30,$status);
         $positions = PositionEnum::all();
+        $salary_types = SalaryTypeEnum::all();
 
         if($request->btn == "Export")
         {
             return Excel::download(new EmployeeExport($employees),'driver'.now().'.xlsx');
         }
 
-        return view('hr.employees.index', compact('employees','status','positions'));
+        return view('hr.employees.index', compact('employees','status','positions', 'salary_types'));
     }
 
     /**
@@ -49,8 +49,9 @@ class EmployeeController extends Controller
     public function create($status)
     {
         $positions = PositionEnum::all();
+        $salary_types = SalaryTypeEnum::all();
         
-        return view('hr.employees.create', compact('positions','status'));
+        return view('hr.employees.create', compact('positions','status','salary_types'));
     }
 
     /**
@@ -90,7 +91,9 @@ class EmployeeController extends Controller
     public function edit($status, Employee $employee)
     {
         $positions = PositionEnum::all();
-        return view('hr.employees.edit', compact('employee','positions','status'));
+        $salary_types = SalaryTypeEnum::all();
+
+        return view('hr.employees.edit', compact('employee','positions','status','salary_types'));
     }
 
     /**

@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name');
             $table->string('position');
             $table->enum('status',['new','resign'])->default('new');
+            $table->enum('salary_type',['monthly','drive_fee'])->default('monthly');
             $table->date('joined_date');
             $table->date('resign_date')->nullable();
             $table->text('remark')->nullable();

@@ -60,6 +60,22 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-12 mb-2">
+                            <div class="form-group">
+                                <label class="required mb-2" for="salary_type">@lang('global.salary_type')</label>
+                                <select name="salary_type" class="form-control select2 {{ $errors->has('salary_type') ? 'is-invalid' : '' }}">
+                                    <option value="" disabled selected>{{ trans('global.please_select') }}</option>
+                                    @foreach ($salary_types as $salary_type)
+                                        <option value="{{ $salary_type }}"{{ old('salary_type') == $salary_type ? 'selected' : '' }}>@lang("global.$salary_type")</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('salary_type'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('salary_type') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">

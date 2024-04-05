@@ -50,7 +50,7 @@
 
     var optionsBarChart = {
         series: [{
-            name: 'စရိတ်',
+            name: 'ခေါက်ကြေး',
             data: data
         }],
         chart: {

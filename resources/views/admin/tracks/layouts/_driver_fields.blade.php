@@ -4,8 +4,8 @@
             <label class="required mb-2" for="diver_id">@lang('cruds.driver.title_singular')</label>
             <select name="{{ $fieldName }}" class="form-control select2 {{ $errors->has($errorName) ? 'is-invalid' : '' }}">
                 <option value="" selected>{{ trans('global.please_select') }}</option>
-                @foreach ($drivers as $id => $name)
-                    <option value="{{ $id }}"{{ $fieldValue == $id ? 'selected' : '' }}>{{ $name }}</option>
+                @foreach ($drivers as $driver)
+                    <option value="{{ $driver->id }}"{{ $fieldValue == $driver->id ? 'selected' : '' }}>{{ $driver->name }} ( @lang("global.$driver->salary_type") )</option>
                 @endforeach
             </select>
             @if($errors->has($errorName))

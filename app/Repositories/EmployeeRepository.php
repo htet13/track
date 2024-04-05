@@ -11,7 +11,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 {
     public function all($type)
     {
-        return Employee::wherePosition($type)->pluck('name','id');
+        return Employee::wherePosition($type)->select('name','salary_type','id')->get();
     }
 
     public function allWithoutType()

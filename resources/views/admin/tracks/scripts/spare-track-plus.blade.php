@@ -5,8 +5,8 @@
                                 <label class="required mb-2" for="diver_id"></label>
                                 <select name="spare[spare_id][]" class="form-control select2append {{ $errors->has('spare.spare_id') ? 'is-invalid' : '' }}">
                                     <option value="" selected>{{ trans('global.please_select') }}</option>
-                                    @foreach ($spares as $id => $name)
-                                        <option value="{{ $id }}"{{ ($track ? $track->spare_id : old('spare_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                    @foreach ($spares as $spare)
+                                        <option value="{{ $spare->id }}"{{ ($track ? $track->spare_id : old('spare_id')) == $spare->id ? 'selected' : '' }}>{{ $spare->name }} ( @lang("global.$spare->salary_type") )</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('spare.spare_id'))

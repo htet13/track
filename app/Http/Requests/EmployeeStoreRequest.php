@@ -27,6 +27,7 @@ class EmployeeStoreRequest extends FormRequest
             'joined_date' => 'required',
             'name' => 'required|string',
             'position' => 'required|string',
+            'salary_type' => 'required|string',
         ];
     }
 
@@ -35,7 +36,8 @@ class EmployeeStoreRequest extends FormRequest
         return [
             'joined_date.required' => 'အလုပ်စဝင်သည့်ရက် ရွေးချယ်ရန် လိုအပ်ပါသည်။',
             'name.required' => 'အမည်ထည့်သွင်းရန် လိုအပ်ပါသည်။',
-            'position.required' => 'ရာထူးရွေးချယ်ရန် လိုအပ်ပါသည်။'
+            'position.required' => 'ရာထူးရွေးချယ်ရန် လိုအပ်ပါသည်။',
+            'salary_type.required' => 'လစာအမျိုးအစားရွေးချယ်ရန် လိုအပ်ပါသည်။',
         ];
     }
 }

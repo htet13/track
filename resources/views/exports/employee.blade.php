@@ -11,7 +11,8 @@
       <th><b>@lang('global.no')</b></th>
       <th><b>@lang('global.name')</b></th>
       <th><b>@lang('global.position')</b></th>
-      <th><b>@lang('global.created_at')</b></th>
+      <th><b>@lang('global.salary_type')</b></th>
+      <th><b>@lang('global.joined_date')</b></th>
       <th><b>@lang('global.resign_date')</b></th>
     </tr>
   </thead>
@@ -21,7 +22,8 @@
       <td>{{ $index+1 }}</td>
       <td>{{ $employee->name }}</td>
       <td>@lang("cruds.$employee->position.title_singular")</td>
-      <td>{{ $employee->created_at->format('Y-m-d') }}</td>                
+      <td>@lang("global.$employee->salary_type")</td>
+      <td>{{ $employee->joined_date }}</td>                
       <td>{{ $employee->resign_date }}</td>                
     </tr>
     @endforeach

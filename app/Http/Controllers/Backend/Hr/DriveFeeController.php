@@ -44,14 +44,17 @@ class DriveFeeController extends Controller
     {
         $drivers = $this->employeeRepository->all(PositionEnum::DRIVER);
         
-        $driver_tracks = DriverTrack::filter($filter)->select(
-            'employee_id',
-            DB::raw('SUM(CASE WHEN is_paid = "paid" THEN 1 ELSE 0 END) as paid_track_count'),
-            DB::raw('SUM(CASE WHEN is_paid = "unpaid" THEN 1 ELSE 0 END) as unpaid_track_count'),
-            DB::raw('SUM(CASE WHEN is_paid = "paid" THEN fee ELSE 0 END) as paid_fee_sum'),
-            DB::raw('SUM(CASE WHEN is_paid = "unpaid" THEN fee ELSE 0 END) as unpaid_fee_sum')
+        $driver_tracks = DriverTrack::filter($filter)
+        ->join('employees', 'driver_tracks.employee_id', '=', 'employees.id')
+        ->where('employees.salary_type', '!=', 'monthly')
+        ->select(
+            'driver_tracks.employee_id',
+            DB::raw('SUM(CASE WHEN driver_tracks.is_paid = "paid" THEN 1 ELSE 0 END) as paid_track_count'),
+            DB::raw('SUM(CASE WHEN driver_tracks.is_paid = "unpaid" THEN 1 ELSE 0 END) as unpaid_track_count'),
+            DB::raw('SUM(CASE WHEN driver_tracks.is_paid = "paid" THEN driver_tracks.fee ELSE 0 END) as paid_fee_sum'),
+            DB::raw('SUM(CASE WHEN driver_tracks.is_paid = "unpaid" THEN driver_tracks.fee ELSE 0 END) as unpaid_fee_sum')
         )
-        ->groupBy('employee_id')
+        ->groupBy('driver_tracks.employee_id')
         ->paginate(30);
 
         if($request->btn == "Export")
@@ -108,15 +111,19 @@ class DriveFeeController extends Controller
     {
         $spares = $this->employeeRepository->all(PositionEnum::SPARE);
 
-        $spare_tracks = SpareTrack::filter($filter)->select(
-            'employee_id',
-            DB::raw('SUM(CASE WHEN is_paid = "paid" THEN 1 ELSE 0 END) as paid_track_count'),
-            DB::raw('SUM(CASE WHEN is_paid = "unpaid" THEN 1 ELSE 0 END) as unpaid_track_count'),
-            DB::raw('SUM(CASE WHEN is_paid = "paid" THEN fee ELSE 0 END) as paid_fee_sum'),
-            DB::raw('SUM(CASE WHEN is_paid = "unpaid" THEN fee ELSE 0 END) as unpaid_fee_sum')
+        $spare_tracks = SpareTrack::filter($filter)
+        ->join('employees', 'spare_tracks.employee_id', '=', 'employees.id')
+        ->where('employees.salary_type', '!=', 'monthly')
+        ->select(
+            'spare_tracks.employee_id',
+            DB::raw('SUM(CASE WHEN spare_tracks.is_paid = "paid" THEN 1 ELSE 0 END) as paid_track_count'),
+            DB::raw('SUM(CASE WHEN spare_tracks.is_paid = "unpaid" THEN 1 ELSE 0 END) as unpaid_track_count'),
+            DB::raw('SUM(CASE WHEN spare_tracks.is_paid = "paid" THEN spare_tracks.fee ELSE 0 END) as paid_fee_sum'),
+            DB::raw('SUM(CASE WHEN spare_tracks.is_paid = "unpaid" THEN spare_tracks.fee ELSE 0 END) as unpaid_fee_sum')
         )
-        ->groupBy('employee_id')
+        ->groupBy('spare_tracks.employee_id')
         ->paginate(30);
+
 
         if($request->btn == "Export")
         {

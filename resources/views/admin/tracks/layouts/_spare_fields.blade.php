@@ -4,8 +4,8 @@
             <label class="required mb-2" for="diver_id">@lang('cruds.spare.title_singular')</label>
             <select name="{{ $fieldName }}" class="form-control select2 {{ $errors->has($errorName) ? 'is-invalid' : '' }}">
                 <option value="" selected>{{ trans('global.please_select') }}</option>
-                @foreach ($spares as $id => $name)
-                    <option value="{{ $id }}"{{ $fieldValue == $id ? 'selected' : '' }}>{{ $name }}</option>
+                @foreach ($spares as $spare)
+                    <option value="{{ $spare->id }}"{{ $fieldValue == $spare->id ? 'selected' : '' }}>{{ $spare->name }} ( @lang("global.$spare->salary_type") )</option>
                 @endforeach
             </select>
             @if($errors->has($errorName))

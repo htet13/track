@@ -5,8 +5,8 @@
                                 <label class="required mb-2" for="diver_id"></label>
                                 <select name="driver[driver_id][]" class="form-control select2append {{ $errors->has('driver.driver_id') ? 'is-invalid' : '' }}">
                                     <option value="" selected>{{ trans('global.please_select') }}</option>
-                                    @foreach ($drivers as $id => $name)
-                                        <option value="{{ $id }}"{{ ($track ? $track->driver_id : old('driver_id')) == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                    @foreach ($drivers as $driver)
+                                        <option value="{{ $driver->id }}"{{ ($track ? $track->driver_id : old('driver_id')) == $driver->id ? 'selected' : '' }}>{{ $driver->name }} ( @lang("global.$driver->salary_type") )</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('driver.driver_id'))
