@@ -187,10 +187,10 @@
                             <td rowspan="{{ $maxCount }}">{{ number_format($track->expense) }}</td>
                             <td rowspan="{{ $maxCount }}">{{ $track->issuer->name }}</td>
                             <td>{{ $driver->name }} ( @lang("global.$driver->salary_type") )</td>
-                            <td>{{ $driver->salary_type == 'monthly' ? '-' : (isset($track->driverTracks[0]->fee)) }}</td>
+                            <td>{{ $driver->salary_type == 'monthly' ? '-' : $track->driverTracks[0]->fee }}</td>
                             <td>{{ $driver->salary_type == 'monthly' ? '-' : trans("global.".$track->driverTracks[0]->is_paid)}}</td>
                             <td>{{ $spare->name }} ( @lang("global.$spare->salary_type") )</td>
-                            <td>{{ $spare->salary_type == 'monthly' ? '-' : isset($track->spareTracks[0]->fee) }}</td>
+                            <td>{{ $spare->salary_type == 'monthly' ? '-' : $track->spareTracks[0]->fee }}</td>
                             <td>{{ $spare->salary_type == 'monthly' ? '-' : trans("global.".$track->spareTracks[0]->is_paid)}}</td>
                             @if($status == 'arrival')
                             <td rowspan="{{ $maxCount }}">
