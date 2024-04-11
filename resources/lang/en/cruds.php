@@ -32,6 +32,10 @@ return [
         'title' => 'ကြိုထုတ်ဝန်ထမ်းများ',
         'title_singular' => 'ကြိုထုတ်ဝန်ထမ်း',
     ],
+    'bonus' => [
+        'title' => 'ဆုကြေးများ',
+        'title_singular' => 'ဆုကြေး'
+    ],
     'driver' => [
         'title' => 'ယာဉ်မောင်းများ',
         'title_singular' => 'ယာဉ်မောင်း',

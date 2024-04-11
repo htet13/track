@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Hr\AdvanceEmployeeController;
+use App\Http\Controllers\Backend\Hr\BonusController;
 use App\Http\Controllers\Backend\Hr\EmployeeController;
 use App\Http\Controllers\Backend\Hr\DriveFeeController;
 use App\Http\Controllers\Backend\Hr\ReportController;
@@ -17,6 +18,9 @@ Route::group(['prefix' => 'hr', 'as' => 'hr.', 'middleware' => 'auth'], function
 
     //Advance Employee 
     Route::resource('advance-employee',AdvanceEmployeeController::class);
+
+    //Bonus
+    Route::resource('bonuses',BonusController::class);
 
     //Drive Fee
     Route::get('fee/driver',[DriveFeeController::class, 'driver'])->name('fee.driver');

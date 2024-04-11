@@ -13,15 +13,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle d-flex justify-content-between align-items-center">
-        <h1>{{ trans('cruds.advance_employee.title') }}/ အသေးစိတ်အချက်အလက်များ</h1>
-        <a class="btn bg-main text-main" href="{{ route('hr.report.advanceEmployee') }}">
-            @lang('global.back')
-        </a>
+        <h1>{{ trans('cruds.bonus.title') }}</h1>
     </div><!-- End Page Title -->
 
-    <section class="advance-employee-table">
+    <section class="bonus-table">
         <div class="card p-2">
-            <form action="{{ route('hr.advance-employee.index') }}" method="GET">
+            <form action="{{ route('hr.bonuses.index') }}" method="GET">
                 <div class="row my-2">
                     <div class="col-md-3 mb-3">
                         <div class="form-group">
@@ -42,16 +39,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6"></div>
+                    <div class="col-md-6 text-second">@lang('global.total')@lang('cruds.bonus.title_singular') - {{ $bonuses->sum('amount') }}</div>
                     <div class="col-md-6 col-12 mb-3 d-flex justify-content-end">
                         <button class="btn btn-outline-main me-2" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i></button>
-                        <a class="btn btn-outline-main me-2" href="{{ route('hr.advance-employee.index', ['employee_id' => request()->employee_id]) }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-main me-2" href="{{ route('hr.bonuses.index') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         @can('Excel Export')
                         <button class="btn btn-success me-2" type="submit" value="Export" name="btn">
                             {{ trans('global.excel') }} {{ trans('global.export') }}
                         </button>
                         @endcan
-                        <a class="btn bg-main text-main" href="{{ route('hr.advance-employee.create') }}">
+                        <a class="btn bg-main text-main" href="{{ route('hr.bonuses.create') }}">
                             <i class="fa-solid fa-plus"></i>{{ trans('global.new') }}{{ trans('global.add') }}
                         </a>
                     </div>
@@ -65,29 +62,28 @@
                         <th>{{ trans('global.date') }}</th>
                         <th>{{ trans('global.name') }}</th>
                         <th>{{ trans('global.position') }}</th>
+                        <th>{{ trans('global.bonus_type') }}</th>
                         <th>{{ trans('global.amount') }}</th>
                         <th>{{ trans('global.actions') }}</th>
                     </thead>
                     <tbody class="text-center align-middle">
-                        @forelse ($advance_employees as $index => $advance_employee)
-                        <tr id="row{{ $advance_employee->id }}">
+                        @forelse ($bonuses as $index => $bonus)
+                        <tr id="row{{ $bonus->id }}">
                             <td>{{ $index+1 }}</td>
-                            <td>{{ $advance_employee->date }}</td>
-                            <td>{{ $advance_employee->employee->name }}  (@lang("global.".$advance_employee->employee->salary_type))</td>
-                            <td>@lang("cruds.".$advance_employee->employee->position.".title_singular")</td>
-                            <td>{{ $advance_employee->amount }}</td>
+                            <td>{{ $bonus->date }}</td>
+                            <td>{{ $bonus->employee->name }} (@lang("global.".$bonus->employee->salary_type))</td>
+                            <td>@lang("cruds.".$bonus->employee->position.".title_singular")</td>
+                            <td>@lang("global.".$bonus->bonus_type)</td>
+                            <td>{{ number_format($bonus->amount) }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{ route('hr.advance-employee.show', $advance_employee) }}" class="pe-3" title="Car No Details">
-                                        <i class="fa-regular fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('hr.advance-employee.edit', $advance_employee) }}" class="pe-3" title="Edit Car No Details">
+                                    <a href="{{ route('hr.bonuses.edit', $bonus) }}" class="pe-3" title="Edit Bonus Details">
                                         <i class="fa-regular fa-pen-to-square text-success"></i>
                                     </a>
-                                    <form action="{{ route('hr.advance-employee.destroy', $advance_employee) }}" method="POST">
+                                    <form action="{{ route('hr.bonuses.destroy', $bonus) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <a class="pe-3 delete text-danger" title="Delete Car No">
+                                        <a class="pe-3 delete text-danger" title="Delete Bonus">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </form>
@@ -108,7 +104,7 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div style="float:right">
-                        {{ $advance_employees->appends(request()->input())->links() }}
+                        {{ $bonuses->appends(request()->input())->links() }}
                     </div>
                 </div>
             </div>

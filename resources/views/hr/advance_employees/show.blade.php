@@ -5,7 +5,7 @@
 
     <div class="pagetitle d-flex justify-content-between align-items-center">
         <h1>{{ trans('cruds.advance_employee.title_singular') }}/ @lang('global.show')</h1>
-        <a class="btn bg-main text-main" href="{{ route('hr.advance-employee.index') }}">
+        <a class="btn bg-main text-main" href="{{ route('hr.advance-employee.index', ['employee_id' => $advance_employee->employee_id]) }}">
             @lang('global.back')
         </a>
     </div><!-- End Page Title -->

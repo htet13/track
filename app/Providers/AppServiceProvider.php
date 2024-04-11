@@ -14,6 +14,7 @@ use App\Repositories\EmployeeRepository;
 use App\Repositories\AdvanceEmployeeRepository;
 use App\Repositories\ReportRepository;
 use App\Repositories\TrackRepository;
+use App\Repositories\BonusRepository;
 use App\Repositories\Interfaces\RoleRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\Interfaces\PermissionRepositoryInterface;
@@ -24,6 +25,7 @@ use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use App\Repositories\Interfaces\AdvanceEmployeeRepositoryInterface;
 use App\Repositories\Interfaces\ReportRepositoryInterface;
 use App\Repositories\Interfaces\TrackRepositoryInterface;
+use App\Repositories\Interfaces\BonusRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -54,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AdvanceEmployeeRepositoryInterface::class, AdvanceEmployeeRepository::class);
         $this->app->bind(ReportRepositoryInterface::class, ReportRepository::class);
         $this->app->bind(TrackRepositoryInterface::class, TrackRepository::class);
+        $this->app->bind(BonusRepositoryInterface::class, BonusRepository::class);
         Paginator::useBootstrap();
     }
 }

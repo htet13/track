@@ -58,7 +58,7 @@
                         <tr id="row{{ $advance_employee->id }}">
                             <td>{{ $index+1 }}</td>
                             <td>{{ $advance_employee->employee->name }}</td>
-                            <td>{{ $advance_employee->employee->position }}</td>
+                            <td>@lang("cruds.".$advance_employee->employee->position.".title_singular")</td>
                             <td>{{ $advance_employee->employee->advance }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">

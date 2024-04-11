@@ -70,7 +70,7 @@ class AdvanceEmployeeController extends Controller
 
         toast($message,$status ? 'success' : 'error');
 
-        return redirect()->route('hr.advance-employee.index');
+        return redirect()->route('hr.advance-employee.index', ['employee_id' => $request->employee_id]);
     }
 
     /**
@@ -111,7 +111,7 @@ class AdvanceEmployeeController extends Controller
 
         toast($message,$status ? 'success' : 'error');
 
-        return redirect()->route('hr.advance-employee.index');
+        return redirect()->route('hr.advance-employee.index', ['employee_id' => $advance_employee->employee_id]);
     }
 
     /**
@@ -124,6 +124,6 @@ class AdvanceEmployeeController extends Controller
     {
         $advance_employee->delete();
         
-        return redirect()->route('hr.advance-employee.index');
+        return redirect()->route('hr.advance-employee.index', ['employee_id' => $advance_employee->employee_id]);
     }
 }

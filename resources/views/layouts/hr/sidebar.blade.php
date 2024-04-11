@@ -33,6 +33,19 @@
 
         @can('Employee Access')
         <li class="nav-item">
+            <a class="nav-link {{ !request()->is('hr/bonus*') ? 'collapsed' : '' }}" href="{{ route('hr.bonuses.index') }}">
+                <div class="me-2">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('cruds.bonus.title') }}</span>
+                </div>
+            </a>
+        </li>
+        @endcan
+
+        @can('Employee Access')
+        <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/report/advance-employee*') ? 'collapsed' : '' }}" href="{{ route('hr.report.advanceEmployee') }}">
                 <div class="me-2">
                     <i class="fa-solid fa-hand-holding-heart"></i>

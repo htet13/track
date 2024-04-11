@@ -34,6 +34,8 @@ class AdvanceEmployeeRepository implements AdvanceEmployeeRepositoryInterface
     {
         DB::beginTransaction();
         try{
+            $advance_employee->employee->decrement('advance', $advance_employee->amount);
+            $advance_employee->employee->increment('advance', $data['amount']);
             $advance_employee->update($data);
             DB::commit();
             return $advance_employee;
