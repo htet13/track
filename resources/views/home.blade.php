@@ -11,13 +11,15 @@
 
             <div class="card mb-3 bg-main text-main">
                <div class="py-3 mx-3"> 
-                  <div class="fs-4"><a href="{{route('admin.logistics')}}" style="background-color: #031F63; color: #E1E889">Logistics System</a></div>
+                  <div class="fs-4">
+                    <a href="{{route('admin.logistics')}}" class="bg-main text-main text-decoration-none">Logistics System</a>
+                  </div>
                 </div>
             </div>
 
             <div class="card mb-3 bg-main text-main">
                <div class="py-3" style="margin: 0 41px"> 
-                  <div class="fs-4"><a href="{{ route('hr.employee.index', 'new') }}" style="background-color: #031F63; color: #E1E889">HR System</a></div>
+                  <div class="fs-4"><a href="{{ route('hr.employee.index', 'new') }}" class="bg-main text-main text-decoration-none">HR System</a></div>
                 </div>
             </div>
           </div>
