@@ -12,7 +12,7 @@ class AdvanceEmployeeRepository implements AdvanceEmployeeRepositoryInterface
 {
     public function allWithPaginate($filter,$paginate, $employee_id)
     {
-        return AdvanceEmployee::filter($filter)->whereEmployeeId($employee_id)->orderBy('created_at')->paginate($paginate);
+        return AdvanceEmployee::filter($filter)->whereEmployeeId($employee_id)->orderBy('created_at','DESC')->paginate($paginate);
     }
 
     public function create($data)

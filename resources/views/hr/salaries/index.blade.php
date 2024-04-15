@@ -92,7 +92,7 @@
                             <td>{{ optional($salary->payment_date)->format('d-m-Y') }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="pe-3" title="View Remarks">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="pe-3" title="View Remarks">
                                         <i class="fa-regular fa-eye"></i>
                                     </a>
                                     <a href="{{ route('hr.salary.edit', $salary) }}" class="pe-3" title="Edit Salary Details">

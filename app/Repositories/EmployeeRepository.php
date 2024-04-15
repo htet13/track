@@ -21,7 +21,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 
     public function allWithPaginate($filter,$paginate,$status)
     {
-        return Employee::filter($filter)->whereStatus($status)->orderBy('position')->paginate($paginate);
+        return Employee::filter($filter)->whereStatus($status)->orderBy('position')->orderBy('created_at','DESC')->paginate($paginate);
     }
 
     public function create($data)
