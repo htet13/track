@@ -1339,7 +1339,7 @@ body::-webkit-scrollbar {
 }
 
 .required:after {
-    content:" *";
+    content:"*";
     color: red;
 }
 

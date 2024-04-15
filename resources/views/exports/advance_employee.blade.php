@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>ကြိုထုတ်မှတ်တမ်း</title>
 </head>
 <body style="font-family: 'Pyidaungsu'">
 <table id="order-listing" class="table">
@@ -12,6 +12,7 @@
       <th><b>@lang('global.date')</b></th>
       <th><b>@lang('global.name')</b></th>
       <th><b>@lang('global.position')</b></th>
+      <th><b>@lang('global.amount')</b></th>
       <th><b>@lang('global.reason')</b></th>
       <th><b>@lang('global.remarks')</b></th>
     </tr>
@@ -23,6 +24,7 @@
       <td>{{ $advance_employee->date }}</td>
       <td>{{ $advance_employee->employee->name }}</td>
       <td>{{ $advance_employee->employee->position }}</td>                
+      <td>{{ $advance_employee->amount }}</td>
       <td>{!! $advance_employee->reason !!}</td>                
       <td>{!! $advance_employee->remark !!}</td>                
     </tr>

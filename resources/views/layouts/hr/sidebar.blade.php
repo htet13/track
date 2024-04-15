@@ -33,19 +33,6 @@
 
         @can('Employee Access')
         <li class="nav-item">
-            <a class="nav-link {{ !request()->is('hr/bonus*') ? 'collapsed' : '' }}" href="{{ route('hr.bonuses.index') }}">
-                <div class="me-2">
-                    <i class="fa-solid fa-gift"></i>
-                </div>
-                <div class="">
-                    <span>{{ trans('cruds.bonus.title') }}</span>
-                </div>
-            </a>
-        </li>
-        @endcan
-
-        @can('Employee Access')
-        <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/report/advance-employee*') ? 'collapsed' : '' }}" href="{{ route('hr.report.advanceEmployee') }}">
                 <div class="me-2">
                     <i class="fa-solid fa-hand-holding-heart"></i>
@@ -56,11 +43,22 @@
             </a>
         </li>
         @endcan
+
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('hr/employee/salary*') ? 'collapsed' : '' }}" href="{{ route('hr.salary.index') }}">
+                <div class="me-2">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('global.monthly') }}</span>
+                </div>
+            </a>
+        </li>
         
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/fee/driver') || !request()->is('hr/fee/spare') ? 'collapsed' : '' }}" data-bs-target="#fee-nav" data-bs-toggle="collapse" href="#">
                 <div class="me-1">
-                    <i class="fa fa-flag"></i>
+                    <i class="fa-solid fa-sack-dollar"></i>
                 </div>
                 <div class="">
                     <span>{{ trans('global.drive_fee') }}</span>
@@ -80,6 +78,19 @@
                 </li>
             </ul>
         </li>
+
+        @can('Employee Access')
+        <li class="nav-item">
+            <a class="nav-link {{ !request()->is('hr/bonus*') ? 'collapsed' : '' }}" href="{{ route('hr.bonuses.index') }}">
+                <div class="me-2">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="">
+                    <span>{{ trans('cruds.bonus.title') }}</span>
+                </div>
+            </a>
+        </li>
+        @endcan
     </ul>
 
 </aside><!-- End Sidebar-->

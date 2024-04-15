@@ -8,13 +8,13 @@ use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
-class AdvanceEmployeeExport implements FromView, WithColumnFormatting, WithEvents
+class SalaryExport implements FromView, WithColumnFormatting, WithEvents
 {
-   protected $advance_employees;
+   protected $salaries;
 
-	public function __construct($advance_employees) 
+	public function __construct($salaries) 
 	{
-		$this->advance_employees = $advance_employees;	
+		$this->salaries = $salaries;	
 	}
 
     /**
@@ -22,8 +22,8 @@ class AdvanceEmployeeExport implements FromView, WithColumnFormatting, WithEvent
     */
     public function view(): View
     {
-    	return view('exports.advance_employee', [
-    		'advance_employees' => $this->advance_employees
+    	return view('exports.salary', [
+    		'salaries' => $this->salaries
     	]);
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Hr\BonusController;
 use App\Http\Controllers\Backend\Hr\EmployeeController;
 use App\Http\Controllers\Backend\Hr\DriveFeeController;
 use App\Http\Controllers\Backend\Hr\ReportController;
+use App\Http\Controllers\Backend\Hr\SalaryController;
 
 Route::group(['prefix' => 'hr', 'as' => 'hr.', 'middleware' => 'auth'], function () {
 
@@ -21,6 +22,10 @@ Route::group(['prefix' => 'hr', 'as' => 'hr.', 'middleware' => 'auth'], function
 
     //Bonus
     Route::resource('bonuses',BonusController::class);
+
+    //Salary
+    Route::resource('employee/salary',SalaryController::class)->except(['create','store']);
+    Route::get('sync-employee',[SalaryController::class, 'syncEmployee'])->name('sync_employee');
 
     //Drive Fee
     Route::get('fee/driver',[DriveFeeController::class, 'driver'])->name('fee.driver');

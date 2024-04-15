@@ -9,7 +9,7 @@ class TrackFilter extends Filters
 	 * Register filter properties
 	 */
 	protected $filters = [
-		'date', 'car_no_id', 'from_city', 'to_city', 'issuer_id', 'driver_id', 'spare_id', 'other_cost','status'
+		'id', 'date', 'car_no_id', 'from_city', 'to_city', 'issuer_id', 'driver_id', 'spare_id', 'other_cost','status'
 	];
 
 	/**
@@ -18,6 +18,11 @@ class TrackFilter extends Filters
 	public function date($value)
 	{
 		return $this->builder->where('date',$value);
+	}
+
+	public function id($value)
+	{
+		return $this->builder->whereId($value);
 	}
 
 	public function car_no_id($value)

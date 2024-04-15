@@ -134,10 +134,15 @@
                             </td>
                             <td>{{ $spare_track->fee }}</td>
                             <td>{{ $spare_track->payment_date }}</td>
-                            <td>
-                                <a href="{{ route('hr.fee.spare.edit', ['track_id' => $track->id, 'driver_is_paid' => request('driver_is_paid')]) }}" class="pe-3" title="route Details">
-                                    <i class="fa-regular fa-eye"></i>
-                                </a>
+                            <td class="border-none">
+                                <div class="d-flex gap-1" style="min-width: 220px;">
+                                    <a class="btn btn-success" style="text-decoration: none;" href="{{ route('admin.track.index',[$track->type,'arrival','id' => $track->id]) }}" title="Driver Fee Details">
+                                        ခရီးစဉ်ကြည့်ရန်
+                                    </a>
+                                    <a class="btn bg-main text-main pointer" href="{{ route('hr.fee.spare.edit', ['track_id' => $track->id, 'driver_is_paid' => request('driver_is_paid')]) }}" class="pe-3" title="route Details">
+                                        <i class="fa-regular fa-pen-to-square"></i><span class="ms-1">ပြင်ရန်</span>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                        

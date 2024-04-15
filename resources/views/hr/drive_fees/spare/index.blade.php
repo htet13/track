@@ -68,10 +68,7 @@
                             <td>{{ $spare->unpaid_track_count }}</td>
                             <td>{{ $spare->paid_fee_sum }}</td>
                             <td>{{ $spare->unpaid_fee_sum }}</td>
-                            <td class="d-flex justify-content-center gap-1 align-items-center w-100" style="min-width: 195px;">
-                                <a style="text-decoration: none;" href="{{ route('admin.track.index',['tachileik','arrival']) }}" title="Spare Fee Details">
-                                    <i class="fa-regular fa-eye icon-box"></i>
-                                </a>
+                            <td class="d-flex justify-content-center gap-1 align-items-center w-100" style="min-width: 100px;">
                                 <a class="btn btn-success" href="{{ route('hr.fee.spare.detail',['spare_id' => $spare->employee_id, 'driver_is_paid' => 'paid']) }}" title="spare Fee Details">
                                     ရှင်းပြီး
                                 </a>
