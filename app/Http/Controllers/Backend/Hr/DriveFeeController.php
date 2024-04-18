@@ -45,6 +45,9 @@ class DriveFeeController extends Controller
         $drivers = $this->employeeRepository->all(PositionEnum::DRIVER);
         
         $driver_tracks = DriverTrack::filter($filter)
+        ->whereHas('track',function($query){
+            $query->whereStatus('arrival');
+        })
         ->join('employees', 'driver_tracks.employee_id', '=', 'employees.id')
         ->where('employees.salary_type', '!=', 'monthly')
         ->select(
@@ -75,6 +78,9 @@ class DriveFeeController extends Controller
 
         $driver_tracks = DriverTrack::with('track')->filter($filter)
             ->whereEmployeeId($driver_id)
+            ->whereHas('track',function($query){
+                $query->whereStatus('arrival');
+            })
             ->paginate(30);
 
         return view('hr.drive_fees.driver.track_detail',compact('driver_tracks','driver_id','cities','car_nos','issuers','drivers','spares'));
@@ -84,6 +90,9 @@ class DriveFeeController extends Controller
     {
         $driver_track = DriverTrack::with('track')
             ->whereTrackId($track_id)
+            ->whereHas('track',function($query){
+                $query->whereStatus('arrival');
+            })
             ->first();
 
         return view('hr.drive_fees.driver.track_edit',compact('driver_track'));
@@ -112,6 +121,9 @@ class DriveFeeController extends Controller
         $spares = $this->employeeRepository->all(PositionEnum::SPARE);
 
         $spare_tracks = SpareTrack::filter($filter)
+        ->whereHas('track',function($query){
+            $query->whereStatus('arrival');
+        })
         ->join('employees', 'spare_tracks.employee_id', '=', 'employees.id')
         ->where('employees.salary_type', '!=', 'monthly')
         ->select(
@@ -143,6 +155,9 @@ class DriveFeeController extends Controller
 
         $spare_tracks = SpareTrack::with('track')->filter($filter)
             ->whereEmployeeId($spare_id)
+            ->whereHas('track',function($query){
+                $query->whereStatus('arrival');
+            })
             ->paginate(30);
 
         return view('hr.drive_fees.spare.track_detail',compact('spare_tracks','spare_id','cities','car_nos','issuers','drivers','spares'));
@@ -152,6 +167,9 @@ class DriveFeeController extends Controller
     {
         $spare_track = SpareTrack::with('track')
             ->whereTrackId($track_id)
+            ->whereHas('track',function($query){
+                $query->whereStatus('arrival');
+            })
             ->first();
 
         return view('hr.drive_fees.spare.track_edit',compact('spare_track'));

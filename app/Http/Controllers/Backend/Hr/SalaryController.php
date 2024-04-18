@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Backend\Hr;
 
 use App\Enums\MonthEnum;
+use App\Enums\PositionEnum;
 use App\Exports\SalaryExport;
 use App\Filters\SalaryFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SalaryStoreRequest;
 use App\Models\DriverTrack;
 use App\Models\Salary;
+use App\Models\SpareTrack;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use App\Repositories\Interfaces\SalaryRepositoryInterface;
@@ -87,7 +89,20 @@ class SalaryController extends Controller
     public function edit(Salary $salary)
     {
         $employees = $this->employeeRepository->allWithoutType();
-        $drive_tracks = DriverTrack::with('track')->whereEmployeeId($salary->employee_id)->paginate(30);
+        if($salary->employee->position == PositionEnum::DRIVER)
+            $drive_tracks = DriverTrack::with('track')
+            ->whereEmployeeId($salary->employee_id)
+            ->whereHas('track',function($query){
+                $query->whereStatus('arrival');
+            })
+            ->paginate(30);
+        else
+            $drive_tracks = SpareTrack::with('track')
+            ->whereEmployeeId($salary->employee_id)
+            ->whereHas('track',function($query){
+                $query->whereStatus('arrival');
+            })
+            ->paginate(30);
 
         return view('hr.salaries.edit', compact('salary','employees','drive_tracks'));
     }

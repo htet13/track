@@ -9,7 +9,6 @@
                             <th rowspan="2" class="w-90">{{ trans('global.date') }}</th>
                             <th rowspan="2" class="w-90">{{ trans('cruds.car_no.title_singular') }}</th>
                             <th colspan="2">{{ trans('cruds.track.title_singular') }}</th>
-                            <th rowspan="2">{{ trans('global.paid') }}/ {{ trans('global.unpaid') }}</th>
                             <th rowspan="2">{{ trans('cruds.track.action') }}</th>
                         </tr>
                         <tr>
@@ -35,11 +34,6 @@
                                 @foreach ($track->tocities as $city)
                                 <div class="badge bg-success rounded-pill">{{ $city->name }}</div>
                                 @endforeach
-                            </td>
-                            <td>
-                                <div @if($salary->is_paid == 'paid') class="badge bg-success rounded-pill" @endif>
-                                    @lang("global.".$salary->is_paid)
-                                </div>
                             </td>
                             <td class="border-none">
                                 <div class="d-flex justify-content-center gap-1" style="min-width: 250px;">
