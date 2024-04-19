@@ -8,7 +8,7 @@
         @can('Employee Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/new/employee') || !request()->is('hr/resign/employee') ? 'collapsed' : '' }}" data-bs-target="#employee-nav" data-bs-toggle="collapse" href="#">
-                <div class="me-1">
+                <div style="width: 30px;">
                     <i class='fa fa-drivers-license'></i>
                 </div>
                 <div class="">
@@ -34,7 +34,7 @@
         @can('Employee Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/report/advance-employee*') ? 'collapsed' : '' }}" href="{{ route('hr.report.advanceEmployee') }}">
-                <div class="me-2">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-hand-holding-heart"></i>
                 </div>
                 <div class="">
@@ -46,7 +46,7 @@
 
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/employee/salary*') ? 'collapsed' : '' }}" href="{{ route('hr.salary.index') }}">
-                <div class="me-2">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-dollar-sign"></i>
                 </div>
                 <div class="">
@@ -57,7 +57,7 @@
         
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/fee/driver') || !request()->is('hr/fee/spare') ? 'collapsed' : '' }}" data-bs-target="#fee-nav" data-bs-toggle="collapse" href="#">
-                <div class="me-1">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-sack-dollar"></i>
                 </div>
                 <div class="">
@@ -82,7 +82,7 @@
         @can('Employee Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('hr/bonus*') ? 'collapsed' : '' }}" href="{{ route('hr.bonuses.index') }}">
-                <div class="me-2">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-gift"></i>
                 </div>
                 <div class="">

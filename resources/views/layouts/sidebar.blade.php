@@ -7,7 +7,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/logistics*') ? 'collapsed' : '' }}" href="{{ route('admin.logistics', ['interval' => 'weekly']) }}">
-                <div class="me-2">
+                <div style="width: 30px;">
                     <i class="bi bi-grid"></i>
                 </div>
                 <div class="">
@@ -19,7 +19,7 @@
         @can('Car No Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/car-no*') ? 'collapsed' : '' }}" href="{{ route('admin.car-no.index') }}">
-                <div class="me-2">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-ticket"></i>
                 </div>
                 <div class="">
@@ -32,7 +32,7 @@
         @can('City Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/city*') ? 'collapsed' : '' }}" href="{{ route('admin.city.index') }}">
-                <div class="me-2">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-city"></i>
                 </div>
                 <div class="">
@@ -45,7 +45,7 @@
         @can('Issuer Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/issuer*') ? 'collapsed' : '' }}" href="{{ route('admin.issuer.index') }}">
-                <div class="me-2">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-hand-holding-heart"></i>
                 </div>
                 <div class="">
@@ -58,7 +58,7 @@
         @can('Track Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/tachileik/departure/track*') || !request()->is('admin/other/departure/track*')  ? 'collapsed' : '' }} " data-bs-target="#departure-track-nav" data-bs-toggle="collapse" href="#">
-                <div class="me-1">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-truck-fast"></i>                
                 </div>
                 <div class="">
@@ -81,7 +81,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/tachileik/arrival/track*') || !request()->is('admin/other/arrival/track*')  ? 'collapsed' : '' }} " data-bs-target="#arrival-track-nav" data-bs-toggle="collapse" href="#">
-                <div class="me-1">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-car"></i>
                 </div>
                 <div class="">
@@ -107,7 +107,7 @@
         @can('Report Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/other/report*') || !request()->is('admin/tachileik/report*') ? 'collapsed' : '' }}" data-bs-target="#report-nav" data-bs-toggle="collapse" href="#">
-                <div class="me-1">
+                <div style="width: 30px;">
                     <i class="fa fa-flag"></i>
                 </div>
                 <div class="">
@@ -133,7 +133,7 @@
         @can('User Access')
         <li class="nav-item">
             <a class="nav-link {{ !request()->is('admin/user*') || !request()->is('admin/role*') ? 'collapsed' : '' }}" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
-                <div class="me-1">
+                <div style="width: 30px;">
                     <i class="fa-solid fa-users-gear"></i>
                 </div>
                 <div class="">
