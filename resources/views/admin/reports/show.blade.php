@@ -178,7 +178,7 @@
                             <td>@lang('global.'.$track->spareTracks[0]->is_paid)</td>
                             <td rowspan="{{ $maxCount }}">
                                 @foreach ($track->oilCosts as $oil)
-                                <div>{{ number_format($oil->liter) }}</div>
+                                <div>{{ number_format($oil->liter,2) }}</div>
                                 @endforeach
                             </td>
                             <td rowspan="{{ $maxCount }}">

@@ -263,6 +263,7 @@ class TrackRepository implements TrackRepositoryInterface
                     $combineData['total_price'] = $oldtrack->total_price - $track->oilCosts->sum('price');
                     $combineData['other_cost'] = $oldtrack->other_cost - $track->otherCosts->sum('cost');
                     $combineData['times'] = $oldtrack->times - 1;
+                    $combineData['expense'] = $oldtrack->expense - $track->expense;
                     $combineData['check_cost'] = $oldtrack->check_cost - $track->check_cost;
                     $combineData['gate_cost'] = $oldtrack->gate_cost - $track->gate_cost;
                     $combineData['food_cost'] = $oldtrack->food_cost - $track->food_cost;
