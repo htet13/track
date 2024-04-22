@@ -170,12 +170,12 @@
                             </td>
                             <td rowspan="{{ $maxCount }}">{{ number_format($track->expense) }}</td>
                             <td rowspan="{{ $maxCount }}">{{ $track->issuer->name }}</td>
-                            <td>{{ $track->driverTracks[0]->driver->name }}</td>
-                            <td>{{ $track->driverTracks[0]->fee }}</td>
-                            <td>@lang('global.'.$track->driverTracks[0]->is_paid)</td>
-                            <td>{{ $track->spareTracks[0]->spare->name }}</td>
-                            <td>{{ $track->spareTracks[0]->fee }}</td>
-                            <td>@lang('global.'.$track->spareTracks[0]->is_paid)</td>
+                            <td>{{ $driver->name }} ( @lang("global.$driver->salary_type") )</td>
+                            <td>{{ $driver->salary_type == 'monthly' ? '-' : $track->driverTracks[0]->fee }}</td>
+                            <td>{{ $driver->salary_type == 'monthly' ? '-' : trans("global.".$track->driverTracks[0]->is_paid)}}</td>
+                            <td>{{ $spare->name }} ( @lang("global.$spare->salary_type") )</td>
+                            <td>{{ $spare->salary_type == 'monthly' ? '-' : $track->spareTracks[0]->fee }}</td>
+                            <td>{{ $spare->salary_type == 'monthly' ? '-' : trans("global.".$track->spareTracks[0]->is_paid)}}</td>
                             <td rowspan="{{ $maxCount }}">
                                 @foreach ($track->oilCosts as $oil)
                                 <div>{{ number_format($oil->liter,2) }}</div>
@@ -205,22 +205,22 @@
                         @for($i=1; $i < $maxCount; $i++)
                         <tr>
                             @if($i < $driverTracksCount)
-                            <td>{{ $track->driverTracks[$i]->driver->name }}</td>
-                            <td>{{ $track->driverTracks[$i]->fee }}</td>
-                            <td>@lang('global.'.$track->driverTracks[$i]->is_paid)</td>
+                            <td>{{ $track->driverTracks[$i]->driver->name }} ( @lang('global.'.$track->driverTracks[$i]->driver->salary_type) )</td>
+                            <td>{{ $track->driverTracks[$i]->driver->salary_type == 'monthly' ? '-' : $track->driverTracks[$i]->fee }}</td>
+                            <td>{{ $track->driverTracks[$i]->driver->salary_type == 'monthly' ? '-' : trans("global.".$track->driverTracks[$i]->is_paid)}}</td>
                             @else
                             <td></td>
                             <td></td>
                             <td></td>
                             @endif
                             @if($i < $spareTracksCount)
-                            <td>{{ $track->spareTracks[$i]->spare->name }}</td>
-                            <td>{{ $track->spareTracks[$i]->fee }}</td>
-                            <td>@lang('global.'.$track->spareTracks[$i]->is_paid)</td>
+                            <td>{{ $track->spareTracks[$i]->spare->name }} ( @lang('global.'.$track->spareTracks[$i]->spare->salary_type) )</td>
+                            <td>{{ $track->spareTracks[$i]->spare->salary_type == 'monthly' ? '-' : $track->spareTracks[$i]->fee }}</td>
+                            <td>{{ $track->spareTracks[$i]->spare->salary_type == 'monthly' ? '-' : trans('global.'.$track->spareTracks[$i]->is_paid) }}</td>
                             @else
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td></td> 
                             @endif
                         </tr>
                         @endfor

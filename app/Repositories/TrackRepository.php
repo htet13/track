@@ -170,7 +170,7 @@ class TrackRepository implements TrackRepositoryInterface
             foreach ($oldtracks as $oldtrack) {
                 $fromcities = $track->fromcities->pluck('id')->toArray() === ($oldtrack->fromcities->pluck('id')->toArray());
                 $tocities = $track->tocities->pluck('id')->toArray() === ($oldtrack->tocities->pluck('id')->toArray());
-                if ($fromcities && $tocities) {
+                if ($fromcities && $tocities && $track->oilCosts()->sum('liter') > 0) {
                     $combineData['total_oil'] = $oldtrack->total_oil - $track->oilCosts->sum('liter');
                     $combineData['total_price'] = $oldtrack->total_price - $track->oilCosts->sum('price');
                     $combineData['other_cost'] = $oldtrack->other_cost - $track->otherCosts->sum('cost');
@@ -190,6 +190,8 @@ class TrackRepository implements TrackRepositoryInterface
             $track->tocities()->delete();
             $track->otherCosts()->delete();
             $track->oilCosts()->delete();
+            $track->driverTracks()->delete();
+            $track->spareTracks()->delete();
 
             DB::commit();
             return true;

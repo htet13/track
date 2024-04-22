@@ -237,7 +237,7 @@
                                         </form>
                                         @endif
                                     </div>
-                                    <div style="width: 86px;">
+                                    <div style="width: 100px;" class="d-flex justify-content-between align-items-center">
                                         <a class="btn bg-main text-main pointer" href="{{ route('admin.arrival.edit',[$type,$status,$track]) }}">
                                             @if($status == 'departure')
                                             <i class="fa-solid fa-plus"></i>ရောက်ရှိ
@@ -245,6 +245,15 @@
                                             <i class="fa-regular fa-pen-to-square"></i><span class="ms-1">ပြင်ရန်</span>
                                             @endif
                                         </a>
+                                        @if($status == 'arrival')
+                                        <form action="{{ route('admin.track.destroy', [$type,$status,$track]) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a class="delete text-danger" title="Delete Track">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </form>
+                                        @endif
                                     </div>
                                 </div>
                             </td>

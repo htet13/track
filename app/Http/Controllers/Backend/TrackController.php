@@ -155,7 +155,7 @@ class TrackController extends Controller
      */
     public function destroy($type, $status, Track $track)
     {
-        $success = $this->trackRepository->destroy($track, $type);
+        $this->trackRepository->destroy($track, $type);
 
         return redirect()->route('admin.track.index', [$type,'departure']);
     }
