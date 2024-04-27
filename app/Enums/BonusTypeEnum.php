@@ -6,7 +6,7 @@ use App\Traits\FooBar;
 enum BonusTypeEnum:string {    
     use FooBar;
 
-    case DRIVE_FEE = 'drive_fee';
-    case MONTHLY = 'monthly';
+    case THIDINGYUT = 'thidingyut';
+    case THINGYAN = 'thingyan';
     case OTHERS = 'others';
 }

@@ -17,7 +17,7 @@ class CreateBonusesTable extends Migration
             $table->uuid('id')->primary();
             $table->date('date');
             $table->string('employee_id');
-            $table->enum('bonus_type',['drive_fee','monthly','others'])->default('others');
+            $table->enum('bonus_type',['thingyan','thidingyut','others'])->default('others');
             $table->string('amount')->default(0);
             $table->timestamps();
         });
