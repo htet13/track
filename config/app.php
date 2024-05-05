@@ -168,6 +168,9 @@ return [
          * Package Service Providers...
          */
 
+        App\Providers\GoogleDriveServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
